@@ -1,0 +1,38 @@
+[
+  {
+    "id": 1,
+    "firstname": "Matthias",
+    "lastname": "Wanner",
+    "email": "test@test.fr",
+    "role": "SUPER_ADMIN",
+    "profession": "",
+    "organization_id": null
+  },
+  {
+    "id": 2,
+    "firstname": "Benjamin",
+    "lastname": "Lavigne",
+    "email": "test2@test.fr",
+    "role": "SUPER_ADMIN",
+    "profession": "",
+    "organization_id": null
+  },
+  {
+    "id": 3,
+    "firstname": "Estelle",
+    "lastname": "Chabat",
+    "email": "poucave@titre.fr",
+    "role": "SUPER_ADMIN",
+    "profession": "",
+    "organization_id": null
+  },
+  {
+    "id": 4,
+    "firstname": "Mickael",
+    "lastname": "Kergrohen",
+    "email": "test4@test.fr",
+    "role": "SUPER_ADMIN",
+    "profession": "",
+    "organization_id": null
+  }
+]
