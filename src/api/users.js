@@ -21,4 +21,14 @@ router.get("/:id", (req, res) => {
     });
 });
 
+router.post("/", (req, res) => {
+  const initial = usersExemple;
+  const newUser = {
+    id: [...initial].pop().id + 1,
+    ...req.body,
+  };
+  initial.push(newUser);
+  res.status(200).json(initial[initial.length - 1]);
+});
+
 module.exports = router;

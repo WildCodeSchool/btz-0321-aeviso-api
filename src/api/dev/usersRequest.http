@@ -3,3 +3,15 @@ http://localhost:5000/api/v1/users
 ###
 http://localhost:5000/api/v1/users/2
 
+###
+POST http://localhost:5000/api/v1/users
+content-type: application/json
+
+{
+    "firstname": "Basile",
+    "lastname": "Vernouillet",
+    "email": "formateur@test.fr",
+    "role": "SUPER_ADMIN",
+    "profession": "",
+    "organization_id": null
+}
