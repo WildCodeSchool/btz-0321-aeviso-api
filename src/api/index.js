@@ -1,6 +1,6 @@
 const express = require("express");
 
-const organizations = require("./organizations");
+const companies = require("./companies");
 const users = require("./users");
 
 const router = express.Router();
@@ -11,7 +11,7 @@ router.get("/", (req, res) => {
   });
 });
 
-router.use("/organizations", organizations);
+router.use("/companies", companies);
 router.use("/users", users);
 
 module.exports = router;
