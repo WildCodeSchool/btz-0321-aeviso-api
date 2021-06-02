@@ -29,23 +29,33 @@ router.post("/", (req, res) => {
   res.status(201).json(companies[companies.length - 1]);
 });
 
-router.put('/:id', (req, res) => {
+router.put("/:id", (req, res) => {
   const { name, zip_code, city } = req.body;
-  const index = companies.findIndex(company => company.id === +req.params.id);
+  const index = companies.findIndex((company) => company.id === +req.params.id);
 
   if (index === -1) {
-    return res.status(400).json({ message: 'Invalid company.' });
+    return res.status(400).json({ message: "Invalid company." });
   }
-
   const company = companies[index];
   companies[index] = {
     ...company,
     name: name || company.name,
     zip_code: zip_code || company.zip_code,
     city: city || company.city,
-  }
+  };
 
   res.status(200).json(companies[index]);
+});
+
+router.delete("/:id", (req, res) => {
+  const index = companies.findIndex((company) => company.id === +req.params.id);
+
+  if (index === -1) {
+    return res.status(400).json({ message: "Company not found" });
+  }
+
+  companies.splice(index, 1);
+  res.status(200).json({ messsage: "Company has been deleted successfully" });
 });
 
 module.exports = router;

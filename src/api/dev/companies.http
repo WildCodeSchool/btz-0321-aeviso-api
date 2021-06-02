@@ -26,3 +26,6 @@ Content-Type: application/json
 }
 
 
+###
+DELETE http://localhost:5000/api/v1/companies/1
+Content-Type:  application/json
