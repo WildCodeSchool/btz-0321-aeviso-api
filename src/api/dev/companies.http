@@ -9,14 +9,20 @@ POST http://localhost:5000/api/v1/companies
 Content-Type: application/json 
 
 {
-    "id": 1,
-    "name": "WIIT TRAINING",
-    "zip_code": "64100",
-    "city": "BAYONNE",
-    "created_at": "01-02-12",
-    "updated": "01-02-12"
-  }
+  "id": 1,
+  "name": "WIIT TRAINING",
+  "zip_code": "64100",
+  "city": "BAYONNE",
+  "created_at": "01-02-12",
+  "updated": "01-02-12"
+}
 
+###
+PUT http://localhost:5000/api/v1/companies/1
+Content-Type: application/json
 
+{
+  "zip_code": "12345"
+}
 
 

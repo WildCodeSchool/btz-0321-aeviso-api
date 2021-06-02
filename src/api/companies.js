@@ -29,4 +29,23 @@ router.post("/", (req, res) => {
   res.status(201).json(companies[companies.length - 1]);
 });
 
+router.put('/:id', (req, res) => {
+  const { name, zip_code, city } = req.body;
+  const index = companies.findIndex(company => company.id === +req.params.id);
+
+  if (index === -1) {
+    return res.status(400).json({ message: 'Invalid company.' });
+  }
+
+  const company = companies[index];
+  companies[index] = {
+    ...company,
+    name: name || company.name,
+    zip_code: zip_code || company.zip_code,
+    city: city || company.city,
+  }
+
+  res.status(200).json(companies[index]);
+});
+
 module.exports = router;
