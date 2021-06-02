@@ -12,3 +12,16 @@ content-type: application/json
 {
     "name": "Junior"
 }
+
+###
+
+PUT http://localhost:5000/api/v1/professions/3 HTTP/1.1
+content-type: application/json
+
+{
+    "name": "charcutier"
+}
+
+###
+
+DELETE http://localhost:5000/api/v1/professions/5 HTTP/1.1
