@@ -1,19 +1,14 @@
 const express = require("express");
-const usersExemple = require("./dev/usersExemple");
+const usersExample = require("./dev/usersExample");
 
 const router = express.Router();
 
 router.get("/", (req, res) => {
-  const result = usersExemple;
-  if (result.length) res.status(200).json(result);
-  else
-    res.status(404).json({
-      message: "No user found",
-    });
+  res.status(200).json(usersExample);
 });
 
 router.get("/:id", (req, res) => {
-  const result = usersExemple.find((user) => user.id === +req.params.id);
+  const result = usersExample.find((user) => user.id === +req.params.id);
   if (result) res.status(200).json(result);
   else
     res.status(404).json({
@@ -22,7 +17,7 @@ router.get("/:id", (req, res) => {
 });
 
 router.post("/", (req, res) => {
-  const initial = usersExemple;
+  const initial = usersExample;
   const newUser = {
     id: [...initial].pop().id + 1,
     ...req.body,
@@ -33,19 +28,17 @@ router.post("/", (req, res) => {
 
 router.put("/:id", (req, res) => {
   const id = +req.params.id;
-  const index = usersExemple.indexOf(
-    usersExemple.find((user) => user.id === id)
+  const index = usersExample.indexOf(
+    usersExample.find((user) => user.id === id)
   );
   if (index >= 0) {
-    let elementToUpdate = usersExemple.find((user) => user.id === id);
+    let elementToUpdate = usersExample.find((user) => user.id === id);
     elementToUpdate = {
       id,
       ...req.body,
     };
-    usersExemple.splice(index, 1, elementToUpdate);
-    res.status(200).json({
-      message: "User updated",
-    });
+    usersExample.splice(index, 1, elementToUpdate);
+    res.status(200).json(elementToUpdate);
   } else
     res.status(404).json({
       message: "No user found",
@@ -54,11 +47,11 @@ router.put("/:id", (req, res) => {
 
 router.delete("/:id", (req, res) => {
   const id = +req.params.id;
-  const index = usersExemple.indexOf(
-    usersExemple.find((user) => user.id === id)
+  const index = usersExample.indexOf(
+    usersExample.find((user) => user.id === id)
   );
   if (index >= 0) {
-    usersExemple.splice(index, 1);
+    usersExample.splice(index, 1);
     res.status(200).json({
       message: "User deleted",
     });
