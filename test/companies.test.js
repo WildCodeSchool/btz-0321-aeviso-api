@@ -2,7 +2,7 @@ const request = require("supertest");
 
 const app = require("../src/app");
 
-describe("/api/v1/companies endpoint", () => {
+describe("Companies CRUD", () => {
     const companiesProperties = [
         'id',
         'name',
@@ -68,5 +68,11 @@ describe("/api/v1/companies endpoint", () => {
             .expect(200);
 
         companiesProperties.forEach(property => expect(res.body).toHaveProperty(property));
+    });
+
+    it("should delete a company and not respond", async () => {
+        await request(app)
+            .delete("/api/v1/companies/3")
+            .expect(204);
     });
 });

@@ -9,9 +9,8 @@ router.get("/", (req, res) => {
 });
 
 router.get("/:id", (req, res) => {
-  const company = companies.filter((cie) => cie.id === +req.params.id);
-
-  if (companies) res.status(200).json(company);
+  const company = companies.find((co) => co.id === +req.params.id);
+  if (company) res.status(200).json(company);
   else res.status(404).json({ message: "The company have not been found" });
 });
 
@@ -27,8 +26,8 @@ router.post("/", (req, res) => {
     zip_code,
     city,
     status_id: status_id || null,
-    created_at: '09-01-2013',
-    updated_at: '05-02-2015',
+    created_at: '01-01-2000',
+    updated_at: '02-02-2000',
   });
 
 
@@ -62,7 +61,7 @@ router.delete("/:id", (req, res) => {
   }
 
   companies.splice(index, 1);
-  res.status(200).json({ messsage: "Company has been deleted successfully" });
+  res.sendStatus(204);
 });
 
 module.exports = router;
