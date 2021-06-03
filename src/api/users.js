@@ -52,7 +52,7 @@ router.delete("/:id", (req, res) => {
   );
   if (index >= 0) {
     usersExample.splice(index, 1);
-    res.status(200).json({
+    res.status(204).json({
       message: "User deleted",
     });
   } else

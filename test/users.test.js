@@ -102,7 +102,7 @@ describe("USERS RESSOURCES", () => {
   it("should delete an user", async () => {
     await request(app)
       .put("/api/v1/users/1")
-      .expect(200)
+      .expect(204)
       .expect("Content-Type", /json/);
   });
 
