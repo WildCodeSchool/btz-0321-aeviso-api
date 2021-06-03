@@ -74,7 +74,7 @@ describe("PROFESSIONS RESSOURCES", () => {
     };
 
     await request(app)
-      .put("/api/v1/profession/10")
+      .put("/api/v1/professions/10")
       .send(payload)
       .expect(404)
       .expect("Content-Type", /json/);
