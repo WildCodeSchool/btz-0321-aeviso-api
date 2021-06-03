@@ -13,7 +13,7 @@ content-type: application/json
     "email": "formateur@test.fr",
     "role": "SUPER_ADMIN",
     "profession": "",
-    "organization_id": null
+    "company_id": null
 }
 
 ###
@@ -26,7 +26,7 @@ content-type: application/json
     "email": "formateur@test.fr",
     "role": "SUPER_ADMIN",
     "profession": "nettoyeur",
-    "organization_id": null
+    "company_id": null
 }
 
 ###

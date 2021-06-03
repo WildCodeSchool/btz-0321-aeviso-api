@@ -6,7 +6,7 @@
     "email": "test@test.fr",
     "role": "SUPER_ADMIN",
     "profession": "",
-    "organization_id": null
+    "company_id": null
   },
   {
     "id": 2,
@@ -15,7 +15,7 @@
     "email": "test2@test.fr",
     "role": "SUPER_ADMIN",
     "profession": "",
-    "organization_id": null
+    "company_id": null
   },
   {
     "id": 3,
@@ -24,7 +24,7 @@
     "email": "poucave@titre.fr",
     "role": "SUPER_ADMIN",
     "profession": "",
-    "organization_id": null
+    "company_id": null
   },
   {
     "id": 4,
@@ -33,6 +33,6 @@
     "email": "test4@test.fr",
     "role": "SUPER_ADMIN",
     "profession": "",
-    "organization_id": null
+    "company_id": null
   }
 ]
