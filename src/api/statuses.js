@@ -4,14 +4,13 @@ const statuses = require("./dev/statusesExample");
 const router = express.Router();
 
 router.get("/", (req, res) => {
-  if (statuses.length) res.status(200).json(statuses);
-  else res.status(404).json({ message: "Statuses not found" });
+  res.status(200).json(statuses || []);
 });
 
 router.get("/:id", (req, res) => {
   const status = statuses.find((stat) => stat.id === +req.params.id);
   if (status) res.status(200).json(status);
-  else res.status(401).json({ message: "Status not found" });
+  else res.status(404).json({ message: "Status not found" });
 });
 
 router.post("/", (req, res) => {

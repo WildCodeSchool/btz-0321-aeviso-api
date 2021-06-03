@@ -4,8 +4,7 @@ const companies = require("./dev/companiesExample");
 const router = express.Router();
 
 router.get("/", (req, res) => {
-  if (companies.length) res.status(200).json(companies);
-  else res.status(404).json({ message: "companies not found" });
+  res.status(200).json(companies || []);
 });
 
 router.get("/:id", (req, res) => {
