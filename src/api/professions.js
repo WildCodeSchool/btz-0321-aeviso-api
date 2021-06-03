@@ -56,7 +56,7 @@ router.delete("/:id", (req, res) => {
 
     if (index >= 0) {
         professionsExample.splice(index, 1);
-        res.status(200).json({
+        res.status(204).json({
             message: "profession deleted",
 
     });

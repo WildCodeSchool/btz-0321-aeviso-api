@@ -87,7 +87,7 @@ describe("PROFESSIONS RESSOURCES", () => {
   it("should delete a profession", async () => {
     await request(app)
       .put("/api/v1/professions/1")
-      .expect(200)
+      .expect(204)
       .expect("Content-Type", /json/);
   });
 
