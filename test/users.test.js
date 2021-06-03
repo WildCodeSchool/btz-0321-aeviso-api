@@ -13,12 +13,14 @@ describe("USERS RESSOURCES", () => {
 
     expect(Array.isArray(res.body)).toBe(true);
 
-    res.body.forEach((user) => {
-      expect(user).toHaveProperty(usersProperties[0]);
-      expect(user).toHaveProperty(usersProperties[1]);
-      expect(user).toHaveProperty(usersProperties[2]);
-      expect(user).toHaveProperty(usersProperties[3]);
-    });
+    if (res.body) {
+      res.body.forEach((user) => {
+        expect(user).toHaveProperty(usersProperties[0]);
+        expect(user).toHaveProperty(usersProperties[1]);
+        expect(user).toHaveProperty(usersProperties[2]);
+        expect(user).toHaveProperty(usersProperties[3]);
+      });
+    }
   });
 
   it("should respond 200 with one user", async () => {
