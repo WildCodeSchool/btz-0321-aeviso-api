@@ -9,8 +9,9 @@ router.get("/", (req, res) => {
 });
 
 router.get("/:id", (req, res) => {
-  companies.filter((cie) => cie.id === +req.params.id);
-  if (companies.length) res.status(200).json(companies);
+  const company = companies.filter((cie) => cie.id === +req.params.id);
+
+  if (companies) res.status(200).json(company);
   else res.status(404).json({ message: "The company have not been found" });
 });
 
@@ -19,13 +20,19 @@ router.post("/", (req, res) => {
   if (!name || !zip_code || !city) {
     return res.status(400).json({ message: "Please enter the right datas!" });
   }
+
   companies.push({
     id: companies.length + 1,
     name,
     zip_code,
     city,
     status_id: status_id || null,
+    created_at: '09-01-2013',
+    updated_at: '05-02-2015',
   });
+
+
+
   res.status(201).json(companies[companies.length - 1]);
 });
 
