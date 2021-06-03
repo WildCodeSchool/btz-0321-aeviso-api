@@ -16,7 +16,6 @@ describe("PROFESSIONS RESSOURCES", () => {
     res.body.forEach((profession) => {
       expect(profession).toHaveProperty(professionProperties[0]);
       expect(profession).toHaveProperty(professionProperties[1]);
-
     });
   });
 
@@ -28,7 +27,6 @@ describe("PROFESSIONS RESSOURCES", () => {
 
     expect(res.body).toHaveProperty(professionProperties[0]);
     expect(res.body).toHaveProperty(professionProperties[1]);
-
   });
 
   it("should respond 404", async () => {
@@ -40,7 +38,7 @@ describe("PROFESSIONS RESSOURCES", () => {
 
   it("should create a new profession", async () => {
     const payload = {
-     name: "junior"
+      name: "junior",
     };
 
     const res = await request(app)
@@ -51,7 +49,6 @@ describe("PROFESSIONS RESSOURCES", () => {
 
     expect(res.body).toHaveProperty(professionProperties[0]);
     expect(res.body).toHaveProperty(professionProperties[1], payload.name);
-  
   });
 
   // Add unique item check when db will be connected
@@ -69,7 +66,6 @@ describe("PROFESSIONS RESSOURCES", () => {
 
     expect(res.body).toHaveProperty(professionProperties[0]);
     expect(res.body).toHaveProperty(professionProperties[1], payload.name);
-   
   });
 
   it("should respond 404", async () => {
@@ -85,10 +81,7 @@ describe("PROFESSIONS RESSOURCES", () => {
   });
 
   it("should delete a profession", async () => {
-    await request(app)
-      .put("/api/v1/professions/1")
-      .expect(204)
-      .expect("Content-Type", /json/);
+    await request(app).delete("/api/v1/professions/1").expect(204);
   });
 
   it("should respond 404", async () => {

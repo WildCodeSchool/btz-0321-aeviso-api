@@ -100,10 +100,7 @@ describe("USERS RESSOURCES", () => {
   });
 
   it("should delete an user", async () => {
-    await request(app)
-      .put("/api/v1/users/1")
-      .expect(204)
-      .expect("Content-Type", /json/);
+    await request(app).delete("/api/v1/users/1").expect(204);
   });
 
   it("should respond 404", async () => {
