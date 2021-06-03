@@ -9,13 +9,13 @@ router.get("/", (req, res) => {
 });
 
 router.get("/:id", (req, res) => {
-  companies.filter((cie) => cie.id === +req.params.id);
-  if (companies.length) res.status(200).json(companies);
+  const company = companies.find((co) => co.id === +req.params.id);
+  if (company) res.status(200).json(company);
   else res.status(404).json({ message: "The company have not been found" });
 });
 
 router.post("/", (req, res) => {
-  const { name, zip_code, city, status_id } = req.body;
+  const { name, zip_code, city, statuses_id } = req.body;
   if (!name || !zip_code || !city) {
     return res.status(400).json({ message: "Please enter the right datas!" });
   }
@@ -24,7 +24,7 @@ router.post("/", (req, res) => {
     name,
     zip_code,
     city,
-    status_id: status_id || null,
+    statuses_id: statuses_id || null,
   });
   res.status(201).json(companies[companies.length - 1]);
 });

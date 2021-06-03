@@ -1,16 +1,16 @@
-http://localhost:5000/api/v1/status
+http://localhost:5000/api/v1/statuses
 
 ###
-http://localhost:5000/api/v1/status/2
+http://localhost:5000/api/v1/statuses/2
 
 ###
-POST http://localhost:5000/api/v1/status
+POST http://localhost:5000/api/v1/statuses
 Content-Type: application/json
 
 {"name":"EURL"}
 
 ###
-PUT http://localhost:5000/api/v1/status/2
+PUT http://localhost:5000/api/v1/statuses/3
 Content-Type: application/json
 
     {"name": "SA"}
