@@ -1,0 +1,37 @@
+GET http://localhost:5000/api/v1/projects HTTP/1.1
+
+###
+GET http://localhost:5000/api/v1/projects/4 HTTP/1.1
+
+
+###
+POST http://localhost:5000/api/v1/projects HTTP/1.1
+Content-Type: application/json
+
+{
+        "name": "Babos",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi pretium gravida placerat. In mattis hendrerit magna gravida vehicula. Duis iaculis elit a neque mattis laoreet. Proin enim nibh, luctus nec elementum vel, pulvinar at tellus. Vestibulum vel laoreet turpis, ut eleifend est. Pellentesque sit amet nisl sit amet odio ultrices rhoncus nec sed lacus.",
+        "create_At": null,
+        "update_At": null,
+        "organization_id": null   
+}
+
+###
+PUT http://localhost:5000/api/v1/projects/3 HTTP/1.1
+Content-Type: application/json
+
+
+{
+        "name": "Nazaré",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi pretium gravida placerat. In mattis hendrerit magna gravida vehicula. Duis iaculis elit a neque mattis laoreet. Proin enim nibh, luctus nec elementum vel, pulvinar at tellus. Vestibulum vel laoreet turpis, ut eleifend est. Pellentesque sit amet nisl sit amet odio ultrices rhoncus nec sed lacus.",
+        "create_At": null,
+        "update_At": null,
+        "organization_id": null   
+}
+
+###
+DELETE http://localhost:5000/api/v1/projects/4 HTTP/1.1
+
+
+
+
