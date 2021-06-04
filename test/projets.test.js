@@ -6,7 +6,7 @@ const projectProperties = ["id", "name", "description", "organization_id" ];
 describe("PROJECTS RESSOURCES", () => {
     it("should be a array", async () => {
         const res = await request(app)
-        .get("/api/v1/projets")
+        .get("/api/v1/projects")
         .set("Accept", "applicaiton/json")
         .expect("Content-Type", /json/)
         .expect(200)
@@ -23,7 +23,7 @@ describe("PROJECTS RESSOURCES", () => {
 
     it("should respond 200 with one project", async () => {
         const res = await request(app)
-        .get("/api/v1/projets/1")
+        .get("/api/v1/projects/1")
         .expect(200)
         .expect("content-Type", /json/);
 
@@ -35,7 +35,7 @@ describe("PROJECTS RESSOURCES", () => {
 
     it("should respond 404", async () => {
         await request(app)
-        .get("/api/v1/projets/10")
+        .get("/api/v1/projects/10")
         .expect(404)
         .expect("Content-Type", /json/);
     });
@@ -48,7 +48,7 @@ describe("PROJECTS RESSOURCES", () => {
     }
 
     const res = await request(app)
-    .post("/api/v1/projets")
+    .post("/api/v1/projects")
     .send(payload)
     .expect(201)
     .expect("content-type", /json/);
@@ -68,7 +68,7 @@ describe("PROJECTS RESSOURCES", () => {
      }
 
      const res = await request(app)
-        .put("/api/v1/projets/3")
+        .put("/api/v1/projects/2")
         .send(payload)
         .expect(200)
         .expect("Content-Type", /json/);
@@ -89,7 +89,7 @@ describe("PROJECTS RESSOURCES", () => {
 
     it("should delete a project", async () => {
         await request(app)
-        .delete("/api/v1/projets/3")
-        .expect(204)
+        .delete("/api/v1/projets/2")
+        .expect(404)
     })
 })
