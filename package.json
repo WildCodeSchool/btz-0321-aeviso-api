@@ -4,10 +4,10 @@
   "description": " A basic starter for an express.js API",
   "main": "index.js",
   "scripts": {
-    "test": "jest",
     "start": "node src/index.js",
     "dev": "nodemon src/index.js",
-    "lint": "eslint --fix src"
+    "lint": "eslint --fix src",
+    "test": "jest"
   },
   "keywords": [],
   "author": "CJ R. <cj@null.computer> (https://w3cj.now.sh)",
@@ -29,7 +29,7 @@
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-import": "^2.22.1",
     "eslint-plugin-prettier": "^3.4.0",
-    "jest": "^27.0.3",
+    "jest": "^27.0.4",
     "nodemon": "^2.0.7",
     "supertest": "^6.1.3"
   }
