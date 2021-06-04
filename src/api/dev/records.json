@@ -1,0 +1,30 @@
+[
+  {
+    "id": 1,
+    "user_id": null,
+    "project_id": null,
+    "step_id": null,
+    "time_slot": "MATIN"
+  },
+  {
+    "id": 2,
+    "user_id": null,
+    "project_id": null,
+    "step_id": null,
+    "time_slot": "APRES-MIDI"
+  },
+  {
+    "id": 3,
+    "user_id": null,
+    "project_id": null,
+    "step_id": null,
+    "time_slot": "APRES-MIDI"
+  },
+  {
+    "id": 4,
+    "user_id": null,
+    "project_id": null,
+    "step_id": null,
+    "time_slot": "MATIN"
+  }
+]

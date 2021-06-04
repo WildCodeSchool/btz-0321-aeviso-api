@@ -23,7 +23,7 @@ describe("Companies CRUD", () => {
 
     res.body.forEach((company) => {
       companiesProperties.forEach((property) =>
-        expect(company).toHaveProperty(property),
+        expect(company).toHaveProperty(property)
       );
     });
   });
@@ -43,7 +43,7 @@ describe("Companies CRUD", () => {
       .expect(201);
 
     companiesProperties.forEach((property) =>
-      expect(res.body).toHaveProperty(property),
+      expect(res.body).toHaveProperty(property)
     );
   });
 
@@ -55,7 +55,7 @@ describe("Companies CRUD", () => {
       .expect(200);
 
     companiesProperties.forEach((property) =>
-      expect(res.body).toHaveProperty(property),
+      expect(res.body).toHaveProperty(property)
     );
   });
 
@@ -73,7 +73,7 @@ describe("Companies CRUD", () => {
       .expect(200);
 
     companiesProperties.forEach((property) =>
-      expect(res.body).toHaveProperty(property),
+      expect(res.body).toHaveProperty(property)
     );
   });
 
