@@ -60,9 +60,9 @@ describe("Records CRUD", () => {
 
   it("should update one record and respond with it", async () => {
     const payload = {
-      user_id: "Hekfkfg",
-      project_id: "Hzlg,g",
-      step_id: "ngg",
+      user_id: "12jj",
+      project_id: "p.12mars",
+      step_id: "essai sur la dernière partie",
       time_slot: "matinée",
     };
     const res = await request(app)

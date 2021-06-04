@@ -6,7 +6,8 @@ http://localhost:5000/api/v1/companies/2
 ###
 
 POST http://localhost:5000/api/v1/companies
-Content-Type: application/json 
+Content-Type: application/json
+
 {
   "name": "WIIT TRAINING",
   "zip_code": "64100",

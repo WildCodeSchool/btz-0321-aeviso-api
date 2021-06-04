@@ -1,63 +1,65 @@
 const express = require("express");
-const usersExample = require("./dev/usersExample");
+const professionsExample = require("./dev/professionsExample");
 
 const router = express.Router();
 
 router.get("/", (req, res) => {
-  res.status(200).json(usersExample);
+  res.status(200).json(professionsExample);
 });
 
 router.get("/:id", (req, res) => {
-  const result = usersExample.find((user) => user.id === +req.params.id);
+  const id = +req.params.id;
+  const result = professionsExample.find((profession) => profession.id === id);
   if (result) res.status(200).json(result);
   else
     res.status(404).json({
-      message: "No user found",
+      message: "No profession found",
     });
 });
 
 router.post("/", (req, res) => {
-  const initial = usersExample;
-  const newUser = {
+  const initial = professionsExample;
+  const newProfession = {
     id: [...initial].pop().id + 1,
     ...req.body,
   };
-  initial.push(newUser);
+  initial.push(newProfession);
   res.status(201).json(initial[initial.length - 1]);
 });
 
 router.put("/:id", (req, res) => {
   const id = +req.params.id;
-  const index = usersExample.indexOf(
-    usersExample.find((user) => user.id === id)
+  const index = professionsExample.findIndex(
+    (profession) => profession.id === id
   );
   if (index >= 0) {
-    let elementToUpdate = usersExample.find((user) => user.id === id);
+    let elementToUpdate = professionsExample[index];
     elementToUpdate = {
       id,
       ...req.body,
     };
-    usersExample.splice(index, 1, elementToUpdate);
+    professionsExample.splice(index, 1, elementToUpdate);
     res.status(200).json(elementToUpdate);
   } else
     res.status(404).json({
-      message: "No user found",
+      message: "No profession found",
     });
 });
 
 router.delete("/:id", (req, res) => {
   const id = +req.params.id;
-  const index = usersExample.indexOf(
-    usersExample.find((user) => user.id === id)
+  const index = professionsExample.indexOf(
+    professionsExample.find((profession) => profession.id === id)
   );
+
   if (index >= 0) {
-    usersExample.splice(index, 1);
+    professionsExample.splice(index, 1);
     res.status(204).json({
-      message: "User deleted",
+      message: "profession deleted",
     });
   } else
     res.status(404).json({
-      message: "No user found",
+      message: "No profession found",
     });
 });
 

@@ -6,7 +6,6 @@ describe("Companies CRUD", () => {
   const companiesProperties = [
     "id",
     "name",
-    "status_id",
     "zip_code",
     "city",
     "created_at",
