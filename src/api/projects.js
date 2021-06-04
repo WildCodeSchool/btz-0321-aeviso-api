@@ -26,21 +26,24 @@ router.get("/:id", (req, res) => {
          ...req.body,
      }
      init.push(newProjects);
-     res.status(201).json(init);
+     res.status(201).json(init[init.length - 1]);
 
  })
 
  router.put("/:id", (req, res) => {
-     const projectID = +req.params.id;
+     const id = +req.params.id;
      const index  = projetsExample.indexOf(
-         projetsExample.find((projet) => projet.id === projectID)
+         projetsExample.find((projet) => projet.id === id)
      );
-     const newProject = {
-         projectID,
-         ...req.body,
-     }
-     if(res) {
+     
+     if(index >= 0) {
+        let newProject = projetsExample.find((project) => project.id === id)
+        newProject = {
+            id,
+            ...req.body,
+        };
          projetsExample.splice(index, 1, newProject)
+         res.status(200).json(newProject)
      } else {
          res.status(404).json({message: "not found"})
      }
@@ -49,9 +52,7 @@ router.get("/:id", (req, res) => {
  router.delete("/:id", (req, res) => {
      const id = +req.params.id;
      const index = projetsExample.indexOf(projetsExample.find((projet) => projet.id === id ))
-     console.log(index)
-     console.log(id)
-     console.log(projetsExample)
+    
 
      if (res) {
          projetsExample.splice(index, 1);
