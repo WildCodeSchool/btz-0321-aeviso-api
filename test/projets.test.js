@@ -90,6 +90,6 @@ describe("PROJECTS RESSOURCES", () => {
     it("should delete a project", async () => {
         await request(app)
         .delete("/api/v1/projects/2")
-        .expect(404)
+        .expect(204)
     })
 })
