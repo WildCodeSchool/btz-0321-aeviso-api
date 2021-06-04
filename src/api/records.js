@@ -49,7 +49,7 @@ router.delete("/:id", (req, res) => {
   if (index === -1)
     return res.status(404).json({ message: "Record not found" });
   records.splice(index, 1);
-  res.status(200).json({ message: "Records is deleted" });
+  res.sendStatus(204);
 });
 
 module.exports = router;
