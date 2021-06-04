@@ -24,7 +24,7 @@ router.get("/:id", (req, res) => {
 router.post("/", (req, res) => {
   const initial = usersExemple;
   const newUser = {
-    id: [...initial].pop().id + 1,
+    id: [ ...initial ].pop().id + 1,
     ...req.body,
   };
   initial.push(newUser);
