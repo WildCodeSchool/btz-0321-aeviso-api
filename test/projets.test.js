@@ -82,14 +82,14 @@ describe("PROJECTS RESSOURCES", () => {
 
     it("should respond 404", async () => {
         await request(app)
-        .put("/api/v1/projets/15")
+        .put("/api/v1/projects/15")
         .expect(404)
         .expect("Content-Type", /json/);
     });
 
     it("should delete a project", async () => {
         await request(app)
-        .delete("/api/v1/projets/2")
+        .delete("/api/v1/projects/2")
         .expect(404)
     })
 })
