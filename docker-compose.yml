@@ -1,4 +1,4 @@
-version: "3.1"
+version: '3.1'
 services:
   postgres:
     image: postgres:13.3-alpine
@@ -8,6 +8,8 @@ services:
       POSTGRES_DB: aeviso
     volumes:
       - db-data:/var/lib/postgresql/data/
+    ports:
+      - '5432:5432'
 
   adminer:
     image: adminer:latest
