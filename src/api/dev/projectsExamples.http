@@ -11,9 +11,8 @@ Content-Type: application/json
 {
         "name": "Babos",
         "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi pretium gravida placerat. In mattis hendrerit magna gravida vehicula. Duis iaculis elit a neque mattis laoreet. Proin enim nibh, luctus nec elementum vel, pulvinar at tellus. Vestibulum vel laoreet turpis, ut eleifend est. Pellentesque sit amet nisl sit amet odio ultrices rhoncus nec sed lacus.",
-        "create_At": null,
-        "update_At": null,
-        "organization_id": null   
+        "code": "12345",
+        "compagnieId": "e7c9674e-b50b-4185-b0af-58f691dc08f1 "
 }
 
 ###
