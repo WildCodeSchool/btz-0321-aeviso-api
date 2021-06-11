@@ -153,12 +153,6 @@ async function main() {
       });
     }),
   );
-
-  console.log(createdCompanies);
-  console.log(createdJob);
-  console.log(createdUsers);
-  console.log(createdProjects);
-  console.log(createdRecords);
 }
 
 main().finally(async () => {
