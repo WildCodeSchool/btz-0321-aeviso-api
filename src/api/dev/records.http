@@ -1,0 +1,29 @@
+http://localhost:5000/api/v1/records
+
+###
+http://localhost:5000/api/v1/records/1
+
+###
+POST http://localhost:5000/api/v1/records
+Content-Type: application/json
+
+{
+    "user_id": "JDFfnfnfjfjfVSF",
+    "project_id": "GHFHgjgjVJ",
+    "step_id": "Etape 18",
+    "time_slot": "MATIN"
+}
+
+
+###
+PUT http://localhost:5000/api/v1/records/2
+Content-Type: application/json
+
+{
+    "project_id":"ljhdfhfhfhfhhffjfjfjhs" ,
+    "time_slot": "MATINÉE"
+}
+
+###
+DELETE  http://localhost:5000/api/v1/records/1
+
