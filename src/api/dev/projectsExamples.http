@@ -9,27 +9,27 @@ POST http://localhost:5000/api/v1/projects HTTP/1.1
 Content-Type: application/json
 
 {
-        "name": "Babos",
+        "name": "Jhonfoe",
         "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi pretium gravida placerat. In mattis hendrerit magna gravida vehicula. Duis iaculis elit a neque mattis laoreet. Proin enim nibh, luctus nec elementum vel, pulvinar at tellus. Vestibulum vel laoreet turpis, ut eleifend est. Pellentesque sit amet nisl sit amet odio ultrices rhoncus nec sed lacus.",
-        "code": "12345",
-        "compagnieId": "e7c9674e-b50b-4185-b0af-58f691dc08f1 "
+        "code": "kjhdlksjwhfkjwsdf",
+        "companyId": "0bd6496b-2e49-4884-a5e0-3f3cf2ecfc1a",
+        "taxation": "CIR"
 }
 
 ###
-PUT http://localhost:5000/api/v1/projects/3 HTTP/1.1
+PUT http://localhost:5000/api/v1/projects/05245a98-287d-4a3b-91de-3555195d57f1 HTTP/1.1
 Content-Type: application/json
 
 
 {
-        "name": "Nazaré",
-        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi pretium gravida placerat. In mattis hendrerit magna gravida vehicula. Duis iaculis elit a neque mattis laoreet. Proin enim nibh, luctus nec elementum vel, pulvinar at tellus. Vestibulum vel laoreet turpis, ut eleifend est. Pellentesque sit amet nisl sit amet odio ultrices rhoncus nec sed lacus.",
-        "create_At": null,
-        "update_At": null,
-        "organization_id": null   
+        "name": "La rive des dragons",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+        "code": "ceci est code",
+        "companyId": "0bd6496b-2e49-4884-a5e0-3f3cf2ecfc1a"
 }
 
 ###
-DELETE http://localhost:5000/api/v1/projects/4 HTTP/1.1
+DELETE http://localhost:5000/api/v1/projects/09147d47-467d-4b0e-83bb-e114d57d7514 HTTP/1.1
 
 
 
