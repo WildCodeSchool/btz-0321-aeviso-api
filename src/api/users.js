@@ -6,7 +6,12 @@ const prisma = new PrismaClient();
 const router = express.Router();
 
 router.get("/", async (req, res) => {
-  const users = await prisma.user.findMany();
+  const users = await prisma.user.findMany({
+    include: {
+      company: true,
+      job: true,
+    },
+  });
   return res.status(200).json(users);
 });
 
@@ -14,6 +19,10 @@ router.get("/:id", async (req, res) => {
   const result = await prisma.user.findUnique({
     where: {
       id: req.params.id,
+    },
+    include: {
+      company: true,
+      job: true,
     },
   });
   if (result) res.status(200).json(result);
@@ -68,6 +77,7 @@ router.post("/", async (req, res) => {
 
 router.put("/:id", async (req, res) => {
   let company;
+  let job;
   const { id } = req.params;
   const {
     firstName,
@@ -93,6 +103,13 @@ router.put("/:id", async (req, res) => {
         disconnect: true,
       };
     }
+    if (jobId) {
+      job = {
+        connect: {
+          id: jobId,
+        },
+      };
+    }
     const user = await prisma.user.update({
       where: {
         id,
@@ -105,16 +122,13 @@ router.put("/:id", async (req, res) => {
         role,
         weeklyBasis,
         company,
-        job: {
-          connect: {
-            id: jobId,
-          },
-        },
+        job,
       },
     });
     res.status(200).json(user);
   } catch (e) {
-    res.status(404).json(errors[e.code]);
+    console.log(e);
+    res.status(404).json(errors.users[e.code]);
   }
 });
 
