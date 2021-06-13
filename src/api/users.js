@@ -1,8 +1,7 @@
 const express = require("express");
-const { PrismaClient } = require("@prisma/client");
+const prisma = require("../../prismaClient");
 const errors = require("./errors");
 
-const prisma = new PrismaClient();
 const router = express.Router();
 
 router.get("/", async (req, res) => {
@@ -127,7 +126,6 @@ router.put("/:id", async (req, res) => {
     });
     res.status(200).json(user);
   } catch (e) {
-    console.log(e);
     res.status(404).json(errors.users[e.code]);
   }
 });

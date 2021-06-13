@@ -38,7 +38,6 @@ describe("USERS RESSOURCES", () => {
       .expect("Content-Type", /json/);
 
     firstUserId = res.body.id;
-    console.log(firstUserId);
 
     expect(res.body).toHaveProperty(usersProperties[0]);
     expect(res.body).toHaveProperty(usersProperties[1], userPayload.firstName);
