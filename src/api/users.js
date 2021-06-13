@@ -1,6 +1,6 @@
 const express = require("express");
 const { PrismaClient } = require("@prisma/client");
-const usersExample = require("./dev/usersExample");
+const errors = require("./errors");
 
 const prisma = new PrismaClient();
 const router = express.Router();
@@ -17,13 +17,11 @@ router.get("/:id", async (req, res) => {
     },
   });
   if (result) res.status(200).json(result);
-  else
-    res.status(404).json({
-      message: "No user found",
-    });
+  else res.status(404).json(errors[400]);
 });
 
 router.post("/", async (req, res) => {
+  let company;
   const {
     firstName,
     lastName,
@@ -38,6 +36,13 @@ router.post("/", async (req, res) => {
     res.status(400).json({ message: "Missing required field" });
   } else {
     try {
+      if (companyId) {
+        company = {
+          connect: {
+            id: companyId,
+          },
+        };
+      }
       const user = await prisma.user.create({
         data: {
           firstName,
@@ -46,11 +51,7 @@ router.post("/", async (req, res) => {
           password,
           role,
           weeklyBasis,
-          company: {
-            connect: {
-              id: companyId,
-            },
-          },
+          company,
           job: {
             connect: {
               id: jobId,
@@ -59,45 +60,76 @@ router.post("/", async (req, res) => {
         },
       });
       res.status(201).json(user);
-    } catch {
-      res.status(400).json({ message: "Bad request" });
+    } catch (e) {
+      res.status(400).json(errors[e.code]);
     }
   }
 });
 
-router.put("/:id", (req, res) => {
-  const id = +req.params.id;
-  const index = usersExample.indexOf(
-    usersExample.find((user) => user.id === id)
-  );
-  if (index >= 0) {
-    let elementToUpdate = usersExample.find((user) => user.id === id);
-    elementToUpdate = {
-      id,
-      ...req.body,
-    };
-    usersExample.splice(index, 1, elementToUpdate);
-    res.status(200).json(elementToUpdate);
-  } else
-    res.status(404).json({
-      message: "No user found",
+router.put("/:id", async (req, res) => {
+  let company;
+  const { id } = req.params;
+  const {
+    firstName,
+    lastName,
+    email,
+    password,
+    role,
+    weeklyBasis,
+    companyId,
+    jobId,
+  } = req.body;
+
+  try {
+    if (companyId) {
+      company = {
+        connect: {
+          id: companyId,
+        },
+      };
+    }
+    if (companyId === null) {
+      company = {
+        disconnect: true,
+      };
+    }
+    const user = await prisma.user.update({
+      where: {
+        id,
+      },
+      data: {
+        firstName,
+        lastName,
+        email,
+        password,
+        role,
+        weeklyBasis,
+        company,
+        job: {
+          connect: {
+            id: jobId,
+          },
+        },
+      },
     });
+    res.status(200).json(user);
+  } catch (e) {
+    res.status(404).json(errors[e.code]);
+  }
 });
 
-router.delete("/:id", (req, res) => {
-  const id = +req.params.id;
-  const index = usersExample.indexOf(
-    usersExample.find((user) => user.id === id)
-  );
-  if (index >= 0) {
-    usersExample.splice(index, 1);
-    res.status(204).json({
-      message: "User deleted",
+router.delete("/:id", async (req, res) => {
+  const { id } = req.params;
+  try {
+    await prisma.user.delete({
+      where: {
+        id,
+      },
     });
-  } else
-    res.status(404).json({
-      message: "No user found",
-    });
+    res.status(204).json(errors.users[204]);
+  } catch (e) {
+    res.status(404).json(errors.users[e.code]);
+  }
 });
 
 module.exports = router;
