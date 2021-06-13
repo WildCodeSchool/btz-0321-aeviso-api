@@ -1,19 +1,19 @@
 GET http://localhost:5000/api/v1/users HTTP/1.1
 
 ###
-GET http://localhost:5000/api/v1/users/2 HTTP/1.1
+GET http://localhost:5000/api/v1/users/667b8049-9915-40a1-a26c-1544e7503e93 HTTP/1.1
 
 ###
 POST http://localhost:5000/api/v1/users HTTP/1.1
 content-type: application/json
 
 {
-    "firstname": "Basile",
-    "lastname": "Vernouillet",
-    "email": "formateur@test.fr",
-    "role": "SUPER_ADMIN",
-    "profession": "",
-    "company_id": null
+    "firstName": "Basile",
+    "lastName": "Vernouillet",
+    "email": "formteur@test.fr",
+    "role": "SUPERADMIN",
+    "jobId": "e99f8391-1abc-4da6-98c4-6d1273c82c09",
+    "companyId": "500c8dbd-ee35-44dc-92c9-a3598b9f9d63"
 }
 
 ###

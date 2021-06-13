@@ -1,14 +1,21 @@
 const express = require("express");
+const { PrismaClient } = require("@prisma/client");
 const usersExample = require("./dev/usersExample");
 
+const prisma = new PrismaClient();
 const router = express.Router();
 
-router.get("/", (req, res) => {
-  res.status(200).json(usersExample);
+router.get("/", async (req, res) => {
+  const users = await prisma.user.findMany();
+  return res.status(200).json(users);
 });
 
-router.get("/:id", (req, res) => {
-  const result = usersExample.find((user) => user.id === +req.params.id);
+router.get("/:id", async (req, res) => {
+  const result = await prisma.user.findUnique({
+    where: {
+      id: req.params.id,
+    },
+  });
   if (result) res.status(200).json(result);
   else
     res.status(404).json({
@@ -16,14 +23,46 @@ router.get("/:id", (req, res) => {
     });
 });
 
-router.post("/", (req, res) => {
-  const initial = usersExample;
-  const newUser = {
-    id: [...initial].pop().id + 1,
-    ...req.body,
-  };
-  initial.push(newUser);
-  res.status(201).json(initial[initial.length - 1]);
+router.post("/", async (req, res) => {
+  const {
+    firstName,
+    lastName,
+    email,
+    password,
+    role,
+    weeklyBasis,
+    companyId,
+    jobId,
+  } = req.body;
+  if (!firstName || !lastName || !email || !jobId) {
+    res.status(400).json({ message: "Missing required field" });
+  } else {
+    try {
+      const user = await prisma.user.create({
+        data: {
+          firstName,
+          lastName,
+          email,
+          password,
+          role,
+          weeklyBasis,
+          company: {
+            connect: {
+              id: companyId,
+            },
+          },
+          job: {
+            connect: {
+              id: jobId,
+            },
+          },
+        },
+      });
+      res.status(201).json(user);
+    } catch {
+      res.status(400).json({ message: "Bad request" });
+    }
+  }
 });
 
 router.put("/:id", (req, res) => {
