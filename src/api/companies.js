@@ -1,14 +1,31 @@
 const express = require("express");
-const companies = require("./dev/companiesExample");
+
+const prisma = require("../../prismaClient");
 
 const router = express.Router();
 
-router.get("/", (req, res) => {
-  return res.status(200).json(companies);
+router.get("/", async (req, res) => {
+  try {
+    const company = await prisma.company.findMany();
+    res.status(200).json(company);
+  } catch (err) {
+    res.status(404).json(err);
+  }
 });
 
-router.get("/:id", (req, res) => {
-  const company = companies.find((co) => co.id === +req.params.id);
+router.get("/:id", async (req, res) => {
+  const { id, name, logoUrl, createdAt, updatedAt } = req.body;
+  const company = await prisma.company.create({
+    data: {
+      id,
+      name,
+      logoUrl,
+      createdAt,
+      updatedAt,
+    },
+  });
+
+  // const company = companies.find((co) => co.id === +req.params.id);
   const errorMessage = {
     message: "Company not found.",
   };
