@@ -1,4 +1,3 @@
-const { Taxation } = require('.prisma/client');
 const request = require('supertest');
 const app = require('../src/app');
 
