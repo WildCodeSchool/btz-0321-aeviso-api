@@ -1,60 +1,123 @@
 const express = require('express');
-const projetsExample = require('./dev/projectsExamples.json');
+const prisma = require('../../prismaClient');
 
 const router = express.Router();
 
-router.get('/', (req, res) => {
-  res.status(200).json(projetsExample);
-});
-
-router.get('/:id', (req, res) => {
-  const projectID = +req.params.id;
-
-  const result = projetsExample.find((project) => project.id === projectID);
-
-  if (result) {
-    res.status(200).json(result);
-  } else {
-    res.status(404).json({ message: 'project not found' });
+router.get('/', async (req, res) => {
+  try {
+    const project = await prisma.project.findMany();
+    res.status(200).json(project);
+  } catch (e) {
+    res.status(404).json(e);
   }
 });
 
-router.post('/', (req, res) => {
-  const init = projetsExample;
-  const newProjects = {
-    id: [...init].pop().id + 1,
-    ...req.body,
-  };
-  init.push(newProjects);
-  res.status(201).json(init[init.length - 1]);
-});
-
-router.put('/:id', (req, res) => {
-  const id = +req.params.id;
-  const index = projetsExample.indexOf(projetsExample.find((projet) => projet.id === id));
-
-  if (index >= 0) {
-    let newProject = projetsExample.find((project) => project.id === id);
-    newProject = {
-      id,
-      ...req.body,
-    };
-    projetsExample.splice(index, 1, newProject);
-    res.status(200).json(newProject);
-  } else {
-    res.status(404).json({ message: 'not found' });
+router.get('/:id', async (req, res) => {
+  const { id } = req.params;
+  try {
+    const project = await prisma.project.findUnique({
+      where: {
+        id,
+      },
+    });
+    if (project) {
+      return res.status(200).json(project);
+    }
+    return res.status(404).json({ message: 'no Project found' });
+  } catch (err) {
+    res.status(404).json(err);
   }
 });
 
-router.delete('/:id', (req, res) => {
-  const id = +req.params.id;
-  const index = projetsExample.indexOf(projetsExample.find((projet) => projet.id === id));
+router.post('/', async (req, res) => {
+  const { name, description, code, companyId, taxation } = req.body;
+  try {
+    if (companyId) {
+      company = {
+        connect: {
+          id: companyId,
+        },
+      };
+      if (companyId === null) {
+        company: {
+          disconnect: true;
+        }
+      }
+      const project = await prisma.project.create({
+        data: {
+          name,
+          description,
+          code,
+          taxation,
+          company: {
+            connect: {
+              id: companyId,
+            },
+          },
+        },
+      });
+      res.status(201).json(project);
+    }
+  } catch (err) {
+    console.log(err);
+    res.status(404).json(err);
+  }
+});
 
-  if (res) {
-    projetsExample.splice(index, 1);
-    res.status(204).json({ message: 'Projets deleted' });
+router.put('/:id', async (req, res) => {
+  let company;
+  const { id } = req.params;
+  const { name, description, code, companyId, taxation } = req.body;
+  if (!name || !description || !code || !companyId) {
+    res.status(400).json({ message: 'bad resquest' });
   } else {
-    res.status(404).json({ message: 'not found' });
+    try {
+      if (companyId) {
+        company = {
+          connect: {
+            id: companyId,
+          },
+        };
+        if (companyId === null) {
+          company: {
+            disconnect: true;
+          }
+        }
+      }
+      const project = await prisma.project.update({
+        data: {
+          name,
+          description,
+          code,
+          taxation,
+          company: {
+            connect: {
+              id: companyId,
+            },
+          },
+        },
+        where: {
+          id,
+        },
+      });
+      res.status(200).json(project);
+    } catch (err) {
+      res.status(404).json(err);
+    }
+  }
+});
+
+router.delete('/:id', async (req, res) => {
+  const { id } = req.params;
+  try {
+    await prisma.project.delete({
+      where: {
+        id,
+      },
+    });
+    res.sendStatus(204);
+  } catch (err) {
+    res.status(404).json({ message: 'Project is not delete' });
   }
 });
 
