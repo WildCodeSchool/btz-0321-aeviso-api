@@ -4,7 +4,7 @@ const companies = require("./companies");
 const users = require("./users/routes");
 const records = require("./records");
 const professions = require("./professions");
-const projects = require("./projects");
+const projects = require("./projects/routes");
 
 const router = express.Router();
 
