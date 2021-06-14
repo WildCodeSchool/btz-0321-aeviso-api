@@ -1,18 +1,15 @@
 const express = require('express');
-const projetsExample = require('./dev/projectsExamples.json');
 const prisma = require('../../prismaClient');
 
 const router = express.Router();
 
-router.get('/', (req, res) => {
-  prisma.project
-    .findMany()
-    .then((projects) => {
-      res.status(200).json(projects);
-    })
-    .catch((error) => {
-      res.status(500).json(error);
-    });
+router.get('/', async (req, res) => {
+  try {
+    const project = await prisma.project.findMany();
+    res.status(200).json(project);
+  } catch (e) {
+    res.status(404).json(e);
+  }
 });
 
 router.get('/:id', async (req, res) => {
@@ -23,9 +20,13 @@ router.get('/:id', async (req, res) => {
         id,
       },
     });
-    res.status(200).json(project);
+    if (project) {
+      res.status(200).json(project);
+    } else {
+      res.status(404).json({ message: 'no Project found' });
+    }
   } catch (err) {
-    res.status(500).json(err);
+    res.status(404).json(err);
   }
 });
 
@@ -50,36 +51,50 @@ router.post('/', (req, res) => {
       res.status(201).json(project);
     })
     .catch((err) => {
-      console.log(err);
-      res.status(500).json(err);
+      res.status(404).json(err);
     });
 });
 
 router.put('/:id', async (req, res) => {
+  let company;
   const { id } = req.params;
   const { name, description, code, companyId, taxation } = req.body;
-
-  try {
-    const project = await prisma.project.update({
-      data: {
-        name,
-        description,
-        code,
-        taxation,
-        company: {
+  if (!name || !description || !code || !companyId) {
+    res.status(400).json({ message: 'bad resquest' });
+  } else {
+    try {
+      if (companyId) {
+        company = {
           connect: {
             id: companyId,
           },
+        };
+        if (companyId === null) {
+          company: {
+            disconnect: true;
+          }
+        }
+      }
+      const project = await prisma.project.update({
+        data: {
+          name,
+          description,
+          code,
+          taxation,
+          company: {
+            connect: {
+              id: companyId,
+            },
+          },
         },
-      },
-      where: {
-        id,
-      },
-    });
-    res.status(200).json(project);
-  } catch (err) {
-    console.log(err);
-    res.status(500).json(err);
+        where: {
+          id,
+        },
+      });
+      res.status(200).json(project);
+    } catch (err) {
+      res.status(404).json(err);
+    }
   }
 });
 
@@ -93,7 +108,7 @@ router.delete('/:id', async (req, res) => {
     });
     res.sendStatus(204);
   } catch (err) {
-    res.status(500).json(err);
+    res.status(404).json({ message: 'Project is not delete' });
   }
 });
 

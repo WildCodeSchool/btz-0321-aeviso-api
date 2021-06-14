@@ -1,7 +1,7 @@
 GET http://localhost:5000/api/v1/projects HTTP/1.1
 
 ###
-GET http://localhost:5000/api/v1/projects/4 HTTP/1.1
+GET http://localhost:5000/api/v1/projects/05245a98-287d-4a3b-91de-3555195d57f1 HTTP/1.1
 
 
 ###
@@ -9,11 +9,11 @@ POST http://localhost:5000/api/v1/projects HTTP/1.1
 Content-Type: application/json
 
 {
-        "name": "Jhonfoe",
+        "name": "CrockMou",
         "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi pretium gravida placerat. In mattis hendrerit magna gravida vehicula. Duis iaculis elit a neque mattis laoreet. Proin enim nibh, luctus nec elementum vel, pulvinar at tellus. Vestibulum vel laoreet turpis, ut eleifend est. Pellentesque sit amet nisl sit amet odio ultrices rhoncus nec sed lacus.",
-        "code": "kjhdlksjwhfkjwsdf",
+        "code": "Ceci est un code",
         "companyId": "0bd6496b-2e49-4884-a5e0-3f3cf2ecfc1a",
-        "taxation": "CIR"
+        "taxation": "CII"
 }
 
 ###
