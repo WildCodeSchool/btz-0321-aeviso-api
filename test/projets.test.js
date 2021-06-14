@@ -17,12 +17,11 @@ describe('PROJECTS RESSOURCES', () => {
       expect(projet).toHaveProperty(projectProperties[3]);
       expect(projet).toHaveProperty(projectProperties[4]);
       expect(projet).toHaveProperty(projectProperties[5]);
-      expect(projet).toHaveProperty(projectProperties[6]);
     });
   });
 
   it('should respond 200 with one project', async () => {
-    const res = await request(app).get('/api/v1/projects/1').expect(200).expect('content-Type', /json/);
+    const res = await request(app).get('/api/v1/projects/05245a98-287d-4a3b-91de-3555195d57f1').expect(200).expect('content-Type', /json/);
 
     expect(res.body).toHaveProperty(projectProperties[0]);
     expect(res.body).toHaveProperty(projectProperties[1]);
@@ -30,11 +29,10 @@ describe('PROJECTS RESSOURCES', () => {
     expect(res.body).toHaveProperty(projectProperties[3]);
     expect(res.body).toHaveProperty(projectProperties[4]);
     expect(res.body).toHaveProperty(projectProperties[5]);
-    expect(res.body).toHaveProperty(projectProperties[6]);
   });
 
   it('should respond 404', async () => {
-    await request(app).get('/api/v1/projects/').expect(404).expect('Content-Type', /json/);
+    await request(app).get('/api/v1/projects/123').expect(404).expect('Content-Type', /json/);
   });
 
   it('should create a new project', async () => {
@@ -80,6 +78,6 @@ describe('PROJECTS RESSOURCES', () => {
   });
 
   it('should delete a project', async () => {
-    await request(app).delete('/api/v1/projects/09622715-6071-4bfc-9527-85d5fd35c8aa').expect(204);
+    await request(app).delete('/api/v1/projects/6691cd72-af37-4cfd-b762-79d80ea95add').expect(204);
   });
 });
