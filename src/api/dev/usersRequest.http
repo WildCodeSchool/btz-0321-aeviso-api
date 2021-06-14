@@ -28,6 +28,17 @@ content-type: application/json
 }
 
 ###
+POST http://localhost:5000/api/v1/users HTTP/1.1
+content-type: application/json
+
+{
+    "firstName": "Marc",
+    "lastName": "Dupond",
+    "email": "mar@test.fr"
+}
+// should respond with 422
+
+###
 PUT http://localhost:5000/api/v1/users/2618ab26-aa04-4752-a233-6a8e0a23bde4 HTTP/1.1
 content-type: application/json
 

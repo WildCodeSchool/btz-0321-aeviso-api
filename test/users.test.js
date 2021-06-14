@@ -106,7 +106,7 @@ describe("USERS RESSOURCES", () => {
     await request(app)
       .post("/api/v1/users")
       .send(payload)
-      .expect(400)
+      .expect(422)
       .expect("Content-Type", /json/);
   });
 
@@ -119,7 +119,7 @@ describe("USERS RESSOURCES", () => {
     await request(app)
       .post("/api/v1/users")
       .send(payload)
-      .expect(400)
+      .expect(422)
       .expect("Content-Type", /json/);
   });
 
@@ -132,7 +132,7 @@ describe("USERS RESSOURCES", () => {
     await request(app)
       .post("/api/v1/users")
       .send(payload)
-      .expect(400)
+      .expect(422)
       .expect("Content-Type", /json/);
   });
 
@@ -145,7 +145,7 @@ describe("USERS RESSOURCES", () => {
     await request(app)
       .post("/api/v1/users")
       .send(payload)
-      .expect(400)
+      .expect(422)
       .expect("Content-Type", /json/);
   });
 

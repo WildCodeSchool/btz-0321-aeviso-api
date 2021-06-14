@@ -40,9 +40,9 @@ const post = async (req, res) => {
         },
       },
     });
-    res.status(201).json(user);
+    return res.status(201).json(user);
   } catch (e) {
-    res.status(400).json(errors[e.code]);
+    return res.status(400).json(errors[e.code]);
   }
 };
 module.exports = post;
