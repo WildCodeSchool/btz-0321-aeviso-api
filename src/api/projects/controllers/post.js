@@ -2,7 +2,7 @@ const errors = require("../../errors");
 const prisma = require("../../../../prismaClient");
 
 const post = async (req, res) => {
-  const { name, descriptipon, code, taxation, companyId } = req.body;
+  const { name, description, code, taxation, companyId } = req.body;
   if (!name || !code || !companyId) {
     return res.status(400).json(errors[400]);
   }
@@ -11,7 +11,7 @@ const post = async (req, res) => {
       data: {
         name,
         code,
-        descriptipon,
+        description,
         taxation,
         company: {
           connect: {
@@ -22,7 +22,7 @@ const post = async (req, res) => {
     });
     return res.status(201).json(project);
   } catch (e) {
-    return res.status(400).json(errors[e.code]);
+    return res.status(400).json(errors.projects[e.code]);
   }
 };
 module.exports = post;
