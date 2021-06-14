@@ -30,29 +30,39 @@ router.get('/:id', async (req, res) => {
   }
 });
 
-router.post('/', (req, res) => {
+router.post('/', async (req, res) => {
   const { name, description, code, companyId, taxation } = req.body;
-  console.log(name, description, code, companyId);
-  prisma.project
-    .create({
-      data: {
-        name,
-        description,
-        code,
-        taxation,
+  try {
+    if (companyId) {
+      company = {
+        connect: {
+          id: companyId,
+        },
+      };
+      if (companyId === null) {
         company: {
-          connect: {
-            id: companyId,
+          disconnect: true;
+        }
+      }
+      const project = await prisma.project.create({
+        data: {
+          name,
+          description,
+          code,
+          taxation,
+          company: {
+            connect: {
+              id: companyId,
+            },
           },
         },
-      },
-    })
-    .then((project) => {
+      });
       res.status(201).json(project);
-    })
-    .catch((err) => {
-      res.status(404).json(err);
-    });
+    }
+  } catch (err) {
+    console.log(err);
+    res.status(404).json(err);
+  }
 });
 
 router.put('/:id', async (req, res) => {
