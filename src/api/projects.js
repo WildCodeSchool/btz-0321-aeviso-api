@@ -21,10 +21,9 @@ router.get('/:id', async (req, res) => {
       },
     });
     if (project) {
-      res.status(200).json(project);
-    } else {
-      res.status(404).json({ message: 'no Project found' });
+      return res.status(200).json(project);
     }
+    return res.status(404).json({ message: 'no Project found' });
   } catch (err) {
     res.status(404).json(err);
   }
