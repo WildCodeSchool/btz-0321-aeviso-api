@@ -48,7 +48,7 @@ describe('USERS RESSOURCES', () => {
       lastname: 'Vernouillet',
       email: 'formateur@test.fr',
       role: 'SUPER_ADMIN',
-      profession: '',
+      jobs: '',
       company_id: null,
     };
 

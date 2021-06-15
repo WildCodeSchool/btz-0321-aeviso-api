@@ -27,7 +27,7 @@ router.post('/', (req, res) => {
 });
 
 router.put('/:id', (req, res) => {
-  const { firstname, lastname, email, role, profession } = req.body;
+  const { firstname, lastname, email, role, jobs } = req.body;
   const id = +req.params.id;
   const index = usersExample.findIndex((user) => user.id === +req.params.id);
   if (index >= 0) {
@@ -38,7 +38,7 @@ router.put('/:id', (req, res) => {
       lastname: lastname || elementToUpdate.lastname,
       email: email || elementToUpdate.email,
       role: role || elementToUpdate.role,
-      profession: profession || elementToUpdate.profession,
+      jobs: jobs || elementToUpdate.jobs,
     };
     usersExample.splice(index, 1, elementToUpdate);
     res.status(200).json(elementToUpdate);

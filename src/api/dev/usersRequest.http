@@ -12,7 +12,7 @@ content-type: application/json
     "lastname": "Vernouillet",
     "email": "formateur@test.fr",
     "role": "SUPER_ADMIN",
-    "profession": "",
+    "jobs": "",
     "company_id": null
 }
 
@@ -25,7 +25,7 @@ content-type: application/json
     "lastname": "Doe",
     "email": "formateur@test.fr",
     "role": "SUPER_ADMIN",
-    "profession": "nettoyeur",
+    "jobs": "nettoyeur",
     "company_id": null
 }
 
