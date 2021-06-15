@@ -1,7 +1,6 @@
-const errors = require("../../errors");
 const prisma = require("../../../../prismaClient");
 
-const deleteProject = async (req, res) => {
+const deleteProject = async (req, res, next) => {
   const { id } = req.params;
   try {
     await prisma.project.delete({
@@ -9,9 +8,10 @@ const deleteProject = async (req, res) => {
         id,
       },
     });
-    res.status(204).json(errors.projects[204]);
+    res.sendStatus(204);
   } catch (e) {
-    res.status(404).json(errors.users[e.code]);
+    res.status(404);
+    next(e);
   }
 };
 module.exports = deleteProject;

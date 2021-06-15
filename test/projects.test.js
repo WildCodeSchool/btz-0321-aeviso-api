@@ -1,5 +1,6 @@
 const request = require("supertest");
 const app = require("../src/app");
+const prismaClient = require("../prismaClient");
 
 const projectProperties = [
   "id",
@@ -79,7 +80,7 @@ describe("PROJECTS RESSOURCES", () => {
     expect(res.body).toHaveProperty(projectProperties[7], "NA");
   });
 
-  it("should respond with 400 status", async () => {
+  it("should respond with 422 status", async () => {
     const payload = {
       description: "Other description",
       companyId,
@@ -92,7 +93,7 @@ describe("PROJECTS RESSOURCES", () => {
       .expect("Content-Type", /json/);
   });
 
-  it("should respond with 400 status", async () => {
+  it("should respond with 422 status", async () => {
     const payload = {
       name: "Other project",
       description: "Other description",
@@ -105,7 +106,7 @@ describe("PROJECTS RESSOURCES", () => {
       .expect("Content-Type", /json/);
   });
 
-  it("should respond with 400 status", async () => {
+  it("should respond with 422 status", async () => {
     const payload = {
       name: "Other project",
       description: "Other description",
@@ -203,7 +204,7 @@ describe("PROJECTS RESSOURCES", () => {
     );
   });
 
-  it("should respond 400", async () => {
+  it("should respond 404", async () => {
     const payload = {
       name: "A Project",
     };
@@ -231,4 +232,9 @@ describe("PROJECTS RESSOURCES", () => {
       .expect(404)
       .expect("Content-Type", /json/);
   });
+});
+
+afterAll(async () => {
+  // noinspection JSUnresolvedFunction
+  await prismaClient.$disconnect();
 });
