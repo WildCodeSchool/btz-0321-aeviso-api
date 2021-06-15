@@ -17,11 +17,11 @@ content-type: application/json
 
 ###
 
-PUT http://localhost:5000/api/v1/jobs/b12c7af2-1ea0-443a-bd1e-38553cf58da0 HTTP/1.1
+PUT http://localhost:5000/api/v1/jobs/4e4549f5-d101-4664-a399-d2cd36887785 HTTP/1.1
 content-type: application/json
 
 {
-    "label": "Designer UI/UX"
+    "label": "Dev Junior"
 }
 
 ###
