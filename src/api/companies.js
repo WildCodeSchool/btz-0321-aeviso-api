@@ -50,7 +50,7 @@ router.put("/:id", async (req, res) => {
   const { name, logoUrl } = req.body;
 
   if (!name || !logoUrl) {
-    return res.status(422).json({ message: "bad request" });
+    return res.status(422).json({ message: "Bad request" });
   }
 
   try {
@@ -76,7 +76,6 @@ router.delete("/:id", async (req, res) => {
     });
     res.sendStatus(204);
   } catch (err) {
-    console.error(err);
     res.status(404).json({ message: "Company is not deleted yet" });
   }
 });
