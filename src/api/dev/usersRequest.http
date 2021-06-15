@@ -1,33 +1,96 @@
 GET http://localhost:5000/api/v1/users HTTP/1.1
 
 ###
-GET http://localhost:5000/api/v1/users/2 HTTP/1.1
+GET http://localhost:5000/api/v1/users/667b8049-9915-40a1-a26c-1544e7503e93 HTTP/1.1
 
 ###
 POST http://localhost:5000/api/v1/users HTTP/1.1
 content-type: application/json
 
 {
+<<<<<<< HEAD
     "firstname": "Basile",
     "lastname": "Vernouillet",
     "email": "formateur@test.fr",
     "role": "SUPER_ADMIN",
     "jobs": "",
     "company_id": null
+=======
+    "firstName": "Basile",
+    "lastName": "Vernouillet",
+    "email": "basi@test.fr",
+    "role": "SUPERADMIN",
+    "jobId": "e99f8391-1abc-4da6-98c4-6d1273c82c09",
+    "companyId": "500c8dbd-ee35-44dc-92c9-a3598b9f9d63"
+>>>>>>> 60f0d2c14ee16e53e92661925e2f9ffe905157ec
 }
 
 ###
-PUT http://localhost:5000/api/v1/users/4 HTTP/1.1
+POST http://localhost:5000/api/v1/users HTTP/1.1
 content-type: application/json
 
 {
+    "firstName": "Marc",
+    "lastName": "Dupond",
+    "email": "mar@test.fr",
+    "jobId": "e99f8391-1abc-4da6-98c4-6d1273c82c09"
+}
+
+###
+POST http://localhost:5000/api/v1/users HTTP/1.1
+content-type: application/json
+
+{
+<<<<<<< HEAD
     "firstname": "John",
     "lastname": "Doe",
     "email": "formateur@test.fr",
     "role": "SUPER_ADMIN",
     "jobs": "nettoyeur",
     "company_id": null
+=======
+    "firstName": "Marc",
+    "lastName": "Dupond",
+    "email": "mar@test.fr"
+>>>>>>> 60f0d2c14ee16e53e92661925e2f9ffe905157ec
+}
+// should respond with 422
+
+###
+PUT http://localhost:5000/api/v1/users/2618ab26-aa04-4752-a233-6a8e0a23bde4 HTTP/1.1
+content-type: application/json
+
+{
+    "role": "ADMIN",
+    "companyId": "d3a0a404-5e64-450c-8aa1-1ca98cb7e141"
 }
 
 ###
+PUT http://localhost:5000/api/v1/users/2618ab26-aa04-4752-a233-6a8e0a23bde4 HTTP/1.1
+content-type: application/json
+
+{
+    "role": "USER",
+    "jobId": "5e2c2efc-c1f9-43ef-a2ce-26edbf2f8d77",
+    "companyId": null
+}
+//should disconnect company
+
+###
+PUT http://localhost:5000/api/v1/users/2 HTTP/1.1
+content-type: application/json
+
+{
+    "role": "SUPERADMIN",
+    "jobId": "5e2c2efc-c1f9-43ef-a2ce-26edbf2f8d77",
+    "companyId": "d3a0a404-5e64-450c-8aa1-1ca98cb7e141"
+}
+//Should respond 404 not found
+
+###
 DELETE http://localhost:5000/api/v1/users/2 HTTP/1.1
+// should respond 404 "Not found"
+
+###
+DELETE http://localhost:5000/api/v1/users/9944d537-435b-4504-bb0e-766430ba2b26 HTTP/1.1
+
