@@ -1,7 +1,6 @@
-const errors = require("../../errors");
 const prisma = require("../../../../prismaClient");
 
-const deleteUser = async (req, res) => {
+const deleteUser = async (req, res, next) => {
   const { id } = req.params;
   try {
     await prisma.user.delete({
@@ -9,9 +8,10 @@ const deleteUser = async (req, res) => {
         id,
       },
     });
-    res.status(204).json(errors.users[204]);
+    res.sendStatus(204);
   } catch (e) {
-    res.status(404).json(errors.users[e.code]);
+    res.status(404);
+    next(e);
   }
 };
 module.exports = deleteUser;

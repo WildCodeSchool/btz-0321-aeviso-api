@@ -1,5 +1,6 @@
 const request = require("supertest");
 const app = require("../src/app");
+const prismaClient = require("../prismaClient");
 
 const usersProperties = [
   "id",
@@ -17,6 +18,8 @@ const usersProperties = [
 
 let firstUserId;
 let secondUserId;
+
+const jobId = "e99f8391-1abc-4da6-98c4-6d1273c82c09"; // Change this value by existing id in your local db
 
 const userPayload = {
   firstName: "Marc",
@@ -55,12 +58,12 @@ describe("USERS RESSOURCES", () => {
     expect(res.body).toHaveProperty(usersProperties[10], userPayload.jobId);
   });
 
-  it("should create a new users without company, default role USER", async () => {
+  it("should create a new user without company, default role USER", async () => {
     const payload = {
       firstName: "Sylvie",
       lastName: "Destenave",
       email: "simpletest@test.fr",
-      jobId: "e99f8391-1abc-4da6-98c4-6d1273c82c09",
+      jobId,
     };
     const res = await request(app)
       .post("/api/v1/users")
@@ -83,25 +86,25 @@ describe("USERS RESSOURCES", () => {
     expect(res.body).toHaveProperty(usersProperties[10], payload.jobId);
   });
 
-  it("should respond with 404 status", async () => {
+  it("should respond with 422 status", async () => {
     const payload = {
       firstName: "Jean-Louis",
       lastName: "Laborde",
       email: "testeur@test.fr", // email created before : not unique
-      jobId: "e99f8391-1abc-4da6-98c4-6d1273c82c09",
+      jobId,
     };
     await request(app)
       .post("/api/v1/users")
       .send(payload)
-      .expect(400)
+      .expect(422)
       .expect("Content-Type", /json/);
   });
 
-  it("should respond with 400 status", async () => {
+  it("should respond with 422 status", async () => {
     const payload = {
       firstName: "Jean-Louis",
       email: "testuser@test.fr",
-      jobId: "e99f8391-1abc-4da6-98c4-6d1273c82c09",
+      jobId,
     }; // Missing lastName field in body
     await request(app)
       .post("/api/v1/users")
@@ -110,11 +113,11 @@ describe("USERS RESSOURCES", () => {
       .expect("Content-Type", /json/);
   });
 
-  it("should respond with 400 status", async () => {
+  it("should respond with 422 status", async () => {
     const payload = {
       lastName: "Dubois",
       email: "supertest@test.fr",
-      jobId: "e99f8391-1abc-4da6-98c4-6d1273c82c09",
+      jobId,
     }; // Missing firstName field in body
     await request(app)
       .post("/api/v1/users")
@@ -123,11 +126,11 @@ describe("USERS RESSOURCES", () => {
       .expect("Content-Type", /json/);
   });
 
-  it("should respond with 400 status", async () => {
+  it("should respond with 422 status", async () => {
     const payload = {
       firstName: "Mylène",
       lastName: "Dubois",
-      jobId: "e99f8391-1abc-4da6-98c4-6d1273c82c09",
+      jobId,
     }; // Missing email field in body
     await request(app)
       .post("/api/v1/users")
@@ -136,7 +139,7 @@ describe("USERS RESSOURCES", () => {
       .expect("Content-Type", /json/);
   });
 
-  it("should respond with 400 status", async () => {
+  it("should respond with 422 status", async () => {
     const payload = {
       firstName: "Mylène",
       lastName: "Dubois",
@@ -260,4 +263,9 @@ describe("USERS RESSOURCES", () => {
       .expect(404)
       .expect("Content-Type", /json/);
   });
+});
+
+afterAll(async () => {
+  // noinspection JSUnresolvedFunction
+  await prismaClient.$disconnect();
 });
