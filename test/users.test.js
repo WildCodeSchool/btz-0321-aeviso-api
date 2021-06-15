@@ -18,6 +18,8 @@ const usersProperties = [
 let firstUserId;
 let secondUserId;
 
+const jobId = "e99f8391-1abc-4da6-98c4-6d1273c82c09";
+
 const userPayload = {
   firstName: "Marc",
   lastName: "Dupond",
@@ -60,7 +62,7 @@ describe("USERS RESSOURCES", () => {
       firstName: "Sylvie",
       lastName: "Destenave",
       email: "simpletest@test.fr",
-      jobId: "e99f8391-1abc-4da6-98c4-6d1273c82c09",
+      jobId,
     };
     const res = await request(app)
       .post("/api/v1/users")
@@ -88,7 +90,7 @@ describe("USERS RESSOURCES", () => {
       firstName: "Jean-Louis",
       lastName: "Laborde",
       email: "testeur@test.fr", // email created before : not unique
-      jobId: "e99f8391-1abc-4da6-98c4-6d1273c82c09",
+      jobId,
     };
     await request(app)
       .post("/api/v1/users")
@@ -101,7 +103,7 @@ describe("USERS RESSOURCES", () => {
     const payload = {
       firstName: "Jean-Louis",
       email: "testuser@test.fr",
-      jobId: "e99f8391-1abc-4da6-98c4-6d1273c82c09",
+      jobId,
     }; // Missing lastName field in body
     await request(app)
       .post("/api/v1/users")
@@ -114,7 +116,7 @@ describe("USERS RESSOURCES", () => {
     const payload = {
       lastName: "Dubois",
       email: "supertest@test.fr",
-      jobId: "e99f8391-1abc-4da6-98c4-6d1273c82c09",
+      jobId,
     }; // Missing firstName field in body
     await request(app)
       .post("/api/v1/users")
@@ -127,7 +129,7 @@ describe("USERS RESSOURCES", () => {
     const payload = {
       firstName: "Mylène",
       lastName: "Dubois",
-      jobId: "e99f8391-1abc-4da6-98c4-6d1273c82c09",
+      jobId,
     }; // Missing email field in body
     await request(app)
       .post("/api/v1/users")
