@@ -16,14 +16,15 @@ Content-Type: application/json
 
 
 ###
-PUT http://localhost:5000/api/v1/companies/1
+PUT http://localhost:5000/api/v1/companies/faaf0d8d-5b97-4e92-b3a7-b794b490e021
 Content-Type: application/json
 
 {
-  "zip_code": "12345"
+  "name": "Mon lit Cab", 
+  "logoUrl": "https://www.ametzondoshopping.com/-/media/images/b2c/france/bayonne/logo-stores/mon-lit-cabane/monlitcabane-400x400.ashx"
+ 
 }
 
-
 ###
-DELETE http://localhost:5000/api/v1/companies/1
+DELETE http://localhost:5000/api/v1/companies/b6787b25-cc81-413a-aedb-f256324a4267
 Content-Type:  application/json

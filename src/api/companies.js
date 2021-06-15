@@ -48,6 +48,9 @@ router.post("/", async (req, res) => {
 router.put("/:id", async (req, res) => {
   const { id } = req.params;
   const { name, logoUrl } = req.body;
+  if (!name || !logoUrl) {
+    return res.status(422).json({ message: "bad request" });
+  }
   try {
     const company = await prisma.company.update({
       where: { id },
@@ -56,48 +59,22 @@ router.put("/:id", async (req, res) => {
         logoUrl,
       },
     });
-    if (company) {
-      res.status(200).json(company);
-    } else {
-      res.status(404).json({ message: "Please modify your field" });
-    }
+    res.status(200).json(company);
   } catch (err) {
     res.status(404).json(err);
   }
 });
 
-// router.put("/:id", (req, res) => {
-//   const { name, zip_code, city } = req.body;
-//   const index = companies.findIndex((company) => company.id === +req.params.id);
-//   const errorMessage = { message: "Company not found." };
-
-//   if (index === -1) {
-//     return res.status(404).json(errorMessage);
-//   }
-
-//   const company = companies[index];
-
-//   companies[index] = {
-//     ...company,
-//     name: name || company.name,
-//     zip_code: zip_code || company.zip_code,
-//     city: city || company.city,
-//   };
-
-//   res.status(200).json(company);
-// });
-
-router.delete("/:id", (req, res) => {
-  const index = companies.findIndex((company) => company.id === +req.params.id);
-  const errorMessage = { message: "Company not found." };
-
-  if (index === -1) {
-    return res.status(404).json(errorMessage);
+router.delete("/:id", async (req, res) => {
+  const { id } = req.params;
+  try {
+    await prisma.company.delete({
+      where: { id },
+    });
+    res.status(204);
+  } catch (err) {
+    res.status(404).json({ message: "Company is not deleted yet" });
   }
-
-  companies.splice(index, 1);
-
-  res.sendStatus(204);
 });
 
 module.exports = router;
