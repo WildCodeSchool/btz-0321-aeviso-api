@@ -99,7 +99,7 @@ describe("USERS RESSOURCES", () => {
       .expect("Content-Type", /json/);
   });
 
-  it("should respond with 400 status", async () => {
+  it("should respond with 422 status", async () => {
     const payload = {
       firstName: "Jean-Louis",
       email: "testuser@test.fr",
@@ -112,7 +112,7 @@ describe("USERS RESSOURCES", () => {
       .expect("Content-Type", /json/);
   });
 
-  it("should respond with 400 status", async () => {
+  it("should respond with 422 status", async () => {
     const payload = {
       lastName: "Dubois",
       email: "supertest@test.fr",
@@ -125,7 +125,7 @@ describe("USERS RESSOURCES", () => {
       .expect("Content-Type", /json/);
   });
 
-  it("should respond with 400 status", async () => {
+  it("should respond with 422 status", async () => {
     const payload = {
       firstName: "Mylène",
       lastName: "Dubois",
