@@ -42,7 +42,7 @@ const post = async (req, res) => {
     });
     return res.status(201).json(user);
   } catch (e) {
-    return res.status(400).json(errors[e.code]);
+    return res.status(422).json(errors[e.code]);
   }
 };
 module.exports = post;

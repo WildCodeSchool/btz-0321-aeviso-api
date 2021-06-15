@@ -85,7 +85,7 @@ describe("USERS RESSOURCES", () => {
     expect(res.body).toHaveProperty(usersProperties[10], payload.jobId);
   });
 
-  it("should respond with 404 status", async () => {
+  it("should respond with 422 status", async () => {
     const payload = {
       firstName: "Jean-Louis",
       lastName: "Laborde",
@@ -95,7 +95,7 @@ describe("USERS RESSOURCES", () => {
     await request(app)
       .post("/api/v1/users")
       .send(payload)
-      .expect(400)
+      .expect(422)
       .expect("Content-Type", /json/);
   });
 
@@ -138,7 +138,7 @@ describe("USERS RESSOURCES", () => {
       .expect("Content-Type", /json/);
   });
 
-  it("should respond with 400 status", async () => {
+  it("should respond with 422 status", async () => {
     const payload = {
       firstName: "Mylène",
       lastName: "Dubois",
