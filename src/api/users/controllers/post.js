@@ -13,9 +13,6 @@ const post = async (req, res) => {
     companyId,
     jobId,
   } = req.body;
-  if (!firstName || !lastName || !email || !jobId) {
-    return res.status(400).json(errors.users[400]);
-  }
   try {
     if (companyId) {
       company = {
