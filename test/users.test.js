@@ -55,7 +55,7 @@ describe("USERS RESSOURCES", () => {
     expect(res.body).toHaveProperty(usersProperties[10], userPayload.jobId);
   });
 
-  it("should create a new users without company, default role USER", async () => {
+  it("should create a new user without company, default role USER", async () => {
     const payload = {
       firstName: "Sylvie",
       lastName: "Destenave",
