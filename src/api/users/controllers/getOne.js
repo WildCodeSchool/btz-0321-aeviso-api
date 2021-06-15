@@ -1,7 +1,7 @@
 const errors = require("../../errors");
 const prisma = require("../../../../prismaClient");
 
-const getOne = async (req, res) => {
+const getOne = async (req, res, next) => {
   try {
     const result = await prisma.user.findUnique({
       where: {
@@ -11,7 +11,8 @@ const getOne = async (req, res) => {
     if (result) res.status(200).json(result);
     else res.status(404).json(errors.users[404]);
   } catch (e) {
-    res.status(400).json(errors[400]);
+    res.status(400);
+    next(e);
   }
 };
 module.exports = getOne;
