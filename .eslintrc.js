@@ -5,10 +5,11 @@ module.exports = {
     node: true,
     jest: true,
   },
-  extends: [ "airbnb-base", "plugin:prettier/recommended" ],
+  extends: ["airbnb-base", "plugin:prettier/recommended"],
   parserOptions: {
     ecmaVersion: 12,
   },
+
   rules: {
     "no-unused-vars": "warn",
   },
