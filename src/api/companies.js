@@ -48,9 +48,11 @@ router.post("/", async (req, res) => {
 router.put("/:id", async (req, res) => {
   const { id } = req.params;
   const { name, logoUrl } = req.body;
+
   if (!name || !logoUrl) {
     return res.status(422).json({ message: "bad request" });
   }
+
   try {
     const company = await prisma.company.update({
       where: { id },
@@ -59,9 +61,10 @@ router.put("/:id", async (req, res) => {
         logoUrl,
       },
     });
-    res.status(200).json(company);
+
+    return res.status(200).json(company);
   } catch (err) {
-    res.status(404).json(err);
+    return res.status(404).json(err);
   }
 });
 

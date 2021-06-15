@@ -1,7 +1,7 @@
 http://localhost:5000/api/v1/records
 
 ###
-http://localhost:5000/api/v1/records/1
+http://localhost:5000/api/v1/records/b4cf4fd5-76be-4722-bfaa-571307301118
 
 ###
 POST http://localhost:5000/api/v1/records
