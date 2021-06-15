@@ -74,8 +74,9 @@ router.delete("/:id", async (req, res) => {
     await prisma.company.delete({
       where: { id },
     });
-    res.status(204);
+    res.sendStatus(204);
   } catch (err) {
+    console.error(err);
     res.status(404).json({ message: "Company is not deleted yet" });
   }
 });
