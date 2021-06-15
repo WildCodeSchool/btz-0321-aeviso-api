@@ -88,7 +88,7 @@ describe("PROJECTS RESSOURCES", () => {
     await request(app)
       .post("/api/v1/projects")
       .send(payload)
-      .expect(400)
+      .expect(422)
       .expect("Content-Type", /json/);
   });
 
@@ -101,7 +101,7 @@ describe("PROJECTS RESSOURCES", () => {
     await request(app)
       .post("/api/v1/projects")
       .send(payload)
-      .expect(400)
+      .expect(422)
       .expect("Content-Type", /json/);
   });
 
@@ -114,7 +114,7 @@ describe("PROJECTS RESSOURCES", () => {
     await request(app)
       .post("/api/v1/projects")
       .send(payload)
-      .expect(400)
+      .expect(422)
       .expect("Content-Type", /json/);
   });
 
