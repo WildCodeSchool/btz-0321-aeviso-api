@@ -1,5 +1,6 @@
 const request = require("supertest");
 const app = require("../src/app");
+const prismaClient = require("../prismaClient");
 
 const usersProperties = [
   "id",
@@ -262,4 +263,9 @@ describe("USERS RESSOURCES", () => {
       .expect(404)
       .expect("Content-Type", /json/);
   });
+});
+
+afterAll(async () => {
+  // noinspection JSUnresolvedFunction
+  await prismaClient.$disconnect();
 });

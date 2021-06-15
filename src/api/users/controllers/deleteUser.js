@@ -1,4 +1,3 @@
-const errors = require("../../errors");
 const prisma = require("../../../../prismaClient");
 
 const deleteUser = async (req, res, next) => {
@@ -9,7 +8,7 @@ const deleteUser = async (req, res, next) => {
         id,
       },
     });
-    res.status(204).json({ message: "User Deleted" });
+    res.sendStatus(204);
   } catch (e) {
     res.status(404);
     next(e);
