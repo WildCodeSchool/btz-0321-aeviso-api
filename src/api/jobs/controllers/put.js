@@ -1,6 +1,6 @@
 const prisma = require("../../../../prismaClient");
 
-const put = async (req, res) => {
+const put = async (req, res, next) => {
   const { id } = req.params;
   const { label } = req.body;
   if (!label) {
@@ -17,7 +17,8 @@ const put = async (req, res) => {
       });
       res.status(200).json(job);
     } catch (err) {
-      res.status(404).json(err);
+      res.status(404);
+      next(err);
     }
   }
 };

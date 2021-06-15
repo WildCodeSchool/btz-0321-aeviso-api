@@ -1,6 +1,6 @@
 const prisma = require("../../../../prismaClient");
 
-const post = async (req, res) => {
+const post = async (req, res, next) => {
   const { label } = req.body;
   try {
     const job = await prisma.job.create({
@@ -10,7 +10,8 @@ const post = async (req, res) => {
     });
     res.status(201).json(job);
   } catch (err) {
-    res.status(404).json(err);
+    res.status(404);
+    next(err);
   }
 };
 module.exports = post;
