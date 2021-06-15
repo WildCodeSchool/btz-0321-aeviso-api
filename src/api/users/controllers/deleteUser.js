@@ -9,7 +9,7 @@ const deleteUser = async (req, res) => {
         id,
       },
     });
-    res.status(204).json(errors.users[204]);
+    res.status(204);
   } catch (e) {
     res.status(404).json(errors.users[e.code]);
   }
