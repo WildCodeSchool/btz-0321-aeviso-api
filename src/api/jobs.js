@@ -1,121 +1,81 @@
-const express = require('express');
-const prisma = require('../../prismaClient');
+const express = require("express");
+const prisma = require("../../prismaClient");
 
 const router = express.Router();
 
-router.get('/', async (req, res) => {
+router.get("/", async (req, res) => {
   try {
-    const result = await prisma.jobs.findMany();
-    res.status(200).json(jobs);
+    const job = await prisma.job.findMany();
+    res.status(200).json(job);
   } catch (error) {
-    res.status(400).json({message: 'Bad Request' });
+    res.status(400).json({ message: "Bad Request" });
   }
 });
 
-router.get('/:id', async (req, res) => {
+router.get("/:id", async (req, res) => {
   const { id } = req.params;
   try {
-    const jobs = await prisma.jobs.findUnique({
+    const job = await prisma.job.findUnique({
       where: {
         id,
       },
     });
-    if (jobs) {
-      return res.status(200).json(jobs);
-    }
-    return res.status(404).js ({ message: 'No job foundon' });
+    if (job) res.status(200).json(job);
+    else res.status(404).json({ message: "No job found" });
   } catch (err) {
     res.status(404).json(err);
-
-    }
+  }
 });
 
-router.post('/', async (req, res) => {
-  const { label, } = req.body;
+router.post("/", async (req, res) => {
+  const { label } = req.body;
   try {
-    if (labelId) {
-      label = {
-        connect: {
-          id: labelId,
-        },
-      };
-      if (labelId === null) {
-        job: {
-          disconnect: true;
-        }
-      }
-
-      const jobs = await prisma.jobs.create({
-        data: {
-          label,
-          connect: {
-              id: labelId,
-            },
-          },
-        });
-
-      res.status(201).json(label);
-    }
+    const job = await prisma.job.create({
+      data: {
+        label,
+      },
+    });
+    res.status(201).json(job);
   } catch (err) {
     console.log(err);
     res.status(404).json(err);
   }
 });
 
-
-router.put('/:id', async (req, res) => {
-  let jobs;
+router.put("/:id", async (req, res) => {
   const { id } = req.params;
-  const { jobs, } = req.body;
-  if (!jobId) {
-    res.status(400).json({ message: 'No job found' });
+  const { label } = req.body;
+  if (!label) {
+    res.status(400).json({ message: "No job found" });
   } else {
     try {
-      if (jobId) {
-        jobs = {
-          connect: {
-            id: jobsId,
-          },
-        };
-        if (jobsId === null) {
-          job: {
-            disconnect: true;
-          }
-        }
-      }
-
-      const jobs = await prisma.jobs.update({
+      const job = await prisma.job.update({
         data: {
-          jobs: {
-            connect: {
-              id: jobsId,
-            },
-          },
+          label,
         },
         where: {
           id,
         },
       });
-      res.status(200).json(jobs);
+      res.status(200).json(job);
     } catch (err) {
       res.status(404).json(err);
     }
   }
 });
 
-router.delete('/:id', async (req, res) => {
+router.delete("/:id", async (req, res) => {
   const { id } = req.params;
   try {
-    await prisma.jobs.delete({
+    await prisma.job.delete({
       where: {
         id,
       },
     });
     res.sendStatus(204);
   } catch (err) {
-    res.status(404).json({ message: 'job deleted' });
+    res.status(404).json({ message: "job deleted" });
   }
 });
-
 
 module.exports = router;

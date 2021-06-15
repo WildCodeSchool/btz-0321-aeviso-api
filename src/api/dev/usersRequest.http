@@ -8,21 +8,12 @@ POST http://localhost:5000/api/v1/users HTTP/1.1
 content-type: application/json
 
 {
-<<<<<<< HEAD
-    "firstname": "Basile",
-    "lastname": "Vernouillet",
-    "email": "formateur@test.fr",
-    "role": "SUPER_ADMIN",
-    "jobs": "",
-    "company_id": null
-=======
     "firstName": "Basile",
     "lastName": "Vernouillet",
     "email": "basi@test.fr",
     "role": "SUPERADMIN",
     "jobId": "e99f8391-1abc-4da6-98c4-6d1273c82c09",
     "companyId": "500c8dbd-ee35-44dc-92c9-a3598b9f9d63"
->>>>>>> 60f0d2c14ee16e53e92661925e2f9ffe905157ec
 }
 
 ###
@@ -41,18 +32,9 @@ POST http://localhost:5000/api/v1/users HTTP/1.1
 content-type: application/json
 
 {
-<<<<<<< HEAD
-    "firstname": "John",
-    "lastname": "Doe",
-    "email": "formateur@test.fr",
-    "role": "SUPER_ADMIN",
-    "jobs": "nettoyeur",
-    "company_id": null
-=======
     "firstName": "Marc",
     "lastName": "Dupond",
     "email": "mar@test.fr"
->>>>>>> 60f0d2c14ee16e53e92661925e2f9ffe905157ec
 }
 // should respond with 422
 
