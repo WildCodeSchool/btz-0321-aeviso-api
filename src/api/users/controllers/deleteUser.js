@@ -9,9 +9,9 @@ const deleteUser = async (req, res) => {
         id,
       },
     });
-    res.status(204);
+    return res.status(204).json({ message: "User Deleted" });
   } catch (e) {
-    res.status(404).json(errors.users[e.code]);
+    return res.status(404).json(errors.users[e.code]);
   }
 };
 module.exports = deleteUser;

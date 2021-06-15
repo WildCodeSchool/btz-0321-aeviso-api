@@ -18,7 +18,7 @@ const usersProperties = [
 let firstUserId;
 let secondUserId;
 
-const jobId = "e99f8391-1abc-4da6-98c4-6d1273c82c09";
+const jobId = "e99f8391-1abc-4da6-98c4-6d1273c82c09"; // Change this value by existing id in your local db
 
 const userPayload = {
   firstName: "Marc",
