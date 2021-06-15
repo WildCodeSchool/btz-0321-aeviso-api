@@ -1,7 +1,7 @@
 const errors = require("../../errors");
 const prisma = require("../../../../prismaClient");
 
-const put = async (req, res) => {
+const put = async (req, res, next) => {
   let company;
   let job;
   const { id } = req.params;
@@ -53,7 +53,8 @@ const put = async (req, res) => {
     });
     res.status(200).json(user);
   } catch (e) {
-    res.status(404).json(errors.users[e.code]);
+    res.status(404);
+    next(e);
   }
 };
 
