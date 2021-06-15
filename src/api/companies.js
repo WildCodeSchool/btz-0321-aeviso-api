@@ -5,8 +5,9 @@ const router = express.Router();
 
 router.get("/", async (req, res) => {
   try {
-    const company = await prisma.company.findMany();
-    res.status(200).json(company);
+    const companies = await prisma.company.findMany();
+
+    res.status(200).json(companies);
   } catch (err) {
     res.status(404).json(err);
   }
