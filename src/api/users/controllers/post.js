@@ -1,4 +1,3 @@
-const errors = require("../../errors");
 const prisma = require("../../../../prismaClient");
 
 const post = async (req, res, next) => {

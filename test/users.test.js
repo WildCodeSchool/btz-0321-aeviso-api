@@ -28,8 +28,8 @@ const userPayload = {
   password: "abcd",
   role: "ADMIN",
   weeklyBasis: "h39",
-  jobId: "e99f8391-1abc-4da6-98c4-6d1273c82c09",
-  companyId: "500c8dbd-ee35-44dc-92c9-a3598b9f9d63",
+  jobId: "e99f8391-1abc-4da6-98c4-6d1273c82c09", // Replace this value with existing id in your local db
+  companyId: "500c8dbd-ee35-44dc-92c9-a3598b9f9d63", // Replace this value with existing id in your local db
 };
 
 describe("USERS RESSOURCES", () => {
