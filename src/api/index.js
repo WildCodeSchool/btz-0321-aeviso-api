@@ -2,7 +2,7 @@ const express = require("express");
 
 const companies = require("./companies/routes");
 const users = require("./users/routes");
-const records = require("./records");
+const records = require("./records/routes");
 const professions = require("./professions");
 const projects = require("./projects");
 

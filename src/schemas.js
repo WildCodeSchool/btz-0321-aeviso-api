@@ -21,8 +21,28 @@ const companySchemaEdit = Joi.object({
   logoUrl: Joi.string().uri(),
 });
 
+const recordSchema = Joi.object({
+  date: Joi.string().isoDate().required(),
+  timeslot: Joi.string().valid("MORNING", "AFTERNOON").required(),
+  userId: Joi.string()
+    .guid({ version: ["uuidv4"] })
+    .required(),
+  projectId: Joi.string()
+    .guid({ version: ["uuidv4"] })
+    .required(),
+  comment: Joi.string(),
+});
+
+const recordSchemaEdit = Joi.object({
+  date: Joi.string().isoDate(),
+  timeslot: Joi.string().valid("MORNING", "AFTERNOON"),
+  comment: Joi.string(),
+});
+
 module.exports = {
   userSchema,
   companySchema,
   companySchemaEdit,
+  recordSchema,
+  recordSchemaEdit,
 };
