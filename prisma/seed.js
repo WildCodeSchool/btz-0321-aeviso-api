@@ -1,6 +1,6 @@
-const { PrismaClient } = require('@prisma/client');
-const faker = require('faker');
-const { company } = require('faker');
+const { PrismaClient } = require("@prisma/client");
+const faker = require("faker");
+const { company } = require("faker");
 
 const prisma = new PrismaClient();
 
@@ -21,7 +21,7 @@ async function main() {
       return prisma.company.create({
         data: company,
       });
-    }),
+    })
   );
 
   const jobs = [
@@ -41,7 +41,7 @@ async function main() {
       return prisma.job.create({
         data: job,
       });
-    }),
+    })
   );
 
   const users = [
@@ -49,19 +49,19 @@ async function main() {
       firstName: faker.name.firstName(),
       lastName: faker.name.lastName(),
       email: faker.internet.email(),
-      role: 'USER',
+      role: "USER",
     },
     {
       firstName: faker.name.firstName(),
       lastName: faker.name.lastName(),
       email: faker.internet.email(),
-      role: 'ADMIN',
+      role: "ADMIN",
     },
     {
       firstName: faker.name.firstName(),
       lastName: faker.name.lastName(),
       email: faker.internet.email(),
-      role: 'SUPERADMIN',
+      role: "SUPERADMIN",
     },
   ];
   const createdUsers = await Promise.all(
@@ -76,12 +76,14 @@ async function main() {
           },
           company: {
             connect: {
-              id: createdCompanies[Math.floor(Math.random() * createdCompanies.length)].id,
+              id: createdCompanies[
+                Math.floor(Math.random() * createdCompanies.length)
+              ].id,
             },
           },
         },
       });
-    }),
+    })
   );
 
   const projects = [
@@ -108,27 +110,29 @@ async function main() {
           ...project,
           company: {
             connect: {
-              id: createdCompanies[Math.floor(Math.random() * createdCompanies.length)].id,
+              id: createdCompanies[
+                Math.floor(Math.random() * createdCompanies.length)
+              ].id,
             },
           },
         },
       });
-    }),
+    })
   );
 
   const records = [
     {
-      timeslot: 'MORNING',
+      timeslot: "MORNING",
       comment: faker.lorem.text(),
       date: faker.datatype.datetime(),
     },
     {
-      timeslot: 'AFTERNOON',
+      timeslot: "AFTERNOON",
       comment: faker.lorem.text(),
       date: faker.datatype.datetime(),
     },
     {
-      timeslot: 'MORNING',
+      timeslot: "MORNING",
       comment: faker.lorem.text(),
       date: faker.datatype.datetime(),
     },
@@ -141,17 +145,20 @@ async function main() {
           ...record,
           user: {
             connect: {
-              id: createdUsers[Math.floor(Math.random() * createdUsers.length)].id,
+              id: createdUsers[Math.floor(Math.random() * createdUsers.length)]
+                .id,
             },
           },
           project: {
             connect: {
-              id: createdProjects[Math.floor(Math.random() * createdProjects.length)].id,
+              id: createdProjects[
+                Math.floor(Math.random() * createdProjects.length)
+              ].id,
             },
           },
         },
       });
-    }),
+    })
   );
 }
 
