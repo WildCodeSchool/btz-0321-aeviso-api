@@ -4,7 +4,8 @@ const companies = require("./companies");
 const users = require("./users/routes");
 const records = require("./records");
 const jobs = require("./jobs/routes");
-const projects = require("./projects");
+const projects = require("./projects/routes");
+
 
 const router = express.Router();
 
