@@ -19,7 +19,12 @@ const projectsSchema = Joi.object({
   taxation: Joi.string(),
 });
 
+const authSchema = Joi.object({
+  email: Joi.string().required(),
+});
+
 module.exports = {
   userSchema,
   projectsSchema,
+  authSchema,
 };
