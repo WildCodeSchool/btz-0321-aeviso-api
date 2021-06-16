@@ -1,6 +1,13 @@
 const errors = require("../../errors");
 const prisma = require("../../../../prismaClient");
 
+/**
+ * POST /api/v1/users
+ * @summary Create one user
+ * @tags users
+ * @param {PostUser} request.body.required - User info
+ * @return {DisplayUser} 201 - User successfully created
+ */
 const post = async (req, res, next) => {
   let company;
   const {
