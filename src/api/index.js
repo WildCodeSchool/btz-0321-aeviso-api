@@ -1,6 +1,6 @@
 const express = require("express");
 
-const companies = require("./companies");
+const companies = require("./companies/routes");
 const users = require("./users/routes");
 const records = require("./records");
 const professions = require("./professions");

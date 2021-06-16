@@ -11,6 +11,18 @@ const userSchema = Joi.object({
   weeklyBasis: Joi.string(),
 });
 
+const companySchema = Joi.object({
+  name: Joi.string().required(),
+  logoUrl: Joi.string().uri(),
+});
+
+const companySchemaEdit = Joi.object({
+  name: Joi.string(),
+  logoUrl: Joi.string().uri(),
+});
+
 module.exports = {
   userSchema,
+  companySchema,
+  companySchemaEdit,
 };
