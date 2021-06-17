@@ -5,7 +5,7 @@
     "lastname": "Wanner",
     "email": "test@test.fr",
     "role": "SUPER_ADMIN",
-    "profession": "",
+    "jobs": "",
     "company_id": null
   },
   {
@@ -14,7 +14,7 @@
     "lastname": "Lavigne",
     "email": "test2@test.fr",
     "role": "SUPER_ADMIN",
-    "profession": "",
+    "jobs": "",
     "company_id": null
   },
   {
@@ -23,7 +23,7 @@
     "lastname": "Chabat",
     "email": "poucave@titre.fr",
     "role": "SUPER_ADMIN",
-    "profession": "",
+    "jobs": "",
     "company_id": null
   },
   {
@@ -32,7 +32,7 @@
     "lastname": "Kergrohen",
     "email": "test4@test.fr",
     "role": "SUPER_ADMIN",
-    "profession": "",
+    "jobs": "",
     "company_id": null
   }
 ]
