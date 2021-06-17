@@ -12,5 +12,9 @@ module.exports = {
 
   rules: {
     "no-unused-vars": "warn",
+    "import/no-extraneous-dependencies": [
+      "error",
+      { devDependencies: ["**/*.test.js", "**/*.spec.js", "**/seed.js"] },
+    ],
   },
 };

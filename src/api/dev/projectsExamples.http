@@ -9,11 +9,10 @@ POST http://localhost:5000/api/v1/projects HTTP/1.1
 Content-Type: application/json
 
 {
-        "name": "CrockMou",
-        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi pretium gravida placerat. In mattis hendrerit magna gravida vehicula. Duis iaculis elit a neque mattis laoreet. Proin enim nibh, luctus nec elementum vel, pulvinar at tellus. Vestibulum vel laoreet turpis, ut eleifend est. Pellentesque sit amet nisl sit amet odio ultrices rhoncus nec sed lacus.",
-        "code": "Ceci est un code",
-        "companyId": "500c8dbd-ee35-44dc-92c9-a3598b9f9d63",
-        "taxation": "CII"
+        "name": "R&D project",
+        "description": "A new R&D project to create AI",
+        "companyId": "285ee8a1-637f-4d8b-a151-5f8917b18f5c",
+        "code": "AIRD"
 }
 
 ###
