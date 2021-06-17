@@ -13,7 +13,7 @@ const projectProperties = [
   "taxation",
 ];
 
-const companyId = "500c8dbd-ee35-44dc-92c9-a3598b9f9d63"; // Replace this value with existing id in your local db
+const companyId = "38d375a9-68a6-43b6-8aff-e20ad4e66eff"; // Replace this value with existing id in your local db
 
 let firstProjectId;
 let secondProjectId;

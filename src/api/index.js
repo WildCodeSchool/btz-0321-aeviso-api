@@ -1,11 +1,10 @@
 const express = require("express");
 
-const companies = require("./companies");
+const companies = require("./companies/routes");
 const users = require("./users/routes");
-const records = require("./records");
 const jobs = require("./jobs/routes");
+const records = require("./records/routes");
 const projects = require("./projects/routes");
-
 
 const router = express.Router();
 

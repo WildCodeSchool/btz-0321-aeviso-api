@@ -1,28 +1,30 @@
-http://localhost:5000/api/v1/companies
+http://localhost:5000/api/v1/companies HTTP/1.1
 
 ###
-http://localhost:5000/api/v1/companies/2
+http://localhost:5000/api/v1/companies/38d375a9-68a6-43b6-8aff-e20ad4e66eff HTTP/1.1
 
 ###
 
-POST http://localhost:5000/api/v1/companies
+POST http://localhost:5000/api/v1/companies HTTP/1.1
 Content-Type: application/json
 
 {
-  "name": "WIIT TRAINING",
-  "zip_code": "64100",
-  "city": "BAYONNE"
-}
-
-###
-PUT http://localhost:5000/api/v1/companies/1
-Content-Type: application/json
-
-{
-  "zip_code": "12345"
+  "name": "Mon lit Cabane", 
+  "logoUrl": "https://www.ametzondoshopping.com/-/media/images/b2c/france/bayonne/logo-stores/mon-lit-cabane/monlitcabane-400x400.ashx"
+ 
 }
 
 
 ###
-DELETE http://localhost:5000/api/v1/companies/1
+PUT http://localhost:5000/api/v1/companies/faaf0d8d-5b97-4e92-b3a7-b794b490e021
+Content-Type: application/json
+
+{
+  "name": "Mon lit Cab", 
+  "logoUrl": "https://www.ametzondoshopping.com/-/media/images/b2c/france/bayonne/logo-stores/mon-lit-cabane/monlitcabane-400x400.ashx"
+ 
+}
+
+###
+DELETE http://localhost:5000/api/v1/companies/4c24e4c1-f7ea-4a8f-8812-59cf3723e674
 Content-Type:  application/json
