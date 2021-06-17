@@ -1,0 +1,26 @@
+[
+  {
+    "id": 1,
+    "name": "WIIT TRAINING",
+    "zip_code": "64100",
+    "city": "BAYONNE",
+    "created_at": "01-02-12",
+    "updated_at": "01-02-12"
+  },
+  {
+    "id": 2,
+    "name": "LYNXTER",
+    "zip_code": "64120",
+    "city": "BIARRITZ",
+    "created_at": "06-07-18",
+    "updated_at": "31-05-21"
+  },
+  {
+    "id": 3,
+    "name": "PABLITO ENTREPRENEUR",
+    "zip_code": "64000",
+    "city": "PAU",
+    "created_at": "12-05-21",
+    "updated_at": "01-06-21"
+  }
+]

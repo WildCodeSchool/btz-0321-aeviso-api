@@ -1,5 +1,6 @@
 const express = require("express");
-const professionsExample = require("./dev/professionsExample");
+
+const professionsExample = require("./dev/professionsExample.json");
 
 const router = express.Router();
 
