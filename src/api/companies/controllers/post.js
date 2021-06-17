@@ -1,6 +1,6 @@
 const prisma = require("../../../../prismaClient");
 
-module.exports = async (req, res) => {
+module.exports = async (req, res, next) => {
   const { name, logoUrl } = req.body;
 
   try {
