@@ -19,8 +19,8 @@ const usersProperties = [
 let firstUserId;
 let secondUserId;
 
-const jobId = "aa31a741-ddc6-4544-a390-059c11fb8e8f"; // Change this value by existing id in your local db
-const companyId = "38d375a9-68a6-43b6-8aff-e20ad4e66eff"; // Change this value by existing id in your local db
+const jobId = "5e2c2efc-c1f9-43ef-a2ce-26edbf2f8d77"; // Change this value by existing id in your local db
+const companyId = "500c8dbd-ee35-44dc-92c9-a3598b9f9d63"; // Change this value by existing id in your local db
 
 const userPayload = {
   firstName: "Marc",
