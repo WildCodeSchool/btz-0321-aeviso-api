@@ -1,4 +1,6 @@
 const request = require("supertest");
+const faker = require("faker");
+
 const app = require("../src/app");
 const prismaClient = require("../prismaClient");
 
@@ -91,8 +93,14 @@ describe("Companies CRUD", () => {
   });
 
   it("should delete a company and not respond", async () => {
+    const createdCompany = await prismaClient.company.create({
+      data: {
+        name: faker.company.companyName(),
+      },
+    });
+
     await request(app)
-      .delete(`/api/v1/companies/${await randomCompany("id")}`)
+      .delete(`/api/v1/companies/${createdCompany.id}`)
       .expect(204);
   });
 });
