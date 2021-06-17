@@ -39,10 +39,19 @@ const recordSchemaEdit = Joi.object({
   comment: Joi.string(),
 });
 
+const projectsSchema = Joi.object({
+  name: Joi.string().required(),
+  description: Joi.string(),
+  code: Joi.string().required(),
+  companyId: Joi.string().required(),
+  taxation: Joi.string(),
+});
+
 module.exports = {
   userSchema,
   companySchema,
   companySchemaEdit,
   recordSchema,
   recordSchemaEdit,
+  projectsSchema,
 };

@@ -1,7 +1,7 @@
 GET http://localhost:5000/api/v1/projects HTTP/1.1
 
 ###
-GET http://localhost:5000/api/v1/projects/05245a98-287d-4a3b-91de-3555195d57f1 HTTP/1.1
+GET http://localhost:5000/api/v1/projects/2798e00c-0d0d-4f06-9749-0550c4765a9e HTTP/1.1
 
 
 ###
@@ -12,24 +12,40 @@ Content-Type: application/json
         "name": "CrockMou",
         "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi pretium gravida placerat. In mattis hendrerit magna gravida vehicula. Duis iaculis elit a neque mattis laoreet. Proin enim nibh, luctus nec elementum vel, pulvinar at tellus. Vestibulum vel laoreet turpis, ut eleifend est. Pellentesque sit amet nisl sit amet odio ultrices rhoncus nec sed lacus.",
         "code": "Ceci est un code",
-        "companyId": "296e77d3-dda8-4620-92f8-41007488439f",
+        "companyId": "500c8dbd-ee35-44dc-92c9-a3598b9f9d63",
         "taxation": "CII"
 }
 
 ###
-PUT http://localhost:5000/api/v1/projects/05245a98-287d-4a3b-91de-3555195d57f1 HTTP/1.1
+POST http://localhost:5000/api/v1/projects HTTP/1.1
 Content-Type: application/json
 
+{
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi pretium gravida placerat. In mattis hendrerit magna gravida vehicula. Duis iaculis elit a neque mattis laoreet. Proin enim nibh, luctus nec elementum vel, pulvinar at tellus. Vestibulum vel laoreet turpis, ut eleifend est. Pellentesque sit amet nisl sit amet odio ultrices rhoncus nec sed lacus.",
+        "code": "Ceci est un code",
+        "companyId": "500c8dbd-ee35-44dc-92c9-a3598b9f9d63",
+        "taxation": "CII"
+}
+// name field missing : should respond with status 400
+
+###
+PUT http://localhost:5000/api/v1/projects/65030405-994e-41f4-8468-d3716617205b HTTP/1.1
+Content-Type: application/json
 
 {
-        "name": "La rive des dragons",
-        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-        "code": "ceci est code",
-        "companyId": "0bd6496b-2e49-4884-a5e0-3f3cf2ecfc1a"
+        "name": "La rive des dragons"
 }
 
 ###
-DELETE http://localhost:5000/api/v1/projects/09147d47-467d-4b0e-83bb-e114d57d7514 HTTP/1.1
+PUT http://localhost:5000/api/v1/projects/65030405-994e-41f4-8468-d3716617205b HTTP/1.1
+Content-Type: application/json
+
+{
+        "description": "ceci est une description"
+}
+
+###
+DELETE http://localhost:5000/api/v1/projects/65030405-994e-41f4-8468-d3716617205b HTTP/1.1
 
 
 
