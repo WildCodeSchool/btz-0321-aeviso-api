@@ -8,12 +8,12 @@ POST http://localhost:5000/api/v1/users HTTP/1.1
 content-type: application/json
 
 {
-    "firstName": "Basile",
-    "lastName": "Vernouillet",
-    "email": "basi@test.fr",
-    "role": "SUPERADMIN",
-    "jobId": "36e7672f-cb10-48a4-a775-6b145b9255a5",
-    "companyId": "e3d90fd5-0ab9-42f6-b9df-f8262fde1fc3"
+    "firstName": "Leo",
+    "lastName": "Lestrade",
+    "email": "leo@test.fr",
+    "role": "USER",
+    "jobId": "36e7672f-cb10-48a4-a775-6b145b9667-&",
+    "companyId": "e3dkkrkfd5-0ab9-42f6-jhkgl-f8262fde1fc3"
 }
 
 ###
@@ -77,4 +77,9 @@ DELETE http://localhost:5000/api/v1/users/2 HTTP/1.1
 DELETE http://localhost:5000/api/v1/users/9944d537-435b-4504-bb0e-766430ba2b26 HTTP/1.1
 
 ###
-DELETE http://localhost:5000/api/v1/users/9944d537-435b-4504-bb0e-766430ba2b26/
+POST http://localhost:5000/api/v1/users/fedf4d52-1c95-4b0a-b955-db19d79fe166/projects/0e9dbd62-a489-47ea-9f10-39f578c1a568
+
+###
+DELETE http://localhost:5000/api/v1/users/fedf4d52-1c95-4b0a-b955-db19d79fe166/projects/0e9dbd62-a489-47ea-9f10-39f578c1a568
+//should update(delete) the project of user ID 
+

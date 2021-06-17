@@ -47,6 +47,10 @@ Content-Type: application/json
 ###
 DELETE http://localhost:5000/api/v1/projects/65030405-994e-41f4-8468-d3716617205b HTTP/1.1
 
+###
+POST http://localhost:5000/api/v1/projects/0e9dbd62-a489-47ea-9f10-39f578c1a568/users/2e4a0e05-97c0-4017-b49f-b0e07a0172e2
 
+###
+DELETE http://localhost:5000/api/v1/projects/0e9dbd62-a489-47ea-9f10-39f578c1a568/users/2e4a0e05-97c0-4017-b49f-b0e07a0172e2
 
 

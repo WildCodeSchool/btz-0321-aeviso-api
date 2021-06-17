@@ -7,9 +7,11 @@ const createUserProject = async (req, res, next) => {
       where: {
         id: userId,
       },
-      project: { connect: { id: projectId } },
+      data: {
+        projects: { connect: { id: projectId } },
+      },
     });
-    res.sendStatus(204);
+    res.sendStatus(201).json({ message: "done for me" });
   } catch (e) {
     res.status(404);
     next(e);

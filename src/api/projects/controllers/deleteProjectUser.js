@@ -1,13 +1,15 @@
 const prisma = require("../../../../prismaClient");
 
-const deleteUserProject = async (req, res, next) => {
+const deleteProjectUser = async (req, res, next) => {
   const { userId, projectId } = req.params;
   try {
-    await prisma.user.update({
+    await prisma.project.update({
       where: {
-        id: userId,
+        id: projectId,
       },
-      data: { projects: { disconnect: { id: projectId } } },
+      data: {
+        users: { disconnect: { id: userId } },
+      },
     });
     res.sendStatus(204);
   } catch (e) {
@@ -15,4 +17,4 @@ const deleteUserProject = async (req, res, next) => {
     next(e);
   }
 };
-module.exports = deleteUserProject;
+module.exports = deleteProjectUser;
