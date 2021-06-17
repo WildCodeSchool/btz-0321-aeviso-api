@@ -5,6 +5,7 @@ const app = require("../src/app");
 const prismaClient = require("../prismaClient");
 
 const companiesProperties = ["id", "name", "logoUrl", "createdAt", "updatedAt"];
+const projectProperties = ["id", "name", "description"];
 
 const randomCompany = async (property) => {
   const companies = await prismaClient.company.findMany();
@@ -103,9 +104,27 @@ describe("Companies CRUD", () => {
       .delete(`/api/v1/companies/${createdCompany.id}`)
       .expect(204);
   });
-});
 
-afterAll(async () => {
-  // noinspection JSUnresolvedFunction
-  await prismaClient.$disconnect();
+  it("should be an array of projects from one company and respond with status 200", async () => {
+    const res = await request(app)
+      .get(`/api/v1/companies/${await randomCompany("id")}/projects`)
+      .set("Accept", "application/json")
+      .expect(200)
+      .expect("Content-Type", /json/);
+
+    expect(Array.isArray(res.body)).toBe(true);
+
+    if (res.body) {
+      res.body.forEach((project) => {
+        expect(project).toHaveProperty(projectProperties[1]);
+        expect(project).toHaveProperty(projectProperties[2]);
+        expect(project).toHaveProperty(projectProperties[3]);
+      });
+    }
+  });
+
+  afterAll(async () => {
+    // noinspection JSUnresolvedFunction
+    await prismaClient.$disconnect();
+  });
 });
