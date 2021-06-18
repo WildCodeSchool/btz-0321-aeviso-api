@@ -11,9 +11,8 @@ const login = async (req, res, next) => {
     if (!user) {
       res.status(401).json({ message: "Unknow User" });
     }
-    res
-      .status(200)
-      .json({ firstname: user.firstName, email: user.email, role: user.role });
+    delete user.password;
+    res.status(200).json({ user });
   } catch (e) {
     res.status(400);
     next(e);
