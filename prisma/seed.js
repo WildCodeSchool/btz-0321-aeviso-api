@@ -1,6 +1,5 @@
 const { PrismaClient } = require("@prisma/client");
 const faker = require("faker");
-const { company } = require("faker");
 
 const prisma = new PrismaClient();
 
@@ -138,7 +137,7 @@ async function main() {
     },
   ];
 
-  const createdRecords = await Promise.all(
+  await Promise.all(
     records.map((record) => {
       return prisma.record.create({
         data: {

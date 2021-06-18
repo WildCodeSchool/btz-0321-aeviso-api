@@ -1,29 +1,31 @@
 http://localhost:5000/api/v1/records
 
 ###
-http://localhost:5000/api/v1/records/1
+http://localhost:5000/api/v1/records/b4cf4fd5-76be-4722-bfaa-571307301118
 
 ###
-POST http://localhost:5000/api/v1/records
+POST http://localhost:5000/api/v1/records HTTP/1.1
 Content-Type: application/json
 
 {
-    "user_id": "JDFfnfnfjfjfVSF",
-    "project_id": "GHFHgjgjVJ",
-    "step_id": "Etape 18",
-    "time_slot": "MATIN"
+    "date": "2021-06-15T08:35:48.049Z",
+    "projectId": "0e9dbd62-a489-47ea-9f10-39f578c1a568",
+    "timeslot":"MORNING",
+    "comment":"Lorem ipsum dolor sit amet",
+    "userId":"1a55d3f3-3b17-43af-8cb6-be8335079c94"
 }
 
 
 ###
-PUT http://localhost:5000/api/v1/records/2
+PUT http://localhost:5000/api/v1/records/9340f0b5-80cc-40ac-a1d5-a87cf83bde02
 Content-Type: application/json
 
 {
-    "project_id":"ljhdfhfhfhfhhffjfjfjhs" ,
-    "time_slot": "MATINÉE"
+    "timeslot":"AFTERNOON",
+    "comment":"Lorem ipsum dolor sit amet chaberland"
+  
 }
 
 ###
-DELETE  http://localhost:5000/api/v1/records/1
+DELETE  http://localhost:5000/api/v1/records/9340f0b5-80cc-40ac-a1d5-a87cf83bde02
 

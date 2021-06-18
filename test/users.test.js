@@ -19,7 +19,8 @@ const usersProperties = [
 let firstUserId;
 let secondUserId;
 
-const jobId = "e99f8391-1abc-4da6-98c4-6d1273c82c09"; // Change this value by existing id in your local db
+const jobId = "5e2c2efc-c1f9-43ef-a2ce-26edbf2f8d77"; // Change this value by existing id in your local db
+const companyId = "500c8dbd-ee35-44dc-92c9-a3598b9f9d63"; // Change this value by existing id in your local db
 
 const userPayload = {
   firstName: "Marc",
@@ -28,8 +29,8 @@ const userPayload = {
   password: "abcd",
   role: "ADMIN",
   weeklyBasis: "h39",
-  jobId: "e99f8391-1abc-4da6-98c4-6d1273c82c09", // Replace this value with existing id in your local db
-  companyId: "500c8dbd-ee35-44dc-92c9-a3598b9f9d63", // Replace this value with existing id in your local db
+  jobId,
+  companyId,
 };
 
 describe("USERS RESSOURCES", () => {
