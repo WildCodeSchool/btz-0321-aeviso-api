@@ -5,7 +5,16 @@ const app = require("../src/app");
 const prismaClient = require("../prismaClient");
 
 const companiesProperties = ["id", "name", "logoUrl", "createdAt", "updatedAt"];
-const projectProperties = ["id", "name", "description"];
+const projectProperties = [
+  "id",
+  "name",
+  "description",
+  "createdAt",
+  "updatedAt",
+  "companyId",
+  "code",
+  "taxation",
+];
 
 const randomCompany = async (property) => {
   const companies = await prismaClient.company.findMany();
@@ -114,13 +123,15 @@ describe("Companies CRUD", () => {
 
     expect(Array.isArray(res.body)).toBe(true);
 
-    if (res.body) {
-      res.body.forEach((project) => {
-        expect(project).toHaveProperty(projectProperties[1]);
-        expect(project).toHaveProperty(projectProperties[2]);
-        expect(project).toHaveProperty(projectProperties[3]);
-      });
-    }
+    res.body.forEach((project) => {
+      projectProperties.forEach((property) =>
+        expect(project).toHaveProperty(property)
+      );
+
+      expect(project.id).toMatch(
+        /^[0-9a-f]{8}\b-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-\b[0-9a-f]{12}$/
+      );
+    });
   });
 
   afterAll(async () => {
