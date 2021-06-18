@@ -1,5 +1,13 @@
 const prisma = require("../../../../prismaClient");
 
+/**
+ * POST /api/v1/projects
+ * @summary Create one project
+ * @tags projects
+ * @param {PostProject} request.body.required - Project info
+ * @return {DisplayProject} 201 - Project successfully created
+ */
+
 const post = async (req, res, next) => {
   const { name, description, code, taxation, companyId } = req.body;
   try {

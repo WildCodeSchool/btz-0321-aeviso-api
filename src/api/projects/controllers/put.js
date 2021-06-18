@@ -1,5 +1,14 @@
 const prisma = require("../../../../prismaClient");
 
+/**
+ * PUT /api/v1/projects/{id}
+ * @summary Update one project
+ * @tags projects
+ * @param {string} id.path - id of wanted project
+ * @param {CreateProject} request.body.required - Project infos to update
+ * @return {DisplayProject} 200 - Project successfully retrieved
+ */
+
 const put = async (req, res, next) => {
   const { id } = req.params;
   const { name, description, code, taxation } = req.body;
