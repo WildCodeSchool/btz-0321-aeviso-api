@@ -12,7 +12,11 @@ const login = async (req, res, next) => {
       res.status(401).json({ message: "Unknow User" });
     }
     delete user.password;
-    res.status(200).json({ user });
+    res.cookie("USER", user, {
+      maxAge: 900000,
+      httpOnly: true,
+    });
+    res.status(200).json({ message: "User Authenticated" });
   } catch (e) {
     res.status(400);
     next(e);
