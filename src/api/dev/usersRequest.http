@@ -13,7 +13,8 @@ content-type: application/json
     "email": "basi@test.fr",
     "role": "SUPERADMIN",
     "jobId": "e99f8391-1abc-4da6-98c4-6d1273c82c09",
-    "companyId": "38d375a9-68a6-43b6-8aff-e20ad4e66eff"
+    "companyId": "38d375a9-68a6-43b6-8aff-e20ad4e66eff",
+    "password": "superpassword"
 }
 
 ###
