@@ -1,5 +1,13 @@
 const prisma = require("../../../../prismaClient");
 
+/**
+ * GET /api/v1/jobs/{id}
+ * @summary View one job
+ * @tags jobs
+ * @param {string} id.path - id of wanted job
+ * @return {DisplayJob} 200 - Job successfully retrieved
+ */
+
 const getOne = async (req, res, next) => {
   const { id } = req.params;
   try {
