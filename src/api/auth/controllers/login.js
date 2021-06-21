@@ -1,3 +1,4 @@
+require("dotenv").config();
 const jwt = require("jsonwebtoken");
 const prisma = require("../../../../prismaClient");
 
@@ -15,7 +16,7 @@ const login = async (req, res, next) => {
     delete user.password;
     const token = jwt.sign(
       { email: user.email, role: user.role },
-      "RANDOM_TOKEN_SECRET", // For develop only. To deployment, use more crypted token)
+      process.env.SECRET,
       { expiresIn: "24h" }
     );
     res.cookie("TOKEN", token, {
