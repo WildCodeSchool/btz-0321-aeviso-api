@@ -1,6 +1,14 @@
 const errors = require("../../errors");
 const prisma = require("../../../../prismaClient");
 
+/**
+ * GET /api/v1/projects/{id}
+ * @summary View one project
+ * @tags projects
+ * @param {string} id.path - id of wanted project
+ * @return {DisplayProject} 200 - Project successfully retrieved
+ */
+
 const getOne = async (req, res, next) => {
   try {
     const result = await prisma.project.findUnique({

@@ -1,5 +1,13 @@
 const prisma = require("../../../../prismaClient");
 
+/**
+ * POST /api/v1/companies
+ * @summary Create one company
+ * @tags companies
+ * @param {PostCompany} request.body.required - Company info
+ * @return {DisplayCompany} 201 - Company successfully created
+ */
+
 module.exports = async (req, res, next) => {
   const { name, logoUrl } = req.body;
 
