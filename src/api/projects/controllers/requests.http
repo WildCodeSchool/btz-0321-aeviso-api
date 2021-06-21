@@ -7,5 +7,5 @@ GET  http://localhost:5000/api/v1/projects/81774add-0974-452b-9945-5d1ba0030b97/
 content-type: application/json
 
 ###
-GET  http://localhost:5000/api/v1/projects/81774add-0974-452b-9945-5d1ba0030b97?start=salut&end=cava HTTP/1.1
+GET  http://localhost:5000/api/v1/projects/7b4c4490-cce0-4c47-8cf9-b8baea0fed7f/records?start=2021-06-17T00:00:00.677Z&end=2021-06-18T00:00:00.677Z HTTP/1.1
 content-type: application/json
