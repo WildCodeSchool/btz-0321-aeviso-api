@@ -1,5 +1,13 @@
 const prisma = require("../../../../prismaClient");
 
+/**
+ * POST /api/v1/jobs
+ * @summary Create one job
+ * @tags jobs
+ * @param {PostJob} request.body.required - Job info
+ * @return {DisplayJob} 201 - Job successfully created
+ */
+
 const post = async (req, res, next) => {
   const { label } = req.body;
   try {

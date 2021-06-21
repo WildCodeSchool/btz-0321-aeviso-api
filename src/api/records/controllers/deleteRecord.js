@@ -1,5 +1,13 @@
 const prisma = require("../../../../prismaClient");
 
+/**
+ * DELETE /api/v1/records/{id}
+ * @summary Delete one record
+ * @tags records
+ * @param {string} id.path - id of wanted record
+ * @return {object} 204 - No content
+ */
+
 module.exports = async (req, res, next) => {
   const { id } = req.params;
 
