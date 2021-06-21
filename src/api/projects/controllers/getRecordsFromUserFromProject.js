@@ -1,14 +1,15 @@
 const prisma = require("../../../../prismaClient");
 
 const getRecordsFromUserFromProject = async (req, res, next) => {
-  const { id } = req.params;
+  const { userId, projectId } = req.params;
   try {
-    await prisma.project.findUnique({
+    const allRecords = await prisma.record.findMany({
       where: {
-        id,
+        projectId,
+        userId,
       },
     });
-    res.sendStatus(200);
+    res.status(200).json(allRecords);
   } catch (e) {
     res.status(404);
     next(e);

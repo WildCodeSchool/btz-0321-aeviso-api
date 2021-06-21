@@ -16,6 +16,6 @@ router.post("/", bodyValidator(projectsSchema), post);
 router.put("/:id", put);
 router.delete("/:id", deleteProject);
 
-router.get("/:id/users/:userId/records", getRecordsFromUserFromProject);
+router.get("/:projectId/users/:userId/records", getRecordsFromUserFromProject);
 
 module.exports = router;
