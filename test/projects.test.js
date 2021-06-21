@@ -13,7 +13,7 @@ const projectProperties = [
   "taxation",
 ];
 
-const companyId = "500c8dbd-ee35-44dc-92c9-a3598b9f9d63"; // Replace this value with existing id in your local db
+const companyId = "d3a0a404-5e64-450c-8aa1-1ca98cb7e141"; // Replace this value with existing id in your local db
 
 let firstProjectId;
 let secondProjectId;
@@ -142,7 +142,7 @@ describe("PROJECTS RESSOURCES", () => {
     }
   });
 
-  it("should respond 200 with one user", async () => {
+  it("should respond 200 with one project", async () => {
     const res = await request(app)
       .get(`/api/v1/projects/${firstProjectId}`)
       .expect(200)
@@ -169,12 +169,12 @@ describe("PROJECTS RESSOURCES", () => {
 
   it("should respond 404", async () => {
     await request(app)
-      .get("/api/v1/users/10")
+      .get("/api/v1/projects/10")
       .expect(404)
       .expect("Content-Type", /json/);
   });
 
-  it("should modify an user", async () => {
+  it("should modify an project", async () => {
     const payload = {
       name: "Jean",
     };
@@ -216,11 +216,11 @@ describe("PROJECTS RESSOURCES", () => {
       .expect("Content-Type", /json/);
   });
 
-  it("should delete an user", async () => {
+  it("should delete an project", async () => {
     await request(app).delete(`/api/v1/projects/${firstProjectId}`).expect(204);
   });
 
-  it("should delete an user", async () => {
+  it("should delete an project", async () => {
     await request(app)
       .delete(`/api/v1/projects/${secondProjectId}`)
       .expect(204);
@@ -228,7 +228,7 @@ describe("PROJECTS RESSOURCES", () => {
 
   it("should respond 404", async () => {
     await request(app)
-      .put("/api/v1/users/10")
+      .put("/api/v1/projects/10")
       .expect(404)
       .expect("Content-Type", /json/);
   });

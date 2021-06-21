@@ -8,12 +8,12 @@ POST http://localhost:5000/api/v1/users HTTP/1.1
 content-type: application/json
 
 {
-    "firstName": "Leo",
-    "lastName": "Lestrade",
-    "email": "leo@test.fr",
-    "role": "USER",
-    "jobId": "36e7672f-cb10-48a4-a775-6b145b9667-&",
-    "companyId": "e3dkkrkfd5-0ab9-42f6-jhkgl-f8262fde1fc3"
+    "firstName": "Basile",
+    "lastName": "Vernouillet",
+    "email": "basi@test.fr",
+    "role": "SUPERADMIN",
+    "jobId": "e99f8391-1abc-4da6-98c4-6d1273c82c09",
+    "companyId": "38d375a9-68a6-43b6-8aff-e20ad4e66eff"
 }
 
 ###
@@ -24,7 +24,7 @@ content-type: application/json
     "firstName": "Marc",
     "lastName": "Dupond",
     "email": "mar@test.fr",
-    "jobId": "e99f8391-1abc-4da6-98c4-6d1273c82c09"
+    "jobId": "5f57d0c8-5f87-4fb3-9238-3d53bbb73218"
 }
 
 ###

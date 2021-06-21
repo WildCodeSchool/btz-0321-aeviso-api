@@ -11,6 +11,34 @@ const userSchema = Joi.object({
   weeklyBasis: Joi.string(),
 });
 
+const companySchema = Joi.object({
+  name: Joi.string().required(),
+  logoUrl: Joi.string().uri(),
+});
+
+const companySchemaEdit = Joi.object({
+  name: Joi.string(),
+  logoUrl: Joi.string().uri(),
+});
+
+const recordSchema = Joi.object({
+  date: Joi.string().isoDate().required(),
+  timeslot: Joi.string().valid("MORNING", "AFTERNOON").required(),
+  userId: Joi.string()
+    .guid({ version: ["uuidv4"] })
+    .required(),
+  projectId: Joi.string()
+    .guid({ version: ["uuidv4"] })
+    .required(),
+  comment: Joi.string(),
+});
+
+const recordSchemaEdit = Joi.object({
+  date: Joi.string().isoDate(),
+  timeslot: Joi.string().valid("MORNING", "AFTERNOON"),
+  comment: Joi.string(),
+});
+
 const projectsSchema = Joi.object({
   name: Joi.string().required(),
   description: Joi.string(),
@@ -21,5 +49,9 @@ const projectsSchema = Joi.object({
 
 module.exports = {
   userSchema,
+  companySchema,
+  companySchemaEdit,
+  recordSchema,
+  recordSchemaEdit,
   projectsSchema,
 };
