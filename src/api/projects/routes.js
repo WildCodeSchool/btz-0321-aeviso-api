@@ -7,6 +7,8 @@ const put = require("./controllers/put");
 const bodyValidator = require("../../middlewares/bodyValidator");
 const { projectsSchema } = require("../../schemas");
 const getRecordsFromUserFromProject = require("./controllers/getRecordsFromUserFromProject");
+const createProjectUser = require("./controllers/createProjectUser");
+const deleteProjectUser = require("./controllers/deleteProjectUser");
 
 const router = express.Router();
 
@@ -17,5 +19,7 @@ router.put("/:id", put);
 router.delete("/:id", deleteProject);
 
 router.get("/:projectId/users/:userId/records", getRecordsFromUserFromProject);
+router.post("/:projectId/users/:userId", createProjectUser);
+router.delete("/:projectId/users/:userId", deleteProjectUser);
 
 module.exports = router;
