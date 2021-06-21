@@ -49,12 +49,12 @@ content-type: application/json
 }
 
 ###
-PUT http://localhost:5000/api/v1/users/6796e97a-9037-4507-b85c-10a00ed1ff57	 HTTP/1.1
+PUT http://localhost:5000/api/v1/users/991ecebd-47f2-42f5-954a-d98bcc049ed5	 HTTP/1.1
 content-type: application/json
 
 {
-    "role": "USER",
-    "password": "legrosRevas"
+    "role": "ADMIN",
+    "password": "KenyaAdriel"
 }
 //should disconnect company
 

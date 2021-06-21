@@ -6,7 +6,7 @@ const userSchema = Joi.object({
   email: Joi.string().email().required(),
   jobId: Joi.string().required(),
   companyId: Joi.string(),
-  password: Joi.string(),
+  password: Joi.string().required(),
   role: Joi.string(),
   weeklyBasis: Joi.string(),
 });
