@@ -54,6 +54,9 @@ const put = async (req, res, next) => {
         job,
       },
     });
+
+    delete user.password;
+
     res.status(200).json(user);
   } catch (e) {
     res.status(404);

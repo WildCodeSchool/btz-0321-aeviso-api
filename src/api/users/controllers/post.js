@@ -40,6 +40,9 @@ const post = async (req, res, next) => {
         },
       },
     });
+
+    delete user.password;
+
     res.status(201).json(user);
   } catch (e) {
     res.status(422);
