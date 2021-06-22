@@ -9,6 +9,9 @@ const deleteProject = require("./controllers/deleteproject");
 const post = require("./controllers/post");
 const put = require("./controllers/put");
 const { projectsSchema } = require("../../schemas");
+const getRecordsFromUserFromProject = require("./controllers/getRecordsFromUserFromProject");
+const createProjectUser = require("./controllers/createProjectUser");
+const deleteProjectUser = require("./controllers/deleteProjectUser");
 
 /**
  * A project (with id for output display)
@@ -36,13 +39,13 @@ const { projectsSchema } = require("../../schemas");
  */
 
 router.get("/", getAll);
-
 router.get("/:id", getOne);
-
 router.post("/", bodyValidator(projectsSchema), post);
-
 router.put("/:id", put);
-
 router.delete("/:id", deleteProject);
+
+router.get("/:projectId/users/:userId/records", getRecordsFromUserFromProject);
+router.post("/:projectId/users/:userId", createProjectUser);
+router.delete("/:projectId/users/:userId", deleteProjectUser);
 
 module.exports = router;
