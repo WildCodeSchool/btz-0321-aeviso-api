@@ -6,12 +6,9 @@ const getProjectsFromCompany = async (req, res, next) => {
     const allProjects = await prisma.company.findUnique({
       where: {
         id,
-      },
-      include: {
-        projects: true,
-      },
+      }.projects(),
     });
-    res.status(200).json(allProjects.projects);
+    res.status(200).json(allProjects);
   } catch (e) {
     res.status(404);
     next(e);

@@ -11,7 +11,7 @@ const createUserProject = async (req, res, next) => {
         projects: { connect: { id: projectId } },
       },
     });
-    res.sendStatus(201).json({ message: "done for me" });
+    res.sendStatus(204);
   } catch (e) {
     res.status(404);
     next(e);
