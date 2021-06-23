@@ -11,6 +11,8 @@ const deleteCompany = require("./controllers/deleteCompany");
 const { companySchema, companySchemaEdit } = require("../../schemas");
 const getProjectsFromCompany = require("./controllers/getProjectsFromCompany");
 
+const getAdmin = require("./controllers/admin");
+
 /**
  * A company (with id for output display)
  * @typedef {object} DisplayCompany
@@ -36,5 +38,7 @@ router.put("/:id", bodyValidator(companySchemaEdit), put);
 router.delete("/:id", deleteCompany);
 
 router.get("/:id/projects", getProjectsFromCompany);
+
+router.get("/:id/admin", getAdmin);
 
 module.exports = router;
