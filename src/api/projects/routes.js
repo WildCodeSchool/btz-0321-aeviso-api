@@ -12,6 +12,7 @@ const { projectsSchema } = require("../../schemas");
 const getRecordsFromUserFromProject = require("./controllers/getRecordsFromUserFromProject");
 const createProjectUser = require("./controllers/createProjectUser");
 const deleteProjectUser = require("./controllers/deleteProjectUser");
+const getRecordsFromOneProject = require("./controllers/getRecordsFromOneProject");
 
 /**
  * A project (with id for output display)
@@ -44,6 +45,7 @@ router.post("/", bodyValidator(projectsSchema), post);
 router.put("/:id", put);
 router.delete("/:id", deleteProject);
 
+router.get("/:projectId/records", getRecordsFromOneProject);
 router.get("/:projectId/users/:userId/records", getRecordsFromUserFromProject);
 router.post("/:projectId/users/:userId", createProjectUser);
 router.delete("/:projectId/users/:userId", deleteProjectUser);
