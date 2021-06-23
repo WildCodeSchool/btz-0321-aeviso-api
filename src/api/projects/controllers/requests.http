@@ -12,3 +12,6 @@ content-type: application/json
 
 ###
 GET http://192.168.172.214:5000/api/v1/projects/fa70f97e-2ab9-466c-a0c4-89dfd6433a8f/users HTTP/1.1
+
+###
+GET http://192.168.172.214:5000/api/v1/projects/fa70f97e-2ab9-466c-a0c4-89dfd6433a8f/users?start=1996-04-16T00:00:00.677Z&end=2030-06-18T00:00:00.677Z HTTP/1.1

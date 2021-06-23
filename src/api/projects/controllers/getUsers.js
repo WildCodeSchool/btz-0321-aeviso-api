@@ -3,11 +3,11 @@ const prisma = require("../../../../prismaClient");
 const getUsers = async (req, res) => {
   const { id } = req.params;
   const { start, end } = req.query;
-  const users = await prisma.project.findUnique({
+  const { users } = await prisma.project.findUnique({
     where: {
       id,
     },
-    include: {
+    select: {
       users: {
         select: {
           id: true,
