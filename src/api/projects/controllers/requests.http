@@ -3,9 +3,22 @@ content-type: application/json
 
 
 ###
-GET  http://localhost:5000/api/v1/projects/81774add-0974-452b-9945-5d1ba0030b97/users/1a55d3f3-3b17-43af-8cb6-be8335079c94/records HTTP/1.1
+GET  http://192.168.1.53:5000/api/v1/projects/fa70f97e-2ab9-466c-a0c4-89dfd6433a8f/users/1a55d3f3-3b17-43af-8cb6-be8335079c94/records HTTP/1.1
 content-type: application/json
 
 ###
-GET  http://localhost:5000/api/v1/projects/7b4c4490-cce0-4c47-8cf9-b8baea0fed7f/records?start=2021-06-17T00:00:00.677Z&end=2021-06-18T00:00:00.677Z HTTP/1.1
+GET  http://192.168.1.53:5000/api/v1/projects/fa70f97e-2ab9-466c-a0c4-89dfd6433a8f/users/6796e97a-9037-4507-b85c-10a00ed1ff5/records?start=2021-06-17T00:00:00.677Z&end=2021-06-18T00:00:00.677Z HTTP/1.1
 content-type: application/json
+
+###
+GET  http://192.168.172.214:5000/api/v1/projects/fa70f97e-2ab9-466c-a0c4-89dfd6433a8f/records?start=2000-06-17T00:00:00.677Z&end=2021-06-18T00:00:00.677Z HTTP/1.1
+content-type: application/json
+
+###
+GET http://192.168.1.53:5000/api/v1/projects/fa70f97e-2ab9-466c-a0c4-89dfd6433a8f/users HTTP/1.1
+
+###
+GET http://192.168.1.53:5000/api/v1/projects/fa70f97e-2ab9-466c-a0c4-89dfd6433a8f/users/991ecebd-47f2-42f5-954a-d98bcc049ed5/records?start=2021-06-18T00:00:00.677Z&end=2021-06-19T00:00:00.677Z HTTP/1.1
+
+//Matthias Home: 192.168.1.53
+//Matthias Wild: 192.168.172.214
