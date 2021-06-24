@@ -9,25 +9,6 @@ const errors = require("../../../errors");
  * @return {DisplayCompany} 200 - Admin successfully retrieved
  */
 
-// module.exports = async (req, res, next) => {
-//   const { id } = req.params;
-
-//   try {
-//     const user = await prisma.user.findFirst({
-//       where: {
-//         companyId: id,
-//         role: "ADMIN",
-//       },
-//     });
-
-//     res.status(200).json(user);
-//   } catch (error) {
-//     res.status(404);
-
-//     next(error);
-//   }
-// };
-
 module.exports = async (req, res, next) => {
   try {
     const { companyId } = req.params;
