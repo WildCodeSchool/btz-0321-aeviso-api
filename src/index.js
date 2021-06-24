@@ -10,7 +10,7 @@ app.listen(
   },
   () => {
     /* eslint-disable no-console */
-    console.log(`Listening: http://localhost:${port}`);
+    console.log(`Listening: http://${process.env.HOST}:${port}`);
     /* eslint-enable no-console */
   }
 );
