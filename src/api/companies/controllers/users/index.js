@@ -2,11 +2,11 @@ const prisma = require("../../../../../prismaClient");
 const errors = require("../../../errors");
 
 /**
- * GET /api/v1/companies/{id}/admin
- * @summary View company's admin
+ * GET /api/v1/companies/{id}/users
+ * @summary View company's users
  * @tags companies
  * @param {string} id.path - id of wanted company
- * @return {DisplayCompany} 200 - Admin successfully retrieved
+ * @return {DisplayCompany} 200 - Users successfully retrieved
  */
 
 module.exports = async (req, res, next) => {
