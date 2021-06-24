@@ -1,9 +1,17 @@
 const app = require("./app");
+require("dotenv").config();
 
 const port = process.env.PORT || 5000;
+const host = process.env.HOST || "localhost";
 
-app.listen(port, () => {
-  /* eslint-disable no-console */
-  console.log(`Listening: http://localhost:${port}`);
-  /* eslint-enable no-console */
-});
+app.listen(
+  {
+    host: process.env.HOST,
+    port,
+  },
+  () => {
+    /* eslint-disable no-console */
+    console.log(`Listening: http://${host}:${port}`);
+    /* eslint-enable no-console */
+  }
+);

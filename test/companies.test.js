@@ -5,6 +5,16 @@ const app = require("../src/app");
 const prismaClient = require("../prismaClient");
 
 const companiesProperties = ["id", "name", "logoUrl", "createdAt", "updatedAt"];
+const projectProperties = [
+  "id",
+  "name",
+  "description",
+  "createdAt",
+  "updatedAt",
+  "companyId",
+  "code",
+  "taxation",
+];
 
 const randomCompany = async (property) => {
   const companies = await prismaClient.company.findMany();
@@ -103,9 +113,29 @@ describe("Companies CRUD", () => {
       .delete(`/api/v1/companies/${createdCompany.id}`)
       .expect(204);
   });
-});
 
-afterAll(async () => {
-  // noinspection JSUnresolvedFunction
-  await prismaClient.$disconnect();
+  it("should be an array of projects from one company and respond with status 200", async () => {
+    const res = await request(app)
+      .get(`/api/v1/companies/${await randomCompany("id")}/projects`)
+      .set("Accept", "application/json")
+      .expect(200)
+      .expect("Content-Type", /json/);
+
+    expect(Array.isArray(res.body)).toBe(true);
+
+    res.body.forEach((project) => {
+      projectProperties.forEach((property) =>
+        expect(project).toHaveProperty(property)
+      );
+
+      expect(project.id).toMatch(
+        /^[0-9a-f]{8}\b-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-\b[0-9a-f]{12}$/
+      );
+    });
+  });
+
+  afterAll(async () => {
+    // noinspection JSUnresolvedFunction
+    await prismaClient.$disconnect();
+  });
 });

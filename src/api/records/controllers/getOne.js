@@ -1,5 +1,13 @@
 const prisma = require("../../../../prismaClient");
 
+/**
+ * GET /api/v1/records/{id}
+ * @summary View one record
+ * @tags records
+ * @param {string} id.path - id of wanted record
+ * @return {DisplayRecord} 200 - Record successfully retrieved
+ */
+
 module.exports = async (req, res, next) => {
   const { id } = req.params;
 

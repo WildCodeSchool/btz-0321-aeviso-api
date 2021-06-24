@@ -8,7 +8,8 @@
     "start": "node src/index.js",
     "dev": "nodemon src/index.js",
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
-    "test": "jest"
+    "test": "jest",
+    "migrate:reset": "prisma migrate reset"
   },
   "keywords": [],
   "author": "CJ R. <cj@null.computer> (https://w3cj.now.sh)",
@@ -24,6 +25,7 @@
     "cors": "^2.8.5",
     "dotenv": "^10.0.0",
     "express": "^4.17.1",
+    "express-jsdoc-swagger": "^1.6.2",
     "helmet": "^4.6.0",
     "joi": "^17.4.0",
     "jsonwebtoken": "^8.5.1",

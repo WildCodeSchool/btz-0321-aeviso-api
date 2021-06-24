@@ -1,6 +1,13 @@
 const errors = require("../../errors");
 const prisma = require("../../../../prismaClient");
 
+/**
+ * GET /api/v1/users/{id}
+ * @summary View one user
+ * @tags users
+ * @param {string} id.path - id of wanted user
+ * @return {DisplayUser} 200 - User successfully retrieved
+ */
 const getOne = async (req, res, next) => {
   try {
     const result = await prisma.user.findUnique({

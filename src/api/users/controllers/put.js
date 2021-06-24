@@ -1,6 +1,14 @@
 const bcrypt = require("bcrypt");
 const prisma = require("../../../../prismaClient");
 
+/**
+ * PUT /api/v1/users/{id}
+ * @summary Update one user
+ * @tags users
+ * @param {string} id.path - id of wanted user
+ * @param {CreateUser} request.body.required - User infos to update
+ * @return {DisplayUser} 200 - User successfully retrieved
+ */
 const put = async (req, res, next) => {
   let company;
   let job;
