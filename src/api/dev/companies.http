@@ -33,3 +33,6 @@ Content-Type:  application/json
 ###
 GET http://localhost:5000/api/v1/companies/38d375a9-68a6-43b6-8aff-e20ad4e66eff/admin
 Content-Type: application/json
+
+###
+GET http://localhost:5000/api/v1/companies/83bb3718-a1de-47e2-8f67-43133ae41a2b/users?role=ADMIN&createdAt=asc

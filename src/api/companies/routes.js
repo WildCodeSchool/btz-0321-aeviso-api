@@ -11,7 +11,7 @@ const deleteCompany = require("./controllers/deleteCompany");
 const { companySchema, companySchemaEdit } = require("../../schemas");
 const getProjectsFromCompany = require("./controllers/getProjectsFromCompany");
 
-const getAdmin = require("./controllers/admin");
+const getUsers = require("./controllers/users");
 
 /**
  * A company (with id for output display)
@@ -39,6 +39,6 @@ router.delete("/:id", deleteCompany);
 
 router.get("/:id/projects", getProjectsFromCompany);
 
-router.get("/:id/admin", getAdmin);
+router.get("/:id/users", getUsers);
 
 module.exports = router;
