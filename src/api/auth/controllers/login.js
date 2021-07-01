@@ -30,9 +30,10 @@ const login = async (req, res, next) => {
       { expiresIn: "24h" }
     );
 
-    res.cookie("TOKEN", token, {
-      maxAge: 900000,
+    res.cookie("token", token, {
+      maxAge: 86_400_000,
       httpOnly: true,
+      secure: process.env.NODE_ENV !== "development",
     });
 
     return res.status(200).json({ message: "User Authenticated", user });

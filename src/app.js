@@ -19,7 +19,12 @@ if (process.env.NODE_ENV !== "test") {
 }
 
 app.use(helmet());
-app.use(cors());
+app.use(
+  cors({
+    credentials: true,
+    origin: process.env.CLIENT,
+  })
+);
 app.use(express.json());
 app.use(cookieParser());
 
