@@ -8,12 +8,12 @@ POST http://localhost:5000/api/v1/users HTTP/1.1
 content-type: application/json
 
 {
-    "firstName": "Matthias",
-    "lastName": "Wanner",
-    "email": "matt@test.fr",
+    "firstName": "Estelle",
+    "lastName": "Chabat",
+    "email": "chabz@test.fr",
     "role": "SUPERADMIN",
-    "password": "pass",
-    "jobId": "83c5a710-4cf6-421a-8334-3dc3d6adb178"
+    "password": "passs",
+    "jobId": "7bbeed90-1787-4165-8a46-cf536c94f1e0"
 }
 
 ###
