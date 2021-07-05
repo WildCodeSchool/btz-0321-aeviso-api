@@ -4,155 +4,118 @@ const faker = require("faker");
 const prisma = new PrismaClient();
 
 async function main() {
-  const companies = [
-    {
-      name: faker.company.companyName(),
-      logoUrl: faker.internet.avatar(),
-    },
-    {
-      name: faker.company.companyName(),
-      logoUrl: faker.internet.avatar(),
-    },
-  ];
+  const companies = new Array(5).fill("").map(() => ({
+    name: faker.company.companyName(),
+    logoUrl: faker.internet.avatar(),
+    users: new Array(10).fill("").map((_, i) => ({
+      firstName: faker.name.firstName(),
+      lastName: faker.name.lastName(),
+      email: faker.internet.email(),
+      role: i === 0 ? "ADMIN" : "USER",
+    })),
+  }));
+  const jobs = new Array(5).fill("").map(() => ({
+    label: faker.name.jobTitle(),
+  }));
+  const projects = new Array(25).fill("").map(() => ({
+    name: faker.name.findName(),
+    description: faker.lorem.text(),
+    code: faker.lorem.word(),
+  }));
 
-  const createdCompanies = await Promise.all(
-    companies.map((company) => {
-      return prisma.company.create({
-        data: company,
-      });
-    })
-  );
+  const records = new Array(500).fill("").map(() => ({
+    timeslot: Math.random() > 0.5 ? "MORNING" : "AFTERNOON",
+    comment: faker.lorem.text(15),
+    date: faker.date.recent(30, new Date()),
+  }));
 
-  const jobs = [
-    {
-      label: faker.name.jobTitle(),
-    },
-    {
-      label: faker.name.jobTitle(),
-    },
-    {
-      label: faker.name.jobTitle(),
-    },
-  ];
-
-  const createdJob = await Promise.all(
-    jobs.map((job) => {
+  const createdJobs = await Promise.all(
+    jobs.map((j) => {
       return prisma.job.create({
-        data: job,
+        data: j,
       });
     })
   );
-
-  const users = [
-    {
-      firstName: faker.name.firstName(),
-      lastName: faker.name.lastName(),
-      email: faker.internet.email(),
-      role: "USER",
-    },
-    {
-      firstName: faker.name.firstName(),
-      lastName: faker.name.lastName(),
-      email: faker.internet.email(),
-      role: "ADMIN",
-    },
-    {
-      firstName: faker.name.firstName(),
-      lastName: faker.name.lastName(),
-      email: faker.internet.email(),
-      role: "SUPERADMIN",
-    },
-  ];
-  const createdUsers = await Promise.all(
-    users.map((user) => {
-      return prisma.user.create({
-        data: {
-          ...user,
-          job: {
-            connect: {
-              id: createdJob[Math.floor(Math.random() * createdJob.length)].id,
-            },
-          },
-          company: {
-            connect: {
-              id: createdCompanies[
-                Math.floor(Math.random() * createdCompanies.length)
-              ].id,
-            },
-          },
-        },
-      });
-    })
-  );
-
-  const projects = [
-    {
-      name: faker.name.findName(),
-      description: faker.lorem.text(),
-      code: faker.lorem.word(),
-    },
-    {
-      name: faker.name.findName(),
-      description: faker.lorem.text(),
-      code: faker.lorem.word(),
-    },
-    {
-      name: faker.name.findName(),
-      description: faker.lorem.text(),
-      code: faker.lorem.word(),
-    },
-  ];
-  const createdProjects = await Promise.all(
-    projects.map((project) => {
-      return prisma.project.create({
-        data: {
-          ...project,
-          company: {
-            connect: {
-              id: createdCompanies[
-                Math.floor(Math.random() * createdCompanies.length)
-              ].id,
-            },
-          },
-        },
-      });
-    })
-  );
-
-  const records = [
-    {
-      timeslot: "MORNING",
-      comment: faker.lorem.text(),
-      date: faker.datatype.datetime(),
-    },
-    {
-      timeslot: "AFTERNOON",
-      comment: faker.lorem.text(),
-      date: faker.datatype.datetime(),
-    },
-    {
-      timeslot: "MORNING",
-      comment: faker.lorem.text(),
-      date: faker.datatype.datetime(),
-    },
-  ];
 
   await Promise.all(
-    records.map((record) => {
-      return prisma.record.create({
+    companies.map((c, i) => {
+      return prisma.company.create({
         data: {
-          ...record,
-          user: {
-            connect: {
-              id: createdUsers[Math.floor(Math.random() * createdUsers.length)]
-                .id,
+          name: c.name,
+          logoUrl: c.logoUrl,
+          users: {
+            createMany: {
+              data: c.users.map((u) => ({
+                ...u,
+                jobId:
+                  createdJobs[Math.floor(Math.random() * createdJobs.length)]
+                    .id,
+              })),
             },
           },
-          project: {
-            connect: {
-              id: createdProjects[
-                Math.floor(Math.random() * createdProjects.length)
-              ].id,
+          projects: {
+            createMany: {
+              data: projects.slice(
+                i * companies.length,
+                i * companies.length + 5
+              ),
+            },
+          },
+        },
+      });
+    })
+  );
+
+  // const usersFromDB = await prisma.user.findMany();
+
+  const companiesFromDB = await prisma.company.findMany({
+    include: {
+      users: true,
+      projects: true,
+    },
+  });
+
+  await Promise.all(
+    companiesFromDB.flatMap((c) => {
+      return c.users.map((u) => {
+        return prisma.user.update({
+          data: {
+            projects: {
+              connect: {
+                id: c.projects[Math.floor(Math.random() * c.projects.length)]
+                  .id,
+              },
+            },
+          },
+          where: {
+            id: u.id,
+          },
+        });
+      });
+    })
+  );
+
+  const usersWithProjects = await prisma.user.findMany({
+    include: {
+      projects: true,
+    },
+  });
+
+  await Promise.all(
+    usersWithProjects.map((u, i) => {
+      return prisma.user.update({
+        where: {
+          id: u.id,
+        },
+        data: {
+          records: {
+            createMany: {
+              data: records
+                .slice(i * 10, i * 10 + Math.floor(Math.random() * 13))
+                .map((r) => ({
+                  ...r,
+                  projectId: u.projects[0].id,
+                })),
             },
           },
         },

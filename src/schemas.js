@@ -6,7 +6,17 @@ const userSchema = Joi.object({
   email: Joi.string().email().required(),
   jobId: Joi.string().required(),
   companyId: Joi.string(),
-  password: Joi.string(),
+  password: Joi.string().required(),
+  role: Joi.string(),
+  weeklyBasis: Joi.string(),
+});
+
+const putUserSchema = Joi.object({
+  firstName: Joi.string().required(),
+  lastName: Joi.string().required(),
+  email: Joi.string().email().required(),
+  jobId: Joi.string().required(),
+  companyId: Joi.string(),
   role: Joi.string(),
   weeklyBasis: Joi.string(),
 });
@@ -47,11 +57,18 @@ const projectsSchema = Joi.object({
   taxation: Joi.string(),
 });
 
+const authSchema = Joi.object({
+  email: Joi.string().required(),
+  password: Joi.string().required(),
+});
+
 module.exports = {
   userSchema,
+  putUserSchema,
   companySchema,
   companySchemaEdit,
   recordSchema,
   recordSchemaEdit,
   projectsSchema,
+  authSchema,
 };

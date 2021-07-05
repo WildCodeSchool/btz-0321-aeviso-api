@@ -1,3 +1,4 @@
+const bcrypt = require("bcrypt");
 const prisma = require("../../../../prismaClient");
 
 /**
@@ -19,6 +20,9 @@ const post = async (req, res, next) => {
     companyId,
     jobId,
   } = req.body;
+
+  const hashedPassword = bcrypt.hashSync(password, 10);
+
   try {
     if (companyId) {
       company = {
@@ -32,7 +36,7 @@ const post = async (req, res, next) => {
         firstName,
         lastName,
         email,
-        password,
+        password: hashedPassword,
         role,
         weeklyBasis,
         company,
@@ -43,6 +47,9 @@ const post = async (req, res, next) => {
         },
       },
     });
+
+    delete user.password;
+
     res.status(201).json(user);
   } catch (e) {
     res.status(422);

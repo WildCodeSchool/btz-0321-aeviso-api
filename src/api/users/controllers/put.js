@@ -12,16 +12,8 @@ const put = async (req, res, next) => {
   let company;
   let job;
   const { id } = req.params;
-  const {
-    firstName,
-    lastName,
-    email,
-    password,
-    role,
-    weeklyBasis,
-    companyId,
-    jobId,
-  } = req.body;
+  const { firstName, lastName, email, role, weeklyBasis, companyId, jobId } =
+    req.body;
 
   try {
     if (companyId) {
@@ -51,13 +43,15 @@ const put = async (req, res, next) => {
         firstName,
         lastName,
         email,
-        password,
         role,
         weeklyBasis,
         company,
         job,
       },
     });
+
+    delete user.password;
+
     res.status(200).json(user);
   } catch (e) {
     res.status(404);
