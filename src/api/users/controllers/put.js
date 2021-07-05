@@ -12,20 +12,9 @@ const prisma = require("../../../../prismaClient");
 const put = async (req, res, next) => {
   let company;
   let job;
-  let hashedPassword;
   const { id } = req.params;
-  const {
-    firstName,
-    lastName,
-    email,
-    password,
-    role,
-    weeklyBasis,
-    companyId,
-    jobId,
-  } = req.body;
-
-  if (password) hashedPassword = bcrypt.hashSync(password, 10);
+  const { firstName, lastName, email, role, weeklyBasis, companyId, jobId } =
+    req.body;
 
   try {
     if (companyId) {
@@ -55,7 +44,6 @@ const put = async (req, res, next) => {
         firstName,
         lastName,
         email,
-        password: hashedPassword,
         role,
         weeklyBasis,
         company,
