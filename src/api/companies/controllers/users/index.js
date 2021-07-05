@@ -12,14 +12,16 @@ const errors = require("../../../errors");
 module.exports = async (req, res, next) => {
   try {
     const { companyId } = req.params;
-    const { role, orderBy } = req.query;
+    const { role, by, order } = req.query;
 
     const users = await prisma.user.findMany({
       where: {
         companyId,
         role: role.toUpperCase(),
       },
-      orderBy,
+      orderBy: {
+        [by]: order,
+      },
     });
 
     if (!users.length) {
