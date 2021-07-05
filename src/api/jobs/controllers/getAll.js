@@ -1,5 +1,12 @@
 const prisma = require("../../../../prismaClient");
 
+/**
+ * GET /api/v1/jobs
+ * @summary View all jobs
+ * @tags jobs
+ * @return {array<DisplayJob>} 200 - Job list successfully retrieved
+ */
+
 const getAll = async (req, res, next) => {
   const limit = +req.query.limit;
   try {

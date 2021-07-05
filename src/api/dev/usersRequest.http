@@ -1,19 +1,19 @@
 GET http://localhost:5000/api/v1/users HTTP/1.1
 
 ###
-GET http://localhost:5000/api/v1/users/667b8049-9915-40a1-a26c-1544e7503e93 HTTP/1.1
+GET http://localhost:5000/api/v1/users/4e54a598-3997-40b8-bb29-fe5908f98dea HTTP/1.1
 
 ###
 POST http://localhost:5000/api/v1/users HTTP/1.1
 content-type: application/json
 
 {
-    "firstName": "Basile",
-    "lastName": "Vernouillet",
-    "email": "basi@test.fr",
+    "firstName": "Matthias",
+    "lastName": "Wanner",
+    "email": "matt@test.fr",
     "role": "SUPERADMIN",
-    "jobId": "e99f8391-1abc-4da6-98c4-6d1273c82c09",
-    "companyId": "38d375a9-68a6-43b6-8aff-e20ad4e66eff"
+    "password": "pass",
+    "jobId": "83c5a710-4cf6-421a-8334-3dc3d6adb178"
 }
 
 ###
@@ -75,4 +75,11 @@ DELETE http://localhost:5000/api/v1/users/2 HTTP/1.1
 
 ###
 DELETE http://localhost:5000/api/v1/users/9944d537-435b-4504-bb0e-766430ba2b26 HTTP/1.1
+
+###
+POST http://localhost:5000/api/v1/users/fedf4d52-1c95-4b0a-b955-db19d79fe166/projects/0e9dbd62-a489-47ea-9f10-39f578c1a568
+
+###
+DELETE http://localhost:5000/api/v1/users/fedf4d52-1c95-4b0a-b955-db19d79fe166/projects/0e9dbd62-a489-47ea-9f10-39f578c1a568
+//should update(delete) the project of user ID 
 

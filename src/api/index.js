@@ -1,5 +1,6 @@
 const express = require("express");
 
+const auth = require("./auth/routes");
 const companies = require("./companies/routes");
 const users = require("./users/routes");
 const jobs = require("./jobs/routes");
@@ -14,6 +15,7 @@ router.get("/", (req, res) => {
   });
 });
 
+router.use("/auth", auth);
 router.use("/companies", companies);
 router.use("/users", users);
 router.use("/records", records);
