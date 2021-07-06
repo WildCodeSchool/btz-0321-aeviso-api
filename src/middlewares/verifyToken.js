@@ -19,7 +19,7 @@ module.exports = async function verifyToken(req, res, next) {
 
     delete user.password;
 
-    next();
+    return next();
   } catch (err) {
     res.status(401);
 
