@@ -17,6 +17,7 @@ const getUsers = async (req, res, next) => {
         lastName: true,
         weeklyBasis: true,
         jobId: true,
+        email: true,
       },
     });
     return res.status(200).json(users);
