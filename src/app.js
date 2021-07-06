@@ -7,6 +7,7 @@ const expressJSDocSwagger = require("express-jsdoc-swagger");
 
 require("dotenv").config();
 
+const verifyToken = require("./middlewares/verifyToken");
 const errors = require("./middlewares/errors");
 const api = require("./api");
 const options = require("./swaggerOptions");
@@ -33,6 +34,8 @@ app.get("/", (req, res) => {
     message: "🦄🌈✨👋🌎🌍🌏✨🌈🦄",
   });
 });
+
+app.use(verifyToken);
 
 app.use("/api/v1", api);
 
