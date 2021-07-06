@@ -11,6 +11,16 @@ const userSchema = Joi.object({
   weeklyBasis: Joi.string(),
 });
 
+const putUserSchema = Joi.object({
+  firstName: Joi.string().required(),
+  lastName: Joi.string().required(),
+  email: Joi.string().email().required(),
+  jobId: Joi.string().required(),
+  companyId: Joi.string(),
+  role: Joi.string(),
+  weeklyBasis: Joi.string(),
+});
+
 const companySchema = Joi.object({
   name: Joi.string().required(),
   logoUrl: Joi.string().uri(),
@@ -54,6 +64,7 @@ const authSchema = Joi.object({
 
 module.exports = {
   userSchema,
+  putUserSchema,
   companySchema,
   companySchemaEdit,
   recordSchema,
