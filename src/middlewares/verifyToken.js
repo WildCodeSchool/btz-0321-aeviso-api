@@ -1,5 +1,4 @@
 const jwt = require("jsonwebtoken");
-const prisma = require("../../prismaClient");
 
 module.exports = async function verifyToken(req, res, next) {
   try {
@@ -9,15 +8,7 @@ module.exports = async function verifyToken(req, res, next) {
       throw new Error("You need to login.");
     }
 
-    const { email } = await jwt.verify(token, process.env.SECRET);
-
-    const user = await prisma.user.findUnique({
-      where: {
-        email,
-      },
-    });
-
-    delete user.password;
+    req.user = await jwt.verify(token, process.env.SECRET);
 
     return next();
   } catch (err) {
