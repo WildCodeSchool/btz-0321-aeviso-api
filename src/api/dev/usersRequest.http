@@ -8,6 +8,13 @@ POST http://localhost:5000/api/v1/users HTTP/1.1
 content-type: application/json
 
 {
+    "firstName": "Aer",
+    "lastName": "yle",
+    "email": "aeryle@aeryle.fr",
+    "role": "SUPERADMIN",
+    "password": "pass",
+    "jobId": "0faed827-d4ee-495a-a50a-b074c05b5bb7"
+
     "firstName": "Estelle",
     "lastName": "Chabat",
     "email": "chabz@test.fr",
@@ -94,5 +101,4 @@ POST http://localhost:5000/api/v1/users/fedf4d52-1c95-4b0a-b955-db19d79fe166/pro
 
 ###
 DELETE http://localhost:5000/api/v1/users/fedf4d52-1c95-4b0a-b955-db19d79fe166/projects/0e9dbd62-a489-47ea-9f10-39f578c1a568
-//should update(delete) the project of user ID 
-
+//should update(delete) the project of user ID

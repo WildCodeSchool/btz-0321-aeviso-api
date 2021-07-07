@@ -1,24 +1,27 @@
-require("dotenv").config();
-const jwt = require("jsonwebtoken");
 const prisma = require("../../../../prismaClient");
 
 const me = async (req, res, next) => {
-  const { token } = req.cookies;
-  if (!token) {
-    return res.status(401).json({ message: "You need to Login" });
-  }
   try {
-    const { email } = await jwt.verify(token, process.env.SECRET);
     const user = await prisma.user.findUnique({
       where: {
-        email,
+        email: req.user.email,
       },
     });
+
     delete user.password;
-    return res.status(200).json({ message: "User authenticated", user });
-  } catch (err) {
-    res.status(500);
-    return next(err);
+
+    if (!user) {
+      res.status(401);
+
+      throw new Error("Unknown user.");
+    }
+
+    return res.status(200).json({ user });
+  } catch (e) {
+    res.status(401);
+
+    return next(e);
   }
 };
+
 module.exports = me;
