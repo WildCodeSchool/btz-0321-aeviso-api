@@ -20,7 +20,7 @@ const me = async (req, res, next) => {
   } catch (e) {
     res.status(401);
 
-    next(e);
+    return next(e);
   }
 };
 
