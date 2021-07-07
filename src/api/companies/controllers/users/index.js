@@ -17,7 +17,7 @@ module.exports = async (req, res, next) => {
     const users = await prisma.user.findMany({
       where: {
         companyId,
-        role: role.toUpperCase(),
+        role: role?.toUpperCase(),
       },
       orderBy: {
         [by]: order,
@@ -26,7 +26,7 @@ module.exports = async (req, res, next) => {
 
     if (!users.length) {
       res.status(404);
-      throw new Error(errors.users[404]);
+      throw new Error(errors.users[404].message);
     }
 
     return res.status(200).json(users);
