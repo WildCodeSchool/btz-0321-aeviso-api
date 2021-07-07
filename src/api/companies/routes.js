@@ -39,6 +39,6 @@ router.delete("/:id", deleteCompany);
 
 router.get("/:id/projects", getProjectsFromCompany);
 
-router.get("/:companyId/users", getUsers);
+router.get("/:id/users", getUsers);
 
 module.exports = router;
