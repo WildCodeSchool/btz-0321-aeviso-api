@@ -1,5 +1,3 @@
-require("dotenv").config();
-
 const login = (req, res, next) => {
   try {
     if (!req.cookies?.token) {
