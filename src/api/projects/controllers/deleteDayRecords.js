@@ -14,6 +14,9 @@ module.exports = async (req, res, next) => {
   const { projectId, userId } = req.params;
   const { date } = req.query;
 
+  if (!projectId || !userId)
+    throw new Error({ message: "Check url parameters" });
+
   if (!date) throw new Error({ message: "Date must be specified" });
 
   const end = new Date(date);
