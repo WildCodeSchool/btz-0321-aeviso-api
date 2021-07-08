@@ -1,4 +1,6 @@
 const express = require("express");
+
+const { user, admin, superadmin } = require("../../utils/roles");
 const bodyValidator = require("../../middlewares/bodyValidator");
 
 const router = express.Router();
@@ -35,10 +37,10 @@ const { recordSchema, recordSchemaEdit } = require("../../schemas");
  * @property {string} updatedAt - ""
  */
 
-router.get("/", getAll);
-router.get("/:id", getOne);
-router.post("/", bodyValidator(recordSchema), post);
-router.put("/:id", bodyValidator(recordSchemaEdit), put);
-router.delete("/:id", deleteRecord);
+router.get("/", superadmin(), getAll);
+router.get("/:id", superadmin(), getOne);
+router.post("/", superadmin(), bodyValidator(recordSchema), post);
+router.put("/:id", superadmin(), bodyValidator(recordSchemaEdit), put);
+router.delete("/:id", superadmin(), deleteRecord);
 
 module.exports = router;

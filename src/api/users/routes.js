@@ -1,4 +1,6 @@
 const express = require("express");
+
+const { user, admin, superadmin } = require("../../utils/roles");
 const bodyValidator = require("../../middlewares/bodyValidator");
 
 const router = express.Router();
@@ -36,13 +38,12 @@ const deleteUserProject = require("./controllers/deleteUserProject");
  * @property {string} weeklyBasis - "h35"
  */
 
-router.get("/", getAll);
-router.get("/:id", getOne);
-router.post("/", bodyValidator(userSchema), post);
-router.put("/:id", put);
-router.delete("/:id", deleteUser);
-
-router.post("/:userId/projects/:projectId", createUserProject);
-router.delete("/:userId/projects/:projectId", deleteUserProject);
+router.get("/", superadmin(), getAll);
+router.get("/:id", user(), getOne);
+router.post("/", superadmin(), bodyValidator(userSchema), post);
+router.put("/:id", superadmin(), put);
+router.delete("/:id", superadmin(), deleteUser);
+router.post("/:userId/projects/:projectId", superadmin(), createUserProject);
+router.delete("/:userId/projects/:projectId", superadmin(), deleteUserProject);
 
 module.exports = router;
