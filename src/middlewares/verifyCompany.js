@@ -26,6 +26,8 @@ const verifyCompany = async (req, res, next) => {
 
     return next();
   } catch (error) {
+    res.status(403);
+
     return next(error);
   }
 };
