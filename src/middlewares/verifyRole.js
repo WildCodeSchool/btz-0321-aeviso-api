@@ -1,6 +1,6 @@
 const verifyRole =
   (...restRoles) =>
-  async (req, res, next) => {
+  (req, res, next) => {
     try {
       const { role } = req.user;
 
@@ -14,8 +14,6 @@ const verifyRole =
 
       return next();
     } catch (error) {
-      res.status(422);
-
       return next(error);
     }
   };

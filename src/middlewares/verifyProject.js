@@ -38,15 +38,13 @@ const verifyProject = async (req, res, next) => {
     }
 
     if (!user || !project) {
-      res.status(401);
+      res.status(403);
 
       throw new Error("You do not belong to this project.");
     }
 
     return next();
   } catch (error) {
-    res.status(422);
-
     return next(error);
   }
 };

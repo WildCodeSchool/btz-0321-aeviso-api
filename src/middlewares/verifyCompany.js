@@ -19,15 +19,13 @@ const verifyCompany = async (req, res, next) => {
     });
 
     if (!user || user.companyId !== id) {
-      res.status(401);
+      res.status(403);
 
       throw new Error("You do not belong to this company.");
     }
 
     return next();
   } catch (error) {
-    res.status(422);
-
     return next(error);
   }
 };
