@@ -1,6 +1,4 @@
-require("dotenv").config();
-
-const login = (req, res, next) => {
+const logout = (req, res, next) => {
   try {
     if (!req.cookies?.token) {
       return res.status(403).json({ message: "User not logged in." });
@@ -16,4 +14,4 @@ const login = (req, res, next) => {
   }
 };
 
-module.exports = login;
+module.exports = logout;

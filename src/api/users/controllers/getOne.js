@@ -14,15 +14,10 @@ const getOne = async (req, res, next) => {
       where: {
         id: req.params.id,
       },
-      select: {
-        id: true,
-        firstName: true,
-        lastName: true,
-        email: true,
-        role: true,
-        weeklyBasis: true,
-      },
     });
+
+    delete result.password;
+
     if (result) res.status(200).json(result);
     else res.status(404).json(errors.users[404]);
   } catch (e) {

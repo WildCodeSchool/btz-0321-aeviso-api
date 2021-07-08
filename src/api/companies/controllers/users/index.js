@@ -11,21 +11,22 @@ const errors = require("../../../errors");
 
 module.exports = async (req, res, next) => {
   try {
-    const { companyId } = req.params;
-    const { role, createdAt } = req.query;
+    const { id } = req.params;
+    const { role, by, order } = req.query;
 
     const users = await prisma.user.findMany({
       where: {
-        companyId,
+        companyId: id,
         role: role.toUpperCase(),
       },
       orderBy: {
-        createdAt,
+        [by]: order,
       },
     });
 
-    if (!users) {
-      return res.status(404).json(errors.users[404]);
+    if (!users.length) {
+      res.status(404);
+      throw new Error(errors.users[404].message);
     }
 
     return res.status(200).json(users);
