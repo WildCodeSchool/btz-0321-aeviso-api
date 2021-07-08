@@ -14,6 +14,7 @@ const createProjectUser = require("./controllers/createProjectUser");
 const deleteProjectUser = require("./controllers/deleteProjectUser");
 const getRecordsFromOneProject = require("./controllers/getRecordsFromOneProject");
 const getUsers = require("./controllers/getUsers");
+const deleteDayRecords = require("./controllers/deleteDayRecords");
 
 /**
  * A project (with id for output display)
@@ -51,5 +52,6 @@ router.get("/:id/users", getUsers);
 router.get("/:projectId/users/:userId/records", getRecordsFromUserFromProject);
 router.post("/:projectId/users/:userId", createProjectUser);
 router.delete("/:projectId/users/:userId", deleteProjectUser);
+router.delete("/:projectId/users/:userId/records", deleteDayRecords);
 
 module.exports = router;

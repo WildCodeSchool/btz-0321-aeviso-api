@@ -9,6 +9,7 @@ const prisma = require("../../../../prismaClient");
  */
 
 module.exports = async (req, res, next) => {
+  const { projectId, userId } = req.params;
   const { date } = req.query;
 
   if (!date) throw new Error({ message: "Date must be specified" });
@@ -18,7 +19,7 @@ module.exports = async (req, res, next) => {
 
   try {
     await prisma.record.deleteMany({
-      where: { date: { gt: date, lt: end.toISOString() } },
+      where: { userId, projectId, date: { gt: date, lt: end.toISOString() } },
     });
 
     res.sendStatus(204);

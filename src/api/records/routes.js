@@ -9,7 +9,6 @@ const post = require("./controllers/post");
 const put = require("./controllers/put");
 const deleteRecord = require("./controllers/deleteRecord");
 const { recordSchema, recordSchemaEdit } = require("../../schemas");
-const deleteDayRecords = require("./controllers/deleteDayRecords");
 
 /**
  * A user (with id for output display)
@@ -41,6 +40,5 @@ router.get("/:id", getOne);
 router.post("/", bodyValidator(recordSchema), post);
 router.put("/:id", bodyValidator(recordSchemaEdit), put);
 router.delete("/:id", deleteRecord);
-router.delete("/", deleteDayRecords);
 
 module.exports = router;
