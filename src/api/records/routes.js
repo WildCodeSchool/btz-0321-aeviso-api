@@ -1,6 +1,6 @@
 const express = require("express");
 
-const { user, admin, superadmin } = require("../../utils/roles");
+const { superadmin } = require("../../utils/roles");
 const bodyValidator = require("../../middlewares/bodyValidator");
 
 const router = express.Router();
