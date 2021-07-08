@@ -1,10 +1,12 @@
 const prisma = require("../../../../prismaClient");
 
 /**
- * DELETE /api/v1/records/{date}
+ * DELETE /api/v1/projects/{projectId}/users/{userId}/records?date=isoStringDate
  * @summary Delete some records
- * @tags records
- * @param {string} date.path - date of wanted records (ISO String)
+ * @tags projects
+ * @param {string} projectId.path - id of wanted project
+ * @param {string} userId.path - id of wanted user in this project
+ * @param {string} date.path - query string to filter day (ISO String)
  * @return {object} 204 - No content
  */
 
