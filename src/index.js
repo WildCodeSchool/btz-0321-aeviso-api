@@ -47,6 +47,7 @@ app.listen(
         },
       });
 
+      // eslint-disable-next-line no-console
       console.log(`Created new user with email ${process.env.USER_EMAIL}`);
     }
   }
