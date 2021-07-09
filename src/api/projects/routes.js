@@ -44,7 +44,6 @@ const deleteDayRecords = require("./controllers/deleteDayRecords");
  * @property {string} updatedAt - ""
  */
 
-
 router.get("/", superadmin(), getAll);
 router.get("/:id", superadmin(), getOne);
 router.post("/", superadmin(), bodyValidator(projectsSchema), post);
