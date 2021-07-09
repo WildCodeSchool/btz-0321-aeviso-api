@@ -22,13 +22,6 @@ content-type: application/json
     "role": "SUPERADMIN",
     "password": "pass",
     "jobId": "0faed827-d4ee-495a-a50a-b074c05b5bb7"
-
-    "firstName": "Estelle",
-    "lastName": "Chabat",
-    "email": "chabz@test.fr",
-    "role": "SUPERADMIN",
-    "password": "passs",
-    "jobId": "7bbeed90-1787-4165-8a46-cf536c94f1e0"
 }
 
 ###
