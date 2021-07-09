@@ -17,7 +17,7 @@ module.exports = async (req, res, next) => {
     const users = await prisma.user.findMany({
       where: {
         companyId: id,
-        role: role.toUpperCase(),
+        role: role?.toUpperCase(),
       },
       orderBy: {
         [by]: order,
