@@ -10,6 +10,9 @@ const put = require("./controllers/put");
 const deleteUser = require("./controllers/deleteUser");
 const { userSchema } = require("../../schemas");
 
+const getProjects = require("./controllers/getProjects");
+const getRecords = require("./controllers/getRecords");
+
 const createUserProject = require("./controllers/createUserProject");
 const deleteUserProject = require("./controllers/deleteUserProject");
 /**
@@ -41,6 +44,9 @@ router.get("/:id", getOne);
 router.post("/", bodyValidator(userSchema), post);
 router.put("/:id", put);
 router.delete("/:id", deleteUser);
+
+router.get("/:id/projects", getProjects);
+router.get("/:id/records", getRecords);
 
 router.post("/:userId/projects/:projectId", createUserProject);
 router.delete("/:userId/projects/:projectId", deleteUserProject);

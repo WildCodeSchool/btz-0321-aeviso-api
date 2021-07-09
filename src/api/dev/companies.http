@@ -36,3 +36,6 @@ Content-Type: application/json
 
 ###
 GET http://localhost:5000/api/v1/companies/83bb3718-a1de-47e2-8f67-43133ae41a2b/users?role=ADMIN&createdAt=asc
+
+###
+GET http://localhost:5000/api/v1/companies/a1cbf3ad-a69f-4f55-9469-863eed5445f2/projects
