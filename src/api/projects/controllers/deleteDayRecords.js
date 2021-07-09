@@ -10,7 +10,7 @@ const prisma = require("../../../../prismaClient");
  * @return {object} 204 - No content
  */
 
-module.exports = async (req, res, next) => {
+const deleteDayRecords = async (req, res, next) => {
   const { projectId, userId } = req.params;
   const { date } = req.query;
 
@@ -33,3 +33,5 @@ module.exports = async (req, res, next) => {
     next(error);
   }
 };
+
+module.exports = deleteDayRecords;
