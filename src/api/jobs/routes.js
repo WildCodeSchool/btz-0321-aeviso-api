@@ -1,5 +1,7 @@
 const express = require("express");
 
+const { admin } = require("../../utils/roles");
+
 const router = express.Router();
 
 const getAll = require("./controllers/getAll");
@@ -22,14 +24,10 @@ const deleteJob = require("./controllers/deleteJob");
  * @property {string} label - "Senior Data Analyst"
  */
 
-router.get("/", getAll);
-
-router.get("/:id", getOne);
-
-router.post("/", post);
-
-router.put("/:id", put);
-
-router.delete("/:id", deleteJob);
+router.get("/", admin(), getAll);
+router.get("/:id", admin(), getOne);
+router.post("/", admin(), post);
+router.put("/:id", admin(), put);
+router.delete("/:id", admin(), deleteJob);
 
 module.exports = router;

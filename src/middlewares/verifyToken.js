@@ -1,6 +1,6 @@
 const jwt = require("jsonwebtoken");
 
-module.exports = async function verifyToken(req, res, next) {
+module.exports = function verifyToken(req, res, next) {
   try {
     const { token } = req.cookies;
 
@@ -8,7 +8,7 @@ module.exports = async function verifyToken(req, res, next) {
       throw new Error("You need to login.");
     }
 
-    req.user = await jwt.verify(token, process.env.SECRET);
+    req.user = jwt.verify(token, process.env.SECRET);
 
     return next();
   } catch (err) {
