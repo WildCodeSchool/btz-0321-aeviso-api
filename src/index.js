@@ -1,5 +1,7 @@
 require("dotenv").config();
 
+const bcrypt = require("bcrypt");
+
 const app = require("./app");
 const prisma = require("../prismaClient");
 
@@ -22,28 +24,28 @@ app.listen(
     });
 
     if (!user) {
-      const company = await prisma.company.create({
-        data: {
-          name: "AeViso",
-        },
-      });
+      const company = {
+        name: "AeViso",
+      };
 
-      const job = await prisma.job.create({
-        data: {
-          label: process.env.USER_JOB,
-        },
-      });
+      const job = {
+        label: process.env.USER_JOB,
+      };
 
       await prisma.user.create({
         data: {
           firstName: process.env.USER_FIRSTNAME,
           lastName: process.env.USER_LASTNAME,
           email: process.env.USER_EMAIL,
-          password: process.env.USER_PASSWORD,
-          role: "SUPERADMIN",
-          companyId: company.id,
-          jobId: job.id,
+          password: bcrypt.hashSync(process.env.USER_PASSWORD, 10),
+          role: "ADMIN",
+          job: {
+            create: job,
+          },
           weeklyBasis: "h35",
+          company: {
+            create: company,
+          },
         },
       });
 

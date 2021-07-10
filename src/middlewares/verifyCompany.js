@@ -7,7 +7,9 @@ const verifyCompany = async (req, res, next) => {
     }
 
     const { id: _id, companyId } = req.params;
-    const id = _id || companyId;
+    const { companyId: bodyCompanyId } = req.body;
+
+    const id = _id || companyId || bodyCompanyId;
 
     const user = await prisma.user.findFirst({
       where: {

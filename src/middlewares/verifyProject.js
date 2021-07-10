@@ -7,7 +7,8 @@ const verifyProject = async (req, res, next) => {
     }
 
     const { id: _id, projectId } = req.params;
-    const id = _id || projectId;
+    const { projectId: bodyProjectId } = req.body;
+    const id = _id || projectId || bodyProjectId;
 
     const project = await prisma.project.findFirst({
       where: {
