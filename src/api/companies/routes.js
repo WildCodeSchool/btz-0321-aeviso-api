@@ -34,9 +34,7 @@ const getUsers = require("./controllers/users");
 router.get("/", superadmin(), verifyCompany, getAll);
 router.post("/", superadmin(), bodyValidator(companySchema), post);
 
-router.use(verifyCompany);
-
-router.get("/:id", user(), getOne);
+router.get("/:id", user(), verifyCompany, getOne);
 router.put(
   "/:id",
   admin(),
@@ -44,8 +42,8 @@ router.put(
   bodyValidator(companySchemaEdit),
   put
 );
-router.delete("/:id", admin(), deleteCompany);
-router.get("/:id/projects", user(), getProjectsFromCompany);
-router.get("/:id/users", user(), getUsers);
+router.delete("/:id", admin(), verifyCompany, deleteCompany);
+router.get("/:id/projects", user(), verifyCompany, getProjectsFromCompany);
+router.get("/:id/users", user(), verifyCompany, getUsers);
 
 module.exports = router;
