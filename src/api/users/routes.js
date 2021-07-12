@@ -1,7 +1,8 @@
 const express = require("express");
 
-const { user, superadmin } = require("../../utils/roles");
+const { user, admin, superadmin } = require("../../utils/roles");
 const bodyValidator = require("../../middlewares/bodyValidator");
+const verifyCompany = require("../../middlewares/verifyCompany");
 
 const router = express.Router();
 
@@ -43,16 +44,13 @@ const deleteUserProject = require("./controllers/deleteUserProject");
 
 router.get("/", superadmin(), getAll);
 router.get("/:id", user(), getOne);
-
-router.post("/", superadmin(), bodyValidator(userSchema), post);
-router.post("/:userId/projects/:projectId", superadmin(), createUserProject);
-
 router.get("/:id/projects", getProjects);
 router.get("/:id/records", getRecords);
 
-router.put("/:id", superadmin(), put);
-
-router.delete("/:id", superadmin(), deleteUser);
+router.post("/", admin(), verifyCompany, bodyValidator(userSchema), post);
+router.put("/:id", admin(), verifyCompany, put);
+router.delete("/:id", admin(), verifyCompany, deleteUser);
+router.post("/:userId/projects/:projectId", admin(), createUserProject);
 router.delete("/:userId/projects/:projectId", superadmin(), deleteUserProject);
 
 module.exports = router;
