@@ -9,10 +9,10 @@ Content-Type: application/json
 
 {
     "date": "2021-06-15T08:35:48.049Z",
-    "projectId": "0e9dbd62-a489-47ea-9f10-39f578c1a568",
-    "timeslot":"MORNING",
-    "comment":"Lorem ipsum dolor sit amet",
-    "userId":"1a55d3f3-3b17-43af-8cb6-be8335079c94"
+    "projectId": "7619aaeb-1593-4f2d-850d-7bf1774695c9",
+    "timeslot":"AFTERNOON",
+    "comment":"Great Idea on this project ",
+    "userId":"eb3540d2-5f98-4ac1-a9d5-80610636d939"
 }
 
 
