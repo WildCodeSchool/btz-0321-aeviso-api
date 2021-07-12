@@ -11,6 +11,7 @@ async function main() {
       firstName: faker.name.firstName(),
       lastName: faker.name.lastName(),
       email: faker.internet.email(),
+      password: bcrypt.hashSync("password", 10),
       role: i === 0 ? "ADMIN" : "USER",
     })),
   }));
@@ -100,18 +101,6 @@ async function main() {
       projects: true,
     },
   });
-
-  await prisma.user.create({
-    data: {
-      firstName: "admin",
-      lastName: "admin",
-      email: "admin@dev.fr",
-      role: "SUPERADMIN",
-      password: bcrypt.hashSync("password", 10),
-      jobId: createdJobs[0].id,
-    },
-  });
-
   await Promise.all(
     usersWithProjects.map((u, i) => {
       return prisma.user.update({
