@@ -1,5 +1,7 @@
 const express = require("express");
 const bodyValidator = require("../../middlewares/bodyValidator");
+const { user, admin, superadmin } = require("../../utils/roles");
+const verifyCompany = require("../../middlewares/verifyCompany");
 
 const router = express.Router();
 
@@ -10,7 +12,6 @@ const put = require("./controllers/put");
 const deleteCompany = require("./controllers/deleteCompany");
 const { companySchema, companySchemaEdit } = require("../../schemas");
 const getProjectsFromCompany = require("./controllers/getProjectsFromCompany");
-
 const getUsers = require("./controllers/users");
 
 /**
@@ -28,17 +29,21 @@ const getUsers = require("./controllers/users");
  * @typedef {object} PostCompany
  * @property {string} name - "Fnac Saint Jean de Luz"
  * @property {string} logoUrl - "http://logo.fr/ref"
-
  */
 
-router.get("/", getAll);
-router.get("/:id", getOne);
-router.post("/", bodyValidator(companySchema), post);
-router.put("/:id", bodyValidator(companySchemaEdit), put);
-router.delete("/:id", deleteCompany);
+router.get("/", superadmin(), verifyCompany, getAll);
+router.post("/", superadmin(), bodyValidator(companySchema), post);
 
-router.get("/:id/projects", getProjectsFromCompany);
-
-router.get("/:id/users", getUsers);
+router.get("/:id", user(), verifyCompany, getOne);
+router.put(
+  "/:id",
+  admin(),
+  verifyCompany,
+  bodyValidator(companySchemaEdit),
+  put
+);
+router.delete("/:id", admin(), verifyCompany, deleteCompany);
+router.get("/:id/projects", user(), verifyCompany, getProjectsFromCompany);
+router.get("/:id/users", user(), verifyCompany, getUsers);
 
 module.exports = router;

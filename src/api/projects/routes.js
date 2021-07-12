@@ -1,4 +1,7 @@
 const express = require("express");
+
+const { user, admin, superadmin } = require("../../utils/roles");
+const verifyProject = require("../../middlewares/verifyProject");
 const bodyValidator = require("../../middlewares/bodyValidator");
 
 const router = express.Router();
@@ -40,16 +43,24 @@ const getUsers = require("./controllers/getUsers");
  * @property {string} updatedAt - ""
  */
 
-router.get("/", getAll);
-router.get("/:id", getOne);
-router.post("/", bodyValidator(projectsSchema), post);
-router.put("/:id", put);
-router.delete("/:id", deleteProject);
-
-router.get("/:projectId/records", getRecordsFromOneProject);
-router.get("/:id/users", getUsers);
-router.get("/:projectId/users/:userId/records", getRecordsFromUserFromProject);
-router.post("/:projectId/users/:userId", createProjectUser);
-router.delete("/:projectId/users/:userId", deleteProjectUser);
+router.get("/", superadmin(), getAll);
+router.get("/:id", superadmin(), getOne);
+router.post("/", superadmin(), bodyValidator(projectsSchema), post);
+router.put("/:id", superadmin(), put);
+router.delete("/:id", superadmin(), deleteProject);
+router.get(
+  "/:projectId/records",
+  user(),
+  verifyProject,
+  getRecordsFromOneProject
+);
+router.get("/:id/users", superadmin(), getUsers);
+router.get(
+  "/:projectId/users/:userId/records",
+  user(),
+  getRecordsFromUserFromProject
+);
+router.post("/:projectId/users/:userId", admin(), createProjectUser);
+router.delete("/:projectId/users/:userId", admin(), deleteProjectUser);
 
 module.exports = router;

@@ -95,3 +95,9 @@ POST http://localhost:5000/api/v1/users/fedf4d52-1c95-4b0a-b955-db19d79fe166/pro
 ###
 DELETE http://localhost:5000/api/v1/users/fedf4d52-1c95-4b0a-b955-db19d79fe166/projects/0e9dbd62-a489-47ea-9f10-39f578c1a568
 //should update(delete) the project of user ID
+
+### 
+GET http://localhost:5000/api/v1/users/2f3b6aa7-d162-477b-956c-3a355b8b9b53/projects
+
+###
+GET http://localhost:5000/api/v1/users/2f3b6aa7-d162-477b-956c-3a355b8b9b53/records
