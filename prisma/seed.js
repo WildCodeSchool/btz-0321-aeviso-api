@@ -1,6 +1,6 @@
 const { PrismaClient } = require("@prisma/client");
 const faker = require("faker");
-
+const bcrypt = require("bcrypt");
 const prisma = new PrismaClient();
 
 async function main() {
@@ -98,6 +98,17 @@ async function main() {
   const usersWithProjects = await prisma.user.findMany({
     include: {
       projects: true,
+    },
+  });
+
+  await prisma.user.create({
+    data: {
+      firstName: "admin",
+      lastName: "admin",
+      email: "admin@dev.fr",
+      role: "SUPERADMIN",
+      password: bcrypt.hashSync("password", 10),
+      jobId: createdJobs[0].id,
     },
   });
 
