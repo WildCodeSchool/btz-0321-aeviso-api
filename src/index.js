@@ -38,7 +38,7 @@ app.listen(
           lastName: process.env.USER_LASTNAME,
           email: process.env.USER_EMAIL,
           password: bcrypt.hashSync(process.env.USER_PASSWORD, 10),
-          role: "ADMIN",
+          role: "SUPERADMIN",
           job: {
             create: job,
           },
