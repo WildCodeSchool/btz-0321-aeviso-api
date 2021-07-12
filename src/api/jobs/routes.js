@@ -1,6 +1,6 @@
 const express = require("express");
 
-const { admin } = require("../../utils/roles");
+const { user, admin } = require("../../utils/roles");
 
 const router = express.Router();
 
@@ -9,6 +9,7 @@ const getOne = require("./controllers/getOne");
 const post = require("./controllers/post");
 const put = require("./controllers/put");
 const deleteJob = require("./controllers/deleteJob");
+const verifyRole = require("../../middlewares/verifyRole");
 
 /**
  * A job (with id for output display)
@@ -25,7 +26,7 @@ const deleteJob = require("./controllers/deleteJob");
  */
 
 router.get("/", admin(), getAll);
-router.get("/:id", admin(), getOne);
+router.get("/:id", user(), getOne);
 router.post("/", admin(), post);
 router.put("/:id", admin(), put);
 router.delete("/:id", admin(), deleteJob);
