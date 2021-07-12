@@ -24,10 +24,6 @@ app.listen(
     });
 
     if (!user) {
-      const company = {
-        name: "AeViso",
-      };
-
       const job = {
         label: process.env.USER_JOB,
       };
@@ -43,9 +39,6 @@ app.listen(
             create: job,
           },
           weeklyBasis: "h35",
-          company: {
-            create: company,
-          },
         },
       });
 
