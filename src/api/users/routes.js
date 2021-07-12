@@ -13,6 +13,9 @@ const put = require("./controllers/put");
 const deleteUser = require("./controllers/deleteUser");
 const { userSchema } = require("../../schemas");
 
+const getProjects = require("./controllers/getProjects");
+const getRecords = require("./controllers/getRecords");
+
 const createUserProject = require("./controllers/createUserProject");
 const deleteUserProject = require("./controllers/deleteUserProject");
 /**
@@ -41,10 +44,13 @@ const deleteUserProject = require("./controllers/deleteUserProject");
 
 router.get("/", superadmin(), getAll);
 router.get("/:id", user(), getOne);
+router.get("/:id/projects", getProjects);
+router.get("/:id/records", getRecords);
+
 router.post("/", admin(), verifyCompany, bodyValidator(userSchema), post);
 router.put("/:id", admin(), verifyCompany, put);
 router.delete("/:id", admin(), verifyCompany, deleteUser);
-router.post("/:userId/projects/:projectId", superadmin(), createUserProject);
+router.post("/:userId/projects/:projectId", admin(), createUserProject);
 router.delete("/:userId/projects/:projectId", superadmin(), deleteUserProject);
 
 module.exports = router;
