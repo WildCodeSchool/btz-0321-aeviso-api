@@ -1,5 +1,6 @@
 const { PrismaClient } = require("@prisma/client");
 const faker = require("faker");
+const bcrypt = require("bcrypt");
 
 const prisma = new PrismaClient();
 
@@ -12,6 +13,7 @@ async function main() {
       lastName: faker.name.lastName(),
       email: faker.internet.email(),
       role: i === 0 ? "ADMIN" : "USER",
+      password: bcrypt.hashSync("password", 10),
     })),
   }));
   const jobs = new Array(5).fill("").map(() => ({
