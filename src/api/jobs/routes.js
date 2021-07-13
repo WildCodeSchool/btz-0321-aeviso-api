@@ -9,7 +9,6 @@ const getOne = require("./controllers/getOne");
 const post = require("./controllers/post");
 const put = require("./controllers/put");
 const deleteJob = require("./controllers/deleteJob");
-const verifyRole = require("../../middlewares/verifyRole");
 
 /**
  * A job (with id for output display)
