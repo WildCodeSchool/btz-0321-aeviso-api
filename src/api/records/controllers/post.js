@@ -9,9 +9,40 @@ const prisma = require("../../../../prismaClient");
  */
 
 module.exports = async (req, res, next) => {
-  const { date, timeslot, comment, userId, projectId } = req.body;
-
   try {
+    const { date, timeslot, comment, userId, projectId } = req.body;
+
+    const records = await prisma.record.findMany({
+      where: {
+        date,
+        userId,
+      },
+    });
+
+    const checkTimeslot = () => {
+      return records.some((record) => record.timeslot === timeslot);
+    };
+
+    const checkRecords = () => {
+      return (
+        records.length === 2 &&
+        records[0]?.timeslot === "MORNING" &&
+        records[0]?.timeslot === "AFTERNOON"
+      );
+    };
+
+    if (checkTimeslot()) {
+      res.status(400);
+
+      throw new Error("A record already exists for this timeslot.");
+    }
+
+    if (checkRecords()) {
+      res.status(400);
+
+      throw new Error("Two records already exist for this day.");
+    }
+
     const record = await prisma.record.create({
       data: {
         date,
@@ -32,8 +63,6 @@ module.exports = async (req, res, next) => {
 
     res.status(201).json(record);
   } catch (error) {
-    res.status(404);
-
     next(error);
   }
 };
