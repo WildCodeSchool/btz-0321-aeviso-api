@@ -20,9 +20,9 @@ We use a POSTRGESQL database. If you already have it, paste the url in DATABASE_
 If not, a `docker-compose.yml` file can be used:
 
 - Be sure your docker app is running
-- In you terminal, run `docker-compose up -b`
+- In your terminal, run `docker-compose up -b`
 
-Check if the container is running now with an `adminer` image at `8080` port, and a `postres` image at `5342` port.  
+Check if the container is running now with an `adminer` image at `8080` port, and a `postgres` image at `5342` port.  
 Check if the `aeviso` database was created running `http://localhost:8080` in your browser.  
 If all is ok, you should be on the adminer login page. Complete the form like that:
 
