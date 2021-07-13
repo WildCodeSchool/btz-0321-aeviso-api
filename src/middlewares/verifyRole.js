@@ -14,8 +14,6 @@ const verifyRole =
 
       return next();
     } catch (error) {
-      res.status(403);
-
       return next(error);
     }
   };

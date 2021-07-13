@@ -24,10 +24,6 @@ app.listen(
     });
 
     if (!user) {
-      const company = {
-        name: "AeViso",
-      };
-
       const job = {
         label: process.env.USER_JOB,
       };
@@ -38,14 +34,11 @@ app.listen(
           lastName: process.env.USER_LASTNAME,
           email: process.env.USER_EMAIL,
           password: bcrypt.hashSync(process.env.USER_PASSWORD, 10),
-          role: "ADMIN",
+          role: "SUPERADMIN",
           job: {
             create: job,
           },
           weeklyBasis: "h35",
-          company: {
-            create: company,
-          },
         },
       });
 
