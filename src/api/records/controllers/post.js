@@ -25,7 +25,7 @@ module.exports = async (req, res, next) => {
 
     const checkRecords = () => {
       return (
-        records.length === 2 &&
+        records.length >= 2 &&
         records[0]?.timeslot === "MORNING" &&
         records[0]?.timeslot === "AFTERNOON"
       );
