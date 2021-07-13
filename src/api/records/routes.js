@@ -1,6 +1,6 @@
 const express = require("express");
 
-const { superadmin } = require("../../utils/roles");
+const { superadmin, user } = require("../../utils/roles");
 const bodyValidator = require("../../middlewares/bodyValidator");
 
 const router = express.Router();
@@ -38,9 +38,9 @@ const { recordSchema, recordSchemaEdit } = require("../../schemas");
  */
 
 router.get("/", superadmin(), getAll);
-router.get("/:id", superadmin(), getOne);
-router.post("/", superadmin(), bodyValidator(recordSchema), post);
-router.put("/:id", superadmin(), bodyValidator(recordSchemaEdit), put);
-router.delete("/:id", superadmin(), deleteRecord);
+router.get("/:id", user(), getOne);
+router.post("/", user(), bodyValidator(recordSchema), post);
+router.put("/:id", user(), bodyValidator(recordSchemaEdit), put);
+router.delete("/:id", user(), deleteRecord);
 
 module.exports = router;
