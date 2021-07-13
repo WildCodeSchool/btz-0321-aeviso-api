@@ -45,7 +45,7 @@ const getUsers = require("./controllers/getUsers");
 
 router.get("/", superadmin(), getAll);
 router.get("/:id", user(), getOne);
-router.post("/", superadmin(), bodyValidator(projectsSchema), post);
+router.post("/", admin(), bodyValidator(projectsSchema), post);
 router.put("/:id", superadmin(), put);
 router.delete("/:id", superadmin(), deleteProject);
 router.get(
