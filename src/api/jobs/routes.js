@@ -2,7 +2,6 @@ const express = require("express");
 
 const { admin, user } = require("../../utils/roles");
 
-
 const router = express.Router();
 
 const getAll = require("./controllers/getAll");
