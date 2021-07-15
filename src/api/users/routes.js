@@ -20,6 +20,7 @@ const getRecords = require("./controllers/getRecords");
 
 const createUserProject = require("./controllers/createUserProject");
 const deleteUserProject = require("./controllers/deleteUserProject");
+const verifyUserCompany = require("../../middlewares/verifyUserCompany");
 
 /**
  * A user (with id for output display)
@@ -51,10 +52,10 @@ router.get("/:id/projects", getProjects);
 router.get("/:id/records", getRecords);
 
 router.post("/", admin(), verifyCompany, bodyValidator(userSchema), post);
+router.put("/:id", admin(), verifyUserCompany, put);
+router.delete("/:id", admin(), verifyUserCompany, deleteUser);
 router.put("/self", user(), editSelf);
 router.put("/self/password", user(), editPassword);
-router.put("/:id", admin(), verifyCompany, put);
-router.delete("/:id", admin(), verifyCompany, deleteUser);
 router.post("/:userId/projects/:projectId", admin(), createUserProject);
 router.delete("/:userId/projects/:projectId", superadmin(), deleteUserProject);
 
