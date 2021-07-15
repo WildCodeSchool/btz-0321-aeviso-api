@@ -18,6 +18,7 @@ const getRecords = require("./controllers/getRecords");
 
 const createUserProject = require("./controllers/createUserProject");
 const deleteUserProject = require("./controllers/deleteUserProject");
+const verifyUserCompany = require("../../middlewares/verifyUserCompany");
 /**
  * A user (with id for output display)
  * @typedef {object} DisplayUser
@@ -48,8 +49,8 @@ router.get("/:id/projects", getProjects);
 router.get("/:id/records", getRecords);
 
 router.post("/", admin(), verifyCompany, bodyValidator(userSchema), post);
-router.put("/:id", admin(), verifyCompany, put);
-router.delete("/:id", admin(), verifyCompany, deleteUser);
+router.put("/:id", admin(), verifyUserCompany, put);
+router.delete("/:id", admin(), verifyUserCompany, deleteUser);
 router.post("/:userId/projects/:projectId", admin(), createUserProject);
 router.delete("/:userId/projects/:projectId", superadmin(), deleteUserProject);
 
