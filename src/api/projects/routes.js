@@ -54,7 +54,7 @@ router.get(
   verifyProject,
   getRecordsFromOneProject
 );
-router.get("/:id/users", admin(), getUsers);
+router.get("/:id/users", user(), getUsers);
 router.get(
   "/:projectId/users/:userId/records",
   user(),
