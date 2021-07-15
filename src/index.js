@@ -5,35 +5,45 @@ const bcrypt = require("bcrypt");
 const app = require("./app");
 const prisma = require("../prismaClient");
 
-const port = process.env.PORT || 6000;
-const host = process.env.HOST || "localhost";
+const {
+  PORT,
+  HOST,
+  USER_EMAIL,
+  USER_FIRSTNAME,
+  USER_JOB,
+  USER_LASTNAME,
+  USER_PASSWORD,
+} = process.env;
+
+const port = PORT || 6000;
+const host = HOST || "localhost";
 
 app.listen(
   {
-    host: process.env.HOST,
+    host,
     port,
   },
   async () => {
     // eslint-disable-next-line no-console
     console.log(`Listening: http://${host}:${port}`);
 
-    const user = await prisma.user.findUnique({
+    const user = await prisma.user.count({
       where: {
-        email: process.env.USER_EMAIL,
+        role: "SUPERADMIN",
       },
     });
 
     if (!user) {
       const job = {
-        label: process.env.USER_JOB,
+        label: USER_JOB || "SUPERADMIN",
       };
 
-      await prisma.user.create({
+      const { email } = await prisma.user.create({
         data: {
-          firstName: process.env.USER_FIRSTNAME,
-          lastName: process.env.USER_LASTNAME,
-          email: process.env.USER_EMAIL,
-          password: bcrypt.hashSync(process.env.USER_PASSWORD, 10),
+          firstName: USER_FIRSTNAME || "Super",
+          lastName: USER_LASTNAME || "Admin",
+          email: USER_EMAIL || "superadmin@dev.fr",
+          password: bcrypt.hashSync(USER_PASSWORD || "password", 10),
           role: "SUPERADMIN",
           job: {
             create: job,
@@ -43,7 +53,7 @@ app.listen(
       });
 
       // eslint-disable-next-line no-console
-      console.log(`Created new user with email ${process.env.USER_EMAIL}`);
+      console.log(`⚡️ No SUPERADMIN found, created a generic one : ${email}`);
     }
   }
 );

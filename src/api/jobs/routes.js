@@ -1,6 +1,6 @@
 const express = require("express");
 
-const { admin } = require("../../utils/roles");
+const { admin, user } = require("../../utils/roles");
 
 const router = express.Router();
 
@@ -25,7 +25,7 @@ const deleteJob = require("./controllers/deleteJob");
  */
 
 router.get("/", admin(), getAll);
-router.get("/:id", admin(), getOne);
+router.get("/:id", user(), getOne);
 router.post("/", admin(), post);
 router.put("/:id", admin(), put);
 router.delete("/:id", admin(), deleteJob);

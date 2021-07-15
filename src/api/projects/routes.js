@@ -44,9 +44,9 @@ const getUsers = require("./controllers/getUsers");
  */
 
 router.get("/", superadmin(), getAll);
-router.get("/:id", superadmin(), getOne);
-router.post("/", superadmin(), bodyValidator(projectsSchema), post);
-router.put("/:id", superadmin(), put);
+router.get("/:id", user(), getOne);
+router.post("/", admin(), bodyValidator(projectsSchema), post);
+router.put("/:id", admin(), put);
 router.delete("/:id", superadmin(), deleteProject);
 router.get(
   "/:projectId/records",
@@ -54,7 +54,7 @@ router.get(
   verifyProject,
   getRecordsFromOneProject
 );
-router.get("/:id/users", superadmin(), getUsers);
+router.get("/:id/users", admin(), getUsers);
 router.get(
   "/:projectId/users/:userId/records",
   user(),
