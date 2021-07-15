@@ -10,7 +10,7 @@ const prisma = require("../../../../prismaClient");
  * @param {CreateUser} request.body.required - User infos to update
  * @return {DisplayUser} 200 - User successfully retrieved
  */
-const editSelf = async (req, res, next) => {
+const editPassword = async (req, res, next) => {
   try {
     const { email } = req.user;
     const { oldPassword, newPassword } = req.body;
@@ -52,4 +52,4 @@ const editSelf = async (req, res, next) => {
   }
 };
 
-module.exports = editSelf;
+module.exports = editPassword;
