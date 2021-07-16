@@ -10,14 +10,19 @@ const verifyProject = async (req, res, next) => {
     const { projectId: bodyProjectId } = req.body;
     const id = _id || projectId || bodyProjectId;
 
+    const users =
+      req.user.role === "ADMIN"
+        ? undefined
+        : {
+            every: {
+              email: req.user.email,
+            },
+          };
+
     const project = await prisma.project.findFirst({
       where: {
         id,
-        users: {
-          every: {
-            email: req.user.email,
-          },
-        },
+        users,
       },
       select: {
         companyId: true,

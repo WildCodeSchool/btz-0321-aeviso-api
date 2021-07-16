@@ -44,9 +44,9 @@ const getUsers = require("./controllers/getUsers");
  */
 
 router.get("/", superadmin(), getAll);
-router.get("/:id", user(), getOne);
+router.get("/:id", user(), verifyProject, getOne);
 router.post("/", admin(), bodyValidator(projectsSchema), post);
-router.put("/:id", admin(), put);
+router.put("/:id", admin(), verifyProject, put);
 router.delete("/:id", superadmin(), deleteProject);
 router.get(
   "/:projectId/records",
@@ -61,6 +61,11 @@ router.get(
   getRecordsFromUserFromProject
 );
 router.post("/:projectId/users/:userId", admin(), createProjectUser);
-router.delete("/:projectId/users/:userId", admin(), deleteProjectUser);
+router.delete(
+  "/:projectId/users/:userId",
+  admin(),
+  verifyProject,
+  deleteProjectUser
+);
 
 module.exports = router;
