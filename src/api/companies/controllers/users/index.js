@@ -1,5 +1,4 @@
 const prisma = require("../../../../../prismaClient");
-const errors = require("../../../errors");
 
 /**
  * GET /api/v1/companies/{id}/users

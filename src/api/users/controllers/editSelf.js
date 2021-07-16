@@ -26,6 +26,8 @@ const editSelf = async (req, res, next) => {
 
     delete user.password;
 
+    req.user.email = newEmail;
+
     res.status(200).json(user);
   } catch (e) {
     next(e);
