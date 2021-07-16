@@ -52,10 +52,10 @@ router.get("/:id/projects", getProjects);
 router.get("/:id/records", getRecords);
 
 router.post("/", admin(), verifyCompany, bodyValidator(userSchema), post);
-router.put("/:id", admin(), verifyUserCompany, put);
-router.delete("/:id", admin(), verifyUserCompany, deleteUser);
 router.put("/self", user(), editSelf);
 router.put("/self/password", user(), editPassword);
+router.put("/:id", admin(), verifyUserCompany, put);
+router.delete("/:id", admin(), verifyUserCompany, deleteUser);
 router.post("/:userId/projects/:projectId", admin(), createUserProject);
 router.delete("/:userId/projects/:projectId", superadmin(), deleteUserProject);
 

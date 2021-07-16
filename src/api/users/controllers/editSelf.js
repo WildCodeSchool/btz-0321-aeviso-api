@@ -13,6 +13,8 @@ const editSelf = async (req, res, next) => {
     const { email: oldEmail } = req.user;
     const { firstName, lastName, email: newEmail } = req.body;
 
+    console.log(oldEmail, newEmail);
+
     const user = await prisma.user.update({
       where: {
         email: oldEmail,
