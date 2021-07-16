@@ -47,7 +47,8 @@ router.get("/", superadmin(), getAll);
 router.get("/:id", user(), verifyProject, getOne);
 router.post("/", admin(), bodyValidator(projectsSchema), post);
 router.put("/:id", admin(), verifyProject, put);
-router.delete("/:id", superadmin(), deleteProject);
+router.delete("/:id", admin(), verifyProject, deleteProject);
+
 router.get(
   "/:projectId/records",
   user(),

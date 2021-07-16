@@ -62,6 +62,10 @@ const authSchema = Joi.object({
   password: Joi.string().required(),
 });
 
+const jobSchema = Joi.object({
+  label: Joi.string().min(2).required(),
+});
+
 module.exports = {
   userSchema,
   putUserSchema,
@@ -71,4 +75,5 @@ module.exports = {
   recordSchemaEdit,
   projectsSchema,
   authSchema,
+  jobSchema,
 };
