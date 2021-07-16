@@ -1,8 +1,11 @@
 const express = require("express");
 
-const { admin, user } = require("../../utils/roles");
-
 const router = express.Router();
+
+const bodyValidator = require("../../middlewares/bodyValidator");
+const { jobSchema } = require("../../schemas");
+
+const { admin, user } = require("../../utils/roles");
 
 const getAll = require("./controllers/getAll");
 const getOne = require("./controllers/getOne");
@@ -26,8 +29,8 @@ const deleteJob = require("./controllers/deleteJob");
 
 router.get("/", admin(), getAll);
 router.get("/:id", user(), getOne);
-router.post("/", admin(), post);
-router.put("/:id", admin(), put);
+router.post("/", admin(), bodyValidator(jobSchema), post);
+router.put("/:id", admin(), bodyValidator(jobSchema), put);
 router.delete("/:id", admin(), deleteJob);
 
 module.exports = router;
