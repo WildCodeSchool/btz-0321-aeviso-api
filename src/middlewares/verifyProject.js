@@ -14,7 +14,7 @@ const verifyProject = async (req, res, next) => {
       req.user.role === "ADMIN"
         ? undefined
         : {
-            every: {
+            some: {
               email: req.user.email,
             },
           };
