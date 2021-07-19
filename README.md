@@ -5,7 +5,7 @@ Team:
  -Chabelle78: https://github.com/Chabelle78  
  -ThomasBarrial: https://github.com/ThomasBarrial  
  -MatthiasWanner: https://github.com/MatthiasWanner  
- -Benwade-progldc: https://github.com/Benwade-prog
+ -Benwade-progldc: https://github.com/Benwade-progldc
 
 API REST made for AEVISO client project: https://github.com/WildCodeSchool/btz-0321-aeviso-client.  
 With jwt authentication.
