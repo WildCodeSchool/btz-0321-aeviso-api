@@ -5,9 +5,12 @@ const prisma = require("../../../../prismaClient");
 const login = async (req, res, next) => {
   const { email, password } = req.body;
   try {
-    const user = await prisma.user.findUnique({
+    const user = await prisma.user.findFirst({
       where: {
-        email,
+        email: {
+          equals: email,
+          mode: "insensitive",
+        },
       },
     });
 
