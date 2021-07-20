@@ -21,7 +21,7 @@ With jwt authentication.
 - run `$ cd btz-0321-aeviso-api`
 - run `npm install `
 
-We use a POSTRGESQL database. If you already have it, paste the url in DATABASE_URL environment variable (in your .env file at the root of the project).  
+We use a POSTGRESQL database. If you already have it, paste the url in DATABASE_URL environment variable (in your .env file at the root of the project).  
 If not, a `docker-compose.yml` file can be used:
 
 - Be sure your docker app is running
