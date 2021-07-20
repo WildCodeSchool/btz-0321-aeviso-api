@@ -41,6 +41,8 @@ password: `aeviso`.
 - It will connect the db to the API.
 - Now you can run `npx prisma migrate dev` to create tables and schemas in you db. Confirm message should appear in your console.
 - If you want to push some datas in the db, run `node prisma/seed.js`
+- If you read the seed file, you can see that all users's created passwords will be "password".
+- Run `npx prisma studio` to launch an interface that displays all datas in your web browser (you can use any credential to log you in).
 
 ## Environment Variables
 
