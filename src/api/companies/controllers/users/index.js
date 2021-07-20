@@ -5,7 +5,7 @@ const prisma = require("../../../../../prismaClient");
  * @summary View company's users
  * @tags companies
  * @param {string} id.path - id of wanted company
- * @return {DisplayCompany} 200 - Users successfully retrieved
+ * @return {array<DisplayUser>} 200 - Users successfully retrieved
  */
 
 module.exports = async (req, res, next) => {
@@ -17,6 +17,18 @@ module.exports = async (req, res, next) => {
       where: {
         companyId: id,
         role: role?.toUpperCase(),
+      },
+      select: {
+        id: true,
+        firstName: true,
+        lastName: true,
+        email: true,
+        role: true,
+        companyId: true,
+        jobId: true,
+        weeklyBasis: true,
+        createdAt: true,
+        updatedAt: true,
       },
       orderBy: {
         [by]: order,
