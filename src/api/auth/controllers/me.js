@@ -13,7 +13,10 @@ const me = async (req, res, next) => {
     if (!user) {
       res.status(401);
 
-      throw new Error("Unknown user.");
+      throw new Error({
+        message_en: "Unknown user",
+        message_fr: "Utilisateur inconnu",
+      });
     }
 
     return res.status(200).json({ user });
