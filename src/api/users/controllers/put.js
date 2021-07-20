@@ -12,8 +12,16 @@ const put = async (req, res, next) => {
   let company;
   let job;
   const { id } = req.params;
-  const { firstName, lastName, email, role, weeklyBasis, companyId, jobId } =
-    req.body;
+  const {
+    firstName,
+    lastName,
+    email,
+    role,
+    password,
+    weeklyBasis,
+    companyId,
+    jobId,
+  } = req.body;
 
   try {
     if (companyId) {
@@ -43,6 +51,7 @@ const put = async (req, res, next) => {
         firstName,
         lastName,
         email,
+        password,
         role,
         weeklyBasis,
         company,

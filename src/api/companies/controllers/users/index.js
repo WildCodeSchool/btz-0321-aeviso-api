@@ -1,5 +1,4 @@
 const prisma = require("../../../../../prismaClient");
-const errors = require("../../../errors");
 
 /**
  * GET /api/v1/companies/{id}/users
@@ -23,11 +22,6 @@ module.exports = async (req, res, next) => {
         [by]: order,
       },
     });
-
-    if (!users.length) {
-      res.status(404);
-      throw new Error(errors.users[404].message);
-    }
 
     return res.status(200).json(users);
   } catch (error) {
