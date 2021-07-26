@@ -38,7 +38,6 @@ password: `aeviso`.
 `aeviso` database should appear in the list, but it's empty.
 
 - If done, paste `DATABASE_URL=postgres://aeviso:aeviso@localhost:5432/aeviso` in your .env
-- It will connect the db to the API.
 - Now you can run `npx prisma migrate dev` to create tables and schemas in you db. Confirm message should appear in your console.
 - If you want to push some datas in the db, run `node prisma/seed.js`
 - If you read the seed file, you can see that all users's created passwords will be "password".
@@ -46,22 +45,23 @@ password: `aeviso`.
 
 ## Environment Variables
 
-To run this project, you will need to add the following environment variables to your .env file
+To run this project, you will need to add the following environment variables to your .env file  
+⚠ Change values to customize Your variables. `USER_` variables will be used to create a first user launching the server. `email` and `password` will be useful to connect you with front app. A real random `SECRET` key should be filled in during Production.
 
 ```
-CLIENT=client/url
+CLIENT=http://localhost:5000
 
 SECRET=secret_key_used_by_jwt
 
-DATABASE_URL=your/db/url
+DATABASE_URL=postgres://aeviso:aeviso@localhost:5432/aeviso
 
-USER_JOB=jobLabelYouWantToCreateOnServerLaunch
+USER_JOB=Web Dev
 
-USER_FIRSTNAME=firstname
+USER_FIRSTNAME=Foo
 
-USER_LASTNAME=lastname
+USER_LASTNAME=bar
 
-USER_EMAIL=mail@example.dev
+USER_EMAIL=foo@bar.dev
 
 USER_PASSWORD=password
 ```
