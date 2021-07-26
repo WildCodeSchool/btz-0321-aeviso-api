@@ -46,7 +46,7 @@ password: `aeviso`.
 ## Environment Variables
 
 To run this project, you will need to add the following environment variables to your .env file  
-⚠ Change values to customize Your variables. `USER_` variables will be used to create a first user launching the server. `email` and `password` will be useful to connect you with front app. A real random `SECRET` key should be filled in during Production.
+⚠ Change values to customize Your variables. `USER_` variables will be used to create a first `SUPERADMIN` user launching the server. `email` and `password` will be useful to connect you with front app. A real random `SECRET` key should be filled in during Production.
 
 ```
 CLIENT=http://localhost:5000
