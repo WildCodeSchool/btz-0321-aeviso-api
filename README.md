@@ -1,25 +1,28 @@
 # Express AEViso API
 
 Team:  
- -Aeryle: https://github.com/Aeryle  
- -Chabelle78: https://github.com/Chabelle78  
- -ThomasBarrial: https://github.com/ThomasBarrial  
- -MatthiasWanner: https://github.com/MatthiasWanner  
- -Benwade-progldc: https://github.com/Benwade-progldc
+ - [Aeryle](https://github.com/Aeryle)  
+ - [Chabelle78](https://github.com/Chabelle78)  
+ - [ThomasBarrial](https://github.com/ThomasBarrial)  
+ - [MatthiasWanner](https://github.com/MatthiasWanner)  
+ - [Benwade-progldc](https://github.com/Benwade-progldc)
 
 API REST made for AEVISO client project: https://github.com/WildCodeSchool/btz-0321-aeviso-client.  
 With jwt authentication.
 
 ## Prerequisites
 
-- Docker: https://www.docker.com/products/docker-desktop
-- Node: https://nodejs.org/en/
+- Docker: [Link](https://www.docker.com/products/docker-desktop)
+- Node: [Link](https://nodejs.org/en)
 
 ## Setup
 
-- run `$ git clone https://github.com/WildCodeSchool/btz-0321-aeviso-api.git` in your terminal
-- run `$ cd btz-0321-aeviso-api`
-- run `npm install `
+Run those commands
+```sh
+git clone https://github.com/WildCodeSchool/btz-0321-aeviso-api.git
+cd btz-0321-aeviso-api
+npm install
+```
 
 We use a POSTGRESQL database. If you already have it, paste the url in DATABASE_URL environment variable (in your .env file at the root of the project).  
 If not, a `docker-compose.yml` file can be used:
@@ -46,7 +49,7 @@ password: `aeviso`.
 ## Environment Variables
 
 To run this project, you will need to add the following environment variables to your .env file  
-⚠ Change values to customize Your variables. `USER_` variables will be used to create a first `SUPERADMIN` user launching the server. `email` and `password` will be useful to connect you with front app. A real random `SECRET` key should be filled in during Production.
+⚠ Change values to customize your variables. `USER_` variables will be used to create a first `SUPERADMIN` user launching the server. `email` and `password` will be useful to connect you with front app. A real random `SECRET` key should be filled in during Production.
 
 ```
 CLIENT=http://localhost:5000
@@ -68,22 +71,17 @@ USER_PASSWORD=password
 
 ## Development
 
-```
+```sh
 npm run dev
 ```
 
-and run
-
-```
-http://localhost:5000
-
-```
+and access `http://localhost:5000` on your browser
 
 ## Documentation
 
 go to `/api-docs`
 
-## Optionnal Variables
+## Optional Variables
 
 If you want to share API to your local network
 
@@ -95,12 +93,12 @@ API URL will become:
 
 ## Lint
 
-```
+```sh
 npm run lint
 ```
 
 ## Test
 
-```
+```sh
 npm run test
 ```
