@@ -1,47 +1,104 @@
-# Express API Starter
+# Express AEViso API
 
-Includes API Server utilities:
+Team:  
+ - [Aeryle](https://github.com/Aeryle)  
+ - [Chabelle78](https://github.com/Chabelle78)  
+ - [ThomasBarrial](https://github.com/ThomasBarrial)  
+ - [MatthiasWanner](https://github.com/MatthiasWanner)  
+ - [Benwade-progldc](https://github.com/Benwade-progldc)
 
-* [morgan](https://www.npmjs.com/package/morgan)
-    * HTTP request logger middleware for node.js
-* [helmet](https://www.npmjs.com/package/helmet)
-    * Helmet helps you secure your Express apps by setting various HTTP headers. It's not a silver bullet, but it can
-      help!
-* [dotenv](https://www.npmjs.com/package/dotenv)
-    * Dotenv is a zero-dependency module that loads environment variables from a `.env` file into `process.env`
+API REST made for AEVISO client project: https://github.com/WildCodeSchool/btz-0321-aeviso-client.  
+With jwt authentication.
 
-Development utilities:
+## Prerequisites
 
-* [nodemon](https://www.npmjs.com/package/nodemon)
-    * nodemon is a tool that helps develop node.js based applications by automatically restarting the node application
-      when file changes in the directory are detected.
-* [eslint](https://www.npmjs.com/package/eslint)
-    * ESLint is a tool for identifying and reporting on patterns found in ECMAScript/JavaScript code.
-* [mocha](https://www.npmjs.com/package/mocha)
-    * ☕️ Simple, flexible, fun JavaScript test framework for Node.js & The Browser ☕️
-* [supertest](https://www.npmjs.com/package/supertest)
-    * HTTP assertions made easy via superagent.
+- Docker: [Link](https://www.docker.com/products/docker-desktop)
+- Node: [Link](https://nodejs.org/en)
 
 ## Setup
 
-```
+Run those commands
+```sh
+git clone https://github.com/WildCodeSchool/btz-0321-aeviso-api.git
+cd btz-0321-aeviso-api
 npm install
 ```
 
-## Lint
+We use a POSTGRESQL database. If you already have it, paste the url in DATABASE_URL environment variable (in your .env file at the root of the project).  
+If not, a `docker-compose.yml` file can be used:
+
+- Be sure your docker app is running
+- In your terminal, run `docker-compose up -d`
+
+Check if the container is running now with an `adminer` image at `8080` port, and a `postgres` image at `5342` port.  
+Check if the `aeviso` database was created running `http://localhost:8080` in your browser.  
+If all is ok, you should be on the adminer login page. Complete the form like that:
+
+![Adminer](images/adminer_form.png)
+
+password: `aeviso`.
+
+`aeviso` database should appear in the list, but it's empty.
+
+- If done, paste `DATABASE_URL=postgres://aeviso:aeviso@localhost:5432/aeviso` in your .env
+- Now you can run `npx prisma migrate dev` to create tables and schemas in you db. Confirm message should appear in your console.
+- If you want to push some datas in the db, run `node prisma/seed.js`
+- If you read the seed file, you can see that all users's created passwords will be "password".
+- Run `npx prisma studio` to launch an interface that displays all datas in your web browser (you can use any credential to log you in).
+
+## Environment Variables
+
+To run this project, you will need to add the following environment variables to your .env file  
+⚠ Change values to customize your variables. `USER_` variables will be used to create a first `SUPERADMIN` user launching the server. `email` and `password` will be useful to connect you with front app. A real random `SECRET` key should be filled in during Production.
 
 ```
+CLIENT=http://localhost:5000
+
+SECRET=secret_key_used_by_jwt
+
+DATABASE_URL=postgres://aeviso:aeviso@localhost:5432/aeviso
+
+USER_JOB=Web Dev
+
+USER_FIRSTNAME=Foo
+
+USER_LASTNAME=bar
+
+USER_EMAIL=foo@bar.dev
+
+USER_PASSWORD=password
+```
+
+## Development
+
+```sh
+npm run dev
+```
+
+and access `http://localhost:5000` on your browser
+
+## Documentation
+
+go to `/api-docs`
+
+## Optional Variables
+
+If you want to share API to your local network
+
+`HOST=ip.local.address`
+
+API URL will become:
+
+`http://ip.local.adress:5000`
+
+## Lint
+
+```sh
 npm run lint
 ```
 
 ## Test
 
-```
+```sh
 npm run test
-```
-
-## Development
-
-```
-npm run dev
 ```

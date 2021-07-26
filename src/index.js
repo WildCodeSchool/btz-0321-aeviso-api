@@ -5,7 +5,7 @@ const bcrypt = require("bcrypt");
 const app = require("./app");
 const prisma = require("../prismaClient");
 
-const port = process.env.PORT || 6000;
+const port = process.env.PORT || 5000;
 const host = process.env.HOST || "localhost";
 
 app.listen(

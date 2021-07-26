@@ -15,12 +15,16 @@ const login = async (req, res, next) => {
     });
 
     if (!user) {
-      return res.status(401).json({ message: "Unknow User" });
+      return res.status(401).json({
+        message_en: "Unknow User",
+        message_fr: "Utilisateur inconnu",
+      });
     }
 
     if (!bcrypt.compareSync(password, user.password)) {
       return res.status(401).json({
-        message: "wrong password",
+        message_en: "Wrong password",
+        message_fr: "Mot de passe incorrect",
       });
     }
 
