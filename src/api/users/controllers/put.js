@@ -24,7 +24,7 @@ const put = async (req, res, next) => {
     jobId,
   } = req.body;
 
-  const hashedPassword = bcrypt.hashSync(password, 10);
+  const newPassword = password ? bcrypt.hashSync(password, 10) : undefined;
 
   try {
     if (companyId) {
@@ -54,7 +54,7 @@ const put = async (req, res, next) => {
         firstName,
         lastName,
         email,
-        password: hashedPassword,
+        password: newPassword,
         role,
         weeklyBasis,
         company,
