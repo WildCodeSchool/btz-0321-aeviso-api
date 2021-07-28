@@ -12,7 +12,7 @@ async function main() {
       firstName: faker.name.firstName(),
       lastName: faker.name.lastName(),
       email: faker.internet.email(),
-      password: bcrypt.hashSync("password", 10),
+      password: bcrypt.hashSync("Password10", 10),
       role: i === 0 ? "ADMIN" : "USER",
     })),
   }));
