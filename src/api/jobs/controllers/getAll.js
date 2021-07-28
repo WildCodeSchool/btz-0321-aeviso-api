@@ -26,6 +26,9 @@ const getAll = async (req, res, next) => {
     const jobs = await prisma.job.findMany({
       take: limit || undefined,
       include,
+      orderBy: {
+        label: "asc",
+      },
     });
 
     res.status(200).json(jobs);
